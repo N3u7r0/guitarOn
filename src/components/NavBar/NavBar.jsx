@@ -1,5 +1,5 @@
 
-import imagen from "../../assets/images/logo.png"
+import imagen from "../../assets/images/logo.png";
 import {
   Box,
   Flex,
@@ -15,9 +15,10 @@ import {
   MenuGroup,
   MenuDivider,
   Img,
-} from '@chakra-ui/react'
-import { MoonIcon, SunIcon, ChevronDownIcon } from '@chakra-ui/icons'
-import { CartWidget } from '../../components/CartWidget/CartWidget'
+} from '@chakra-ui/react';
+import { MoonIcon, SunIcon, ChevronDownIcon } from '@chakra-ui/icons';
+import { CartWidget } from '../../components/CartWidget/CartWidget';
+import { Link } from "react-router-dom";
 
 export function NavBar() {
   const { colorMode, toggleColorMode } = useColorMode()
@@ -36,10 +37,16 @@ export function NavBar() {
 
           <Menu >
             <Flex  >
-              <Grid templateColumns={'repeat(3, 1fr)'}  >
-                <MenuItem justifyContent={"center"}>Home</MenuItem>
-                <MenuItem justifyContent={"center"}>Ofertas</MenuItem>
-                <MenuItem justifyContent={"center"}>Nosotros</MenuItem>
+              <Grid templateColumns={'repeat(3, 1fr)'}>
+                < MenuItem justifyContent={"center"} as={Button}>
+                  <Link to={"./"}> Home</Link>
+                </MenuItem>
+                <MenuItem justifyContent={"center"} as={Button}>
+                  <Link to={"./ofertas"}>Ofertas</Link>
+                </MenuItem>
+                <MenuItem justifyContent={"center"} as={Button}>
+                  <Link to={"./nosotros"}>Nosotros</Link>
+                </MenuItem>
               </Grid>
               <Flex>
                 <MenuGroup>
@@ -47,11 +54,19 @@ export function NavBar() {
                     Productos
                   </MenuButton>
                   <MenuList>
-                    <MenuItem>Todos los productos</MenuItem>
+                    <MenuItem as={Button}>
+                    <Link to={"./todosLosProductos"}>Todos los productos</Link>
+                    </MenuItem>
                     <MenuDivider />
-                    <MenuItem>Guitarras</MenuItem>
-                    <MenuItem>Bajos</MenuItem>
-                    <MenuItem>Baterias</MenuItem>
+                    <MenuItem as={Button}>
+                      <Link to={"./guitarras"}>Guitarras</Link>
+                    </MenuItem>
+                    <MenuItem as={Button}>
+                      <Link to={"./bajos"}>Bajos</Link>
+                    </MenuItem>
+                    <MenuItem as={Button}>
+                      <Link to={"./baterias"}>Baterias</Link>
+                    </MenuItem>
                   </MenuList>
                 </MenuGroup>
               </Flex>
@@ -66,8 +81,8 @@ export function NavBar() {
             </Stack>
           </Flex>
 
-        </Flex>
-      </Box>
+        </Flex >
+      </Box >
     </>
   )
 }

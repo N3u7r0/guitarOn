@@ -1,18 +1,29 @@
 import './App.css';
 import { ChakraProvider } from '@chakra-ui/react';
-import { RouterMain } from './routes';
-import { NavBar } from "./components/NavBar/NavBar";
-import { Home } from "./pages/Home";
-import { Footer } from "./components/Footer/Footer";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
+import { Home, Ofertas, Nosotros, TodosLosProductos, Guitarras, Bajos, Baterias } from "./pages"
+import { NavBar } from './components/NavBar/NavBar';
+import { Footer } from './components/Footer/Footer';
+
+
 function App() {
 
   return (
     <ChakraProvider>
-        <NavBar />
-      <RouterMain>
-        <Home />
-      </RouterMain>
-        <Footer />
+      <BrowserRouter>
+      <NavBar/>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/ofertas" element={<Ofertas />} />
+          <Route path="/nosotros" element={<Nosotros />} />
+          <Route path="/todosLosProductos" element={<TodosLosProductos />} />
+          <Route path="/guitarras" element={<Guitarras />} />
+          <Route path="/bajos" element={<Bajos />} />
+          <Route path="/baterias" element={<Baterias />} />
+        </Routes>
+      </BrowserRouter>
+      <Footer />
     </ChakraProvider>
   );
 }
