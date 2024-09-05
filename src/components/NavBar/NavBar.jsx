@@ -1,4 +1,3 @@
-import React from 'react';
 
 import imagen from "../../assets/images/logo.png"
 import {
@@ -18,9 +17,9 @@ import {
   Img,
 } from '@chakra-ui/react'
 import { MoonIcon, SunIcon, ChevronDownIcon } from '@chakra-ui/icons'
-import CartWidget from '../CartWidget/CartWidget'
+import CartWidget from '../../components/CartWidget/CartWidget'
 
- function NavBar() {
+function NavBar() {
   const { colorMode, toggleColorMode } = useColorMode()
 
   return (
@@ -31,7 +30,7 @@ import CartWidget from '../CartWidget/CartWidget'
           <Grid templateColumns={'auto auto'} gap={3} alignItems={'center'}>
 
             {/* el incono tiene un backgraundColor provisorio, mas adelante crear un logo con una paleta de colores que concuerde con el efecto moon de la app */}
-            <Img src={imagen} alt={"logo"} w={"200px"} h={"80%"} objectFit={'cover'} backgroundColor={'whitesmoke'}></Img>
+            <Img src={imagen} color={"white"} alt={"logo"} w={"200px"} h={"80%"} objectFit={'cover'}></Img>
             <CartWidget />
           </Grid >
 

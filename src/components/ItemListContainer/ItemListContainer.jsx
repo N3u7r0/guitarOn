@@ -1,12 +1,23 @@
-import { Box } from '@chakra-ui/react'
-import React from 'react'
+import { Box } from '@chakra-ui/react';
+import Cart from '../Cart/Cart.jsx';
 
 const ItemListContainer = (props) => {
-    return(
-    <Box fontSize={"x-large"}>
-        <h2>{props.greeting}</h2>
-    </Box>
-    );
+
+    if (true) {
+
+        return (
+            <Box >
+                <Cart />
+            </Box>
+        );
+    } else {
+
+        return (
+            <Box fontSize={"x-large"}>
+                <h2>{props.greeting}</h2>
+            </Box>
+        );
+    }
 }
 
 
