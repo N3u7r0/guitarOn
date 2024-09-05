@@ -1,18 +1,7 @@
-import {
-    Card,
-    CardBody,
-    CardFooter,
-    Stack,
-    Image,
-    Heading,
-    Text,
-    Divider,
-    ButtonGroup,
-    Button,
-}from '@chakra-ui/react';
+
 import { products } from "../../data/products.js";
 
-const Cart = () => {
+export const Cart = () => {
 
     products.map(
         (product) => {
@@ -28,6 +17,3 @@ const Cart = () => {
     );
 
 }
-
-
-export default Cart

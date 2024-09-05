@@ -1,7 +1,7 @@
 import { Box, Icon } from '@chakra-ui/react'
 
 
-const CartWidget = () => {
+export const CartWidget = () => {
 
     return (
         <Box>
@@ -14,4 +14,4 @@ const CartWidget = () => {
         </Box>
     )
 }
-export default CartWidget
+

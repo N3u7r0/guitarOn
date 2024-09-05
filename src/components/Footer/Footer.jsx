@@ -4,7 +4,7 @@ import {
 } from '@chakra-ui/react'
 import "./Footer.css"
 
-const Footer = () => {
+export const Footer = () => {
     return (
         <footer >
             <Box bg={useColorModeValue('gray.100', 'gray.900')}  boxShadow={"0px 20px 40px"}>
@@ -13,5 +13,3 @@ const Footer = () => {
         </footer>
     )
 };
-
-export default Footer

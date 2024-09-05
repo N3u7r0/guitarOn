@@ -1,7 +1,7 @@
 import { Box } from '@chakra-ui/react';
 import Cart from '../Cart/Cart.jsx';
 
-const ItemListContainer = (props) => {
+export const ItemListContainer = (props) => {
 
     if (true) {
 
@@ -21,4 +21,3 @@ const ItemListContainer = (props) => {
 }
 
 
-export default ItemListContainer;
