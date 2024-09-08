@@ -1,7 +1,10 @@
 import { NavBar } from "../components/NavBar/NavBar";
-import { Footer } from "../components/Footer/Footer";
 import { BrowserRouter } from "react-router-dom";
 import { RouterMain } from "../routes/RouterMain";
+/* import { Footer } from "../components/Footer/Footer"; */
+
+
+/* import ComponenteProto from "./componenteProto"; */
 
 export const LayoutMain = () => {
     return (
@@ -9,8 +12,8 @@ export const LayoutMain = () => {
             <BrowserRouter>
                 <NavBar />
                 <RouterMain />
+                {/* <Footer /> */}
             </BrowserRouter>
-            <Footer />
         </>
     )
-}
+};

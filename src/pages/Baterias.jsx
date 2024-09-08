@@ -1,5 +1,5 @@
 export const Baterias = () => {
   return (
-    <div>Baterias</div>
+    <h2>Baterias</h2>
   )
 }

@@ -1,4 +1,3 @@
-
 import imagen from "../../assets/images/logo.png";
 import {
   Box,
@@ -21,16 +20,13 @@ import { CartWidget } from '../../components/CartWidget/CartWidget';
 import { Link } from "react-router-dom";
 
 export function NavBar() {
-  const { colorMode, toggleColorMode } = useColorMode()
+  const { colorMode, toggleColorMode } = useColorMode();
 
   return (
     <>
       <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4} justifyContent={"space-between"} boxShadow={"0px -20px 40px"}>
         <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
-
           <Grid templateColumns={'auto auto'} gap={3} alignItems={'center'}>
-
-            {/* el incono tiene un backgraundColor provisorio, mas adelante crear un logo con una paleta de colores que concuerde con el efecto moon de la app */}
             <Img src={imagen} color={"white"} alt={"logo"} w={"200px"} h={"80%"} objectFit={'cover'}></Img>
             <CartWidget />
           </Grid >
@@ -80,9 +76,8 @@ export function NavBar() {
               </Button>
             </Stack>
           </Flex>
-
         </Flex >
       </Box >
     </>
   )
-}
+};
