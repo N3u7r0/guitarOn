@@ -11,16 +11,13 @@ import {
   Image,
   Text,
 } from "@chakra-ui/react";
+import imgDefault from "../../assets/images/imgDefault.jpg";
 
-import data from "../../data/products.json"
-import imgDefault from "../../assets/images/imgDefault.jpg"
-
-
-export const ItemListContainer = (  ) => {
+export const ItemListContainer = ({products} ) => {
   return (
     <>
       <Box display={"flex"} flexWrap={"wrap"} justifyContent={"center"}>
-        {data.map((product) => (
+        {products.map((product) => (
           <Card key={product.id} maxW="sm" margin={"0.5rem"} >
             <CardBody>
               <Image
