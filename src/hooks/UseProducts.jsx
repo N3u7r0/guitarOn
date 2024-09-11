@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { getAllProducts } from "../services/products.Services";
 
-export const UseProducts = () => {
+export const useProducts = () => {
   let [products, setProducts] = useState([]);
   let [loading, setLoading] = useState(true);
 

@@ -1,13 +1,12 @@
 import { useState, useEffect } from "react";
 import { getProductsByCategory } from "../services/products.Services";
-import { UseSelectorClass } from "./UseSelectorClass";
+import { useSelectorClass } from "./useSelectorClass"
 
-export const UseProductsByCategory = () => {
-  let { selectorClass } = UseSelectorClass();
+export const useProductsByCategory = () => {
   let [productsFillter, setProductsFillter] = useState([]);
   let [loading, setLoading] = useState(true);
-  console.log(selectorClass);
-  
+  let { selectorClass } = useSelectorClass();
+ 
   useEffect(() => {
     getProductsByCategory()
       .then((response) => {

@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-export const UseSelectorClass = () => {
-  let [selectorClass, setSelectorClass] = useState("x");
+export const useSelectorClass = () => {
+  let [selectorClass, setSelectorClass] = useState(" ");
   return { selectorClass, setSelectorClass };
 };
 

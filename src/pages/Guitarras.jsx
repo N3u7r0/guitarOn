@@ -1,15 +1,14 @@
 
 import { Flex, Spinner } from "@chakra-ui/react";
 import { ItemListContainer } from "../components";
-import { UseProductsByCategory } from "../hooks";
-import { UseSelectorClass } from "../hooks";
+import { useProductsByCategory, useSelectorClass } from "../hooks";
 
 export const Guitarras = () => {
-  let { setSelectorClass } = UseSelectorClass();
+  let { setSelectorClass } = useSelectorClass();
   setSelectorClass("Guitarra")
 /*   de aca tiene que salir la respuesta */
 
-  const { productsFillter, loading } = UseProductsByCategory();
+  const { productsFillter, loading } = useProductsByCategory();
   return loading ? (
     <Flex
       width={"100%"}

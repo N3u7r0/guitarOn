@@ -1,9 +1,9 @@
 import { Flex, Spinner } from "@chakra-ui/react";
 import { ItemListContainer } from "../components";
-import { UseProducts } from "../hooks";
+import { useProducts } from "../hooks";
 
 export const TodosLosProductos = () => {
-  const { products, loading } = UseProducts();
+  const { products, loading } = useProducts();
   return loading ? (
     <Flex
       width={"100%"}
