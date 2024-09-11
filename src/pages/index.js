@@ -5,3 +5,4 @@ export * from "./TodosLosProductos";
 export * from "./Guitarras";
 export * from "./Bajos";
 export * from "./Baterias";
+export * from "./Item";

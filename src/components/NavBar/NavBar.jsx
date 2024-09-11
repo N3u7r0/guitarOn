@@ -14,9 +14,9 @@ import {
   MenuGroup,
   MenuDivider,
   Img,
-} from '@chakra-ui/react';
-import { MoonIcon, SunIcon, ChevronDownIcon } from '@chakra-ui/icons';
-import { CartWidget } from '../../components/CartWidget/CartWidget';
+} from "@chakra-ui/react";
+import { MoonIcon, SunIcon, ChevronDownIcon } from "@chakra-ui/icons";
+import { CartWidget } from "../../components/CartWidget/CartWidget";
 import { Link } from "react-router-dom";
 
 export function NavBar() {
@@ -24,17 +24,31 @@ export function NavBar() {
 
   return (
     <>
-      <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4} justifyContent={"space-between"} boxShadow={"0px -20px 40px"}>
-        <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
-          <Grid templateColumns={'auto auto'} gap={3} alignItems={'center'}>
-            <Img src={imagen} color={"white"} alt={"logo"} w={"200px"} h={"80%"} objectFit={'cover'}></Img>
+      <Box
+        bg={useColorModeValue("gray.100", "gray.900")}
+        px={4}
+        justifyContent={"space-between"}
+        boxShadow={"0px -20px 40px"}
+      >
+        <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
+          <Grid templateColumns={"auto auto"} gap={3} alignItems={"center"}>
+            <Link to={"./"}>
+              <Img
+                src={imagen}
+                color={"white"}
+                alt={"logo"}
+                w={"200px"}
+                h={"80%"}
+                objectFit={"cover"}
+              ></Img>
+            </Link>
             <CartWidget />
-          </Grid >
+          </Grid>
 
-          <Menu >
-            <Flex  >
-              <Grid templateColumns={'repeat(3, 1fr)'}>
-                < MenuItem justifyContent={"center"} as={Button}>
+          <Menu>
+            <Flex>
+              <Grid templateColumns={"repeat(3, 1fr)"}>
+                <MenuItem justifyContent={"center"} as={Button}>
                   <Link to={"./"}> Home</Link>
                 </MenuItem>
                 <MenuItem justifyContent={"center"} as={Button}>
@@ -51,7 +65,9 @@ export function NavBar() {
                   </MenuButton>
                   <MenuList>
                     <MenuItem as={Button}>
-                    <Link to={"./todosLosProductos"}>Todos los productos</Link>
+                      <Link to={"./todosLosProductos"}>
+                        Todos los productos
+                      </Link>
                     </MenuItem>
                     <MenuDivider />
                     <MenuItem as={Button}>
@@ -69,15 +85,15 @@ export function NavBar() {
             </Flex>
           </Menu>
 
-          <Flex alignItems={'center'}>
-            <Stack direction={'row'} spacing={7}>
+          <Flex alignItems={"center"}>
+            <Stack direction={"row"} spacing={7}>
               <Button onClick={toggleColorMode}>
-                {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
+                {colorMode === "light" ? <MoonIcon /> : <SunIcon />}
               </Button>
             </Stack>
           </Flex>
-        </Flex >
-      </Box >
+        </Flex>
+      </Box>
     </>
-  )
-};
+  );
+}
