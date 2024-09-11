@@ -1,12 +1,36 @@
 
+import { useEffect } from "react";
 import { Flex, Spinner } from "@chakra-ui/react";
 import { ItemListContainer } from "../components";
 import { useProductsByCategory, useSelectorClass } from "../hooks";
 
 export const Guitarras = () => {
   let { setSelectorClass } = useSelectorClass();
-  setSelectorClass("Guitarra")
-/*   de aca tiene que salir la respuesta */
+
+
+
+
+
+
+
+ useEffect(() => {
+   setSelectorClass("Guitarra")
+  });//sin array vacio para que se renderice siempre que se monte el componente
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   const { productsFillter, loading } = useProductsByCategory();
   return loading ? (
