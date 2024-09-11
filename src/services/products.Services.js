@@ -10,5 +10,5 @@ export async function getProductsById() {
 }
 
 export async function getProductsByCategory() {
-  return await axios.get(data);
+  return await axios.get({data});
 }
