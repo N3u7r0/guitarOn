@@ -17,9 +17,9 @@ export const RouterMain = () => {
       <Route path="/ofertas" element={<Ofertas />} />
       <Route path="/nosotros" element={<Nosotros />} />
       <Route path="/todosLosProductos" element={<TodosLosProductos />} />
-      <Route path="/guitarras" element={<Guitarras />} />
-      <Route path="/bajos" element={<Bajos />} />
-      <Route path="/baterias" element={<Baterias />} />
+      <Route path="/category/guitarras" element={<Guitarras />} />
+      <Route path="/category/bajos" element={<Bajos />} />
+      <Route path="/category/baterias" element={<Baterias />} />
       <Route path="/item/:id" element={<Item />} />
     </Routes>
   );

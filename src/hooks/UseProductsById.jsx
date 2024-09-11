@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { getProductsById } from "../services/products.Services";
 
 export const UseProductsById = (id) => {
-  let [product, setProduct] = useState({});
+  let [product, setProduct] = useState([]);
   let [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -16,5 +16,6 @@ export const UseProductsById = (id) => {
       })
       .finally(() => setLoading(false));
   }, []);
+
   return { product, loading };
 };

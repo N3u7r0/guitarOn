@@ -1,6 +1,5 @@
-
 import { Flex, Spinner } from "@chakra-ui/react";
-import { ItemListContainer } from "../components/ItemListContainer/ItemListContainer"
+import { ItemListContainer } from "../components";
 import { UseProducts } from "../hooks";
 
 export const TodosLosProductos = () => {

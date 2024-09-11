@@ -71,13 +71,13 @@ export function NavBar() {
                     </MenuItem>
                     <MenuDivider />
                     <MenuItem as={Button}>
-                      <Link to={"./guitarras"}>Guitarras</Link>
+                      <Link to={"./category/guitarras"}>Guitarras</Link>
                     </MenuItem>
                     <MenuItem as={Button}>
-                      <Link to={"./bajos"}>Bajos</Link>
+                      <Link to={"./category/bajos"}>Bajos</Link>
                     </MenuItem>
                     <MenuItem as={Button}>
-                      <Link to={"./baterias"}>Baterias</Link>
+                      <Link to={"./category/baterias"}>Baterias</Link>
                     </MenuItem>
                   </MenuList>
                 </MenuGroup>

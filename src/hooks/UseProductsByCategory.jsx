@@ -1,15 +1,15 @@
 import { useState, useEffect } from "react";
-import { getAllProducts } from "../services/products.Services";
+import { getProductsByCategory } from "../services/products.Services";
 
-export const UseProducts = () => {
-  let [products, setProducts] = useState([]);
+export const UseProductsByCategory = () => {
+  let [productsFillter, setProductsFillter] = useState([]);
   let [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    getAllProducts()
+    getProductsByCategory()
       .then((response) => {
+        setProductsFillter(response.config.url);
         console.log(response.config.url);
-        setProducts(response.config.url);
       })
       .catch((err) => {
         console.error("error: " + err);
@@ -17,5 +17,5 @@ export const UseProducts = () => {
       .finally(() => setLoading(false));
   }, []);
 
-  return { products, loading };
+  return { productsFillter, loading };
 };
