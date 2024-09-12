@@ -1,7 +1,6 @@
 import { Flex, Spinner } from "@chakra-ui/react";
 import { ItemListContainer } from "../components";
 import { useProductsByCategory,  } from "../hooks";
-
 export const Baterias = () => {
   let { productsFillter, loading } = useProductsByCategory("Bateria");
 

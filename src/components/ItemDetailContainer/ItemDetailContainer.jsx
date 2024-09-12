@@ -17,19 +17,23 @@ export const ItemDetailContainer = ({ product }) => {
     <Flex justifyContent={"center"} alignContent={"center"}>
       
         <Card
-          key={product.io}
+          key={product.id}
           justifyContent={"center"}
-          w={"100vh"}
-          margin={"20vh"}
+          minW={"50vh"}
+          w={"120vh"}
+          margin={"30vh"}
           direction={{ base: "column", sm: "row" }}
           overflow="hidden"
           variant="outline"
+          boxShadow={"1px 3px 25px rgba(265, 0, 0, 0.15) "}
+          backgroundColor={"rgba(0, 0, 0, 0.05)"}
+          
         >
           <Image
             src={imgDefault}
             alt={product.marca + " " + product.modelo}
             objectFit="cover"
-            maxW={{ base: "100%", sm: "200px" }}
+            maxW={{ base: "100%", sm: "240px" }}
           />
 
           <Stack>
@@ -39,8 +43,8 @@ export const ItemDetailContainer = ({ product }) => {
             </CardBody>
 
             <CardFooter>
-              <Button variant="solid" colorScheme="blue">
-                Buy Latte
+              <Button variant="solid" color={"white"} backgroundColor={"rgba(165, 0, 0, 0.87)"} _hover={{ backgroundColor: "rgb(999, 1, 2)" } } >
+                Agregar al carrito
               </Button>
             </CardFooter>
           </Stack>

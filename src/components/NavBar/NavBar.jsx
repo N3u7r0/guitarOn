@@ -28,6 +28,10 @@ export function NavBar() {
         bg={useColorModeValue("gray.100", "gray.900")}
         px={4}
         justifyContent={"space-between"}
+        position={"fixed"}
+        top={"0"}
+        w={"100%"}
+        zIndex={"1"} //esto es para que la navBar siempre este arriba de todo
         boxShadow={"0px -20px 40px"}
       >
         <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
