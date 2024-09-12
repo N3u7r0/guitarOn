@@ -5,14 +5,12 @@ import { useSelectorClass } from "./useSelectorClass";
 export const useProductsByCategory = () => {
   let [productsFillter, setProductsFillter] = useState([]);
   let [loading, setLoading] = useState(true);
-  let { selectorClass, setSelectorClass } = useSelectorClass();
+  let { selectorClass } = useSelectorClass();
 
   useEffect(() => {
     getProductsByCategory()
       .then((response) => {
         let array = response.config.url.data;
-
-
 
 
         /* aca va la info de el filtro */
@@ -21,20 +19,16 @@ export const useProductsByCategory = () => {
         
 
 
-
-
-
-
-
-
         setProductsFillter(arrayFiltrado);
-        console.log("Array Filtrado:", arrayFiltrado);
+        console.log("ArrayFiltrado desde useProductsByCategory  :", arrayFiltrado);
+
+
       })
       .catch((err) => {
         console.error("error: " + err);
       })
       .finally(() => setLoading(false));
-  }, [setSelectorClass]);
+  }, [selectorClass]);
 
   return { productsFillter, loading };
 };
