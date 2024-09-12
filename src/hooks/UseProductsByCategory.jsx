@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { getProductsByCategory } from "../services/products.Services";
 import { useSelectorClass } from "./useSelectorClass";
 
-export const useProductsByCategory = () => {
+export const useProductsByCategory = (category) => {
   let [productsFillter, setProductsFillter] = useState([]);
   let [loading, setLoading] = useState(true);
   let { selectorClass } = useSelectorClass();
@@ -14,7 +14,7 @@ export const useProductsByCategory = () => {
 
 
         /* aca va la info de el filtro */
-        let arrayFiltrado = array.filter((dato) => dato.producto === selectorClass);
+        let arrayFiltrado = array.filter((dato) => dato.producto === category);
         console.log(selectorClass);
         
 
@@ -28,7 +28,7 @@ export const useProductsByCategory = () => {
         console.error("error: " + err);
       })
       .finally(() => setLoading(false));
-  }, [selectorClass]);
+  }, [category]);
 
   return { productsFillter, loading };
 };
