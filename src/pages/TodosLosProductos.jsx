@@ -1,20 +1,7 @@
-import { Flex, Spinner } from "@chakra-ui/react";
 import { ItemListContainer } from "../components";
 import { useProducts } from "../hooks";
 
 export const TodosLosProductos = () => {
-  const { products, loading } = useProducts();
-  return loading ? (
-    <Flex
-      width={"100%"}
-      height={"90vh"}
-      alignItems={"center"}
-      justifyContent={"center"}
-    >
-      <Spinner size="xl" />
-    </Flex>
-    ) : (
-      <ItemListContainer products={products} />
-    );
-
-}
+  const { products } = useProducts("");
+  return <ItemListContainer products={products} />;
+};

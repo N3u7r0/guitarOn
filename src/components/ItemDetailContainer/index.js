@@ -1,1 +1,1 @@
-export * from "./ItemDetailContainer";
+export * from "./ItemDetailContainer"

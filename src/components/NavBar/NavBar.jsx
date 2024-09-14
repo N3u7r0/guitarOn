@@ -1,5 +1,3 @@
-import { Link } from "react-router-dom";
-import { MoonIcon, SunIcon, ChevronDownIcon } from "@chakra-ui/icons";
 import {
   Box,
   Flex,
@@ -16,12 +14,17 @@ import {
   MenuDivider,
   Img,
 } from "@chakra-ui/react";
+import { MoonIcon, SunIcon, ChevronDownIcon } from "@chakra-ui/icons";
+import { Link } from "react-router-dom";
 import { CartWidget } from "../../components"
-import {useProductsByCategory} from "../../hooks";
+
+
+
 import imagen from "../../assets/images/logo.png";
 export function NavBar() {
   const { colorMode, toggleColorMode } = useColorMode();
-  const { clickGuitarras, clickBajos, clickBaterias } = useProductsByCategory();
+ 
+
 
   return (
     <>
@@ -70,23 +73,23 @@ export function NavBar() {
                   </MenuButton>
                   <MenuList>
                     <MenuItem as={Button}>
-                      <Link to={"./todosLosProductos"}>
+                      <Link to={"/category/todosLosProductos"}>
                         Todos los productos
                       </Link>
                     </MenuItem>
                     <MenuDivider />
                     <MenuItem as={Button}>
-                      <Link to={"./category/guitarra"} onClick={clickGuitarras}>
+                      <Link to={"./category/guitarra"} >
                         Guitarras
                       </Link>
                     </MenuItem>
                     <MenuItem as={Button}>
-                      <Link to={"./category/bajo"} onClick={clickBajos}>
+                      <Link to={"./category/bajo"}>
                         Bajos
                       </Link>
                     </MenuItem>
                     <MenuItem as={Button}>
-                      <Link to={"./category/bateria"} onClick={clickBaterias}>
+                      <Link to={"./category/bateria"} >
                         Baterias
                       </Link>
                     </MenuItem>

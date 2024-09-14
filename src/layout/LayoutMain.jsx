@@ -6,7 +6,7 @@ export const LayoutMain = () => {
   return (
     <>
       <BrowserRouter>
-        <NavBar />
+        <NavBar  />
         <RouterMain />
         <Footer />
       </BrowserRouter>
