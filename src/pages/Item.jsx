@@ -1,11 +1,11 @@
 import { Flex, Spinner } from "@chakra-ui/react";
 import { useParams } from "react-router-dom";
-import { UseProductsById } from "../hooks";
+import { useProducts } from "../hooks";
 import { ItemDetailContainer } from "../components";
 
 export const Item = () => {
   const { id } = useParams();
-  const { product, loading } = UseProductsById(id);
+  const { product, loading } = useProducts(id);
 
   return loading ? (
     <Flex

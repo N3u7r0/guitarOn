@@ -1,34 +1,53 @@
 import { useState, useEffect } from "react";
-import { getProductsByCategory } from "../services/products.Services";
-import { useSelectorClass } from "./useSelectorClass";
-
-export const useProductsByCategory = (category) => {
+import { getAllProducts } from "../services";
+export const useProductsByCategory = () => {
   let [productsFillter, setProductsFillter] = useState([]);
   let [loading, setLoading] = useState(true);
-  let { selectorClass } = useSelectorClass();
+  let [valorFiltro, setValorFiltro] = useState("nada");
+
+
+  const clickGuitarras = () => {
+    setValorFiltro("guitarra");
+    console.log(valorFiltro);
+  };
+  const clickBajos = () => {
+    setValorFiltro("bajo");
+    console.log(valorFiltro);
+  };
+  const clickBaterias = () => {
+    setValorFiltro("bateria");
+    console.log(valorFiltro);
+  };
 
   useEffect(() => {
-    getProductsByCategory()
+    getAllProducts()
       .then((response) => {
-        let array = response.config.url.data;
-
-
-        /* aca va la info de el filtro */
-        let arrayFiltrado = array.filter((dato) => dato.producto === category);
-        console.log(selectorClass);
+        let arrayProductos = response.config.url.data;
+        console.log( arrayProductos);
+        
+        let arrayProductosFiltrados = arrayProductos.filter(
+          (dato) => dato.tipo === valorFiltro
+        );
+        console.log( arrayProductosFiltrados);
         
 
 
-        setProductsFillter(arrayFiltrado);
-        console.log("ArrayFiltrado desde useProductsByCategory  :", arrayFiltrado);
-
-
+        setProductsFillter(arrayProductosFiltrados);
       })
       .catch((err) => {
         console.error("error: " + err);
       })
       .finally(() => setLoading(false));
-  }, [category]);
+  }, [valorFiltro]);
 
-  return { productsFillter, loading };
+  console.log(valorFiltro);
+  
+
+  return {
+    productsFillter,
+    loading,
+    clickGuitarras,
+    clickBajos,
+    clickBaterias,
+  };
 };

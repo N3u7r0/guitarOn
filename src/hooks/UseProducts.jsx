@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { getAllProducts } from "../services/products.Services";
-
 export const useProducts = () => {
   let [products, setProducts] = useState([]);
   let [loading, setLoading] = useState(true);
@@ -8,8 +7,8 @@ export const useProducts = () => {
   useEffect(() => {
     getAllProducts()
       .then((response) => {
-        console.log(response.config.url);
-        setProducts(response.config.url);
+        setProducts(response.config.url.data);
+        console.log(response.config.url.data);
       })
       .catch((err) => {
         console.error("error: " + err);

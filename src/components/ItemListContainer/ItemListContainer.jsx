@@ -9,11 +9,10 @@ import {
   ButtonGroup,
   Button,
   Image,
-  Text,
+  Text
 } from "@chakra-ui/react";
 import imgDefault from "../../assets/images/imgDefault.jpg";
 import { Link } from "react-router-dom";
-
 export const ItemListContainer = ({ products }) => {
   return (
     <>
@@ -23,26 +22,29 @@ export const ItemListContainer = ({ products }) => {
             key={product.id}
             maxW="sm"
             margin={"2rem 1rem 0rem 1rem"}
-            
-            
             boxShadow={"1px 3px 5px rgba(0, 0, 0, 0.15) "}
             backgroundColor={"rgba(0, 0, 0, 0.05)"}
           >
             <CardBody>
+              <Box marginBottom={"5px"} textAlign={"center"}><h6>{product.tipo}</h6></Box>
               <Image
                 src={imgDefault}
                 alt={product.marca + " " + product.modelo}
                 borderRadius="lg"
               />
               <Stack mt="6" spacing="3">
-                <Heading size="md">{product.modelo}</Heading>
-                <Text>{product.descripcion}</Text>
-                <Text color="blue.600" fontSize="2xl">
+                <Heading itemType="h5" size="md">{product.marca}</Heading>
+                <Heading itemType="h6" size="m">{product.modelo}</Heading>
+                <Text>{product.descripcion_card}</Text>
+                <Text color="red.400" fontSize="2xl">
                   ${product.precio}
                 </Text>
               </Stack>
+
             </CardBody>
+
             <Divider />
+
             <CardFooter>
               <ButtonGroup spacing="1">
                 <Button variant="solid" color="white" backgroundColor={"rgba(15, 15, 15, 0.87)"} _hover={{ backgroundColor: "rgba(165, 0, 0, 0.87)" }}>
@@ -52,6 +54,7 @@ export const ItemListContainer = ({ products }) => {
                 </Button>
               </ButtonGroup>
             </CardFooter>
+            
           </Card>
         ))}
       </Box>

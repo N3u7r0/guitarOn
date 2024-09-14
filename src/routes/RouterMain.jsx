@@ -4,9 +4,7 @@ import {
   Ofertas,
   Nosotros,
   TodosLosProductos,
-  Guitarras,
-  Bajos,
-  Baterias,
+  CategoryFillter,
   Item,
 } from "../pages";
 
@@ -17,9 +15,7 @@ export const RouterMain = () => {
       <Route path="/ofertas" element={<Ofertas />} />
       <Route path="/nosotros" element={<Nosotros />} />
       <Route path="/todosLosProductos" element={<TodosLosProductos />} />
-      <Route path="/category/:categoryId" element={<Guitarras />} />
-      <Route path="/category/:categoryId" element={<Bajos />} />
-      <Route path="/category/:categoryId" element={<Baterias />} />
+      <Route path="/category/:category" element={<CategoryFillter />} />
       <Route path="/item/:id" element={<Item />} />
     </Routes>
   );
