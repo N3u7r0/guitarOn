@@ -17,15 +17,11 @@ import {
 import { MoonIcon, SunIcon, ChevronDownIcon } from "@chakra-ui/icons";
 import { Link } from "react-router-dom";
 import { CartWidget } from "../../components"
-
-
-
 import imagen from "../../assets/images/logo.png";
+
 export function NavBar() {
   const { colorMode, toggleColorMode } = useColorMode();
  
-
-
   return (
     <>
       <Box

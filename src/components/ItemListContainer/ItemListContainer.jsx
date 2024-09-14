@@ -13,9 +13,12 @@ import {
 } from "@chakra-ui/react";
 import imgDefault from "../../assets/images/imgDefault.jpg";
 import { Link } from "react-router-dom";
+import {Spin} from "../Spin";
 
-export const ItemListContainer = ({ products }) => {
-  return (
+export const ItemListContainer = ({ products, loading }) => {
+  return loading ? (
+    <Spin />
+  ) : (
     <>
       <Box
         display={"flex"}
@@ -33,7 +36,7 @@ export const ItemListContainer = ({ products }) => {
           >
             <CardBody>
               <Box marginBottom={"5px"} textAlign={"center"}>
-                <h6>{product.tipo}</h6>
+                <Text color="red.500" h="6">{product.tipo}</Text>
               </Box>
               <Image
                 src={imgDefault}
