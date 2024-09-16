@@ -13,9 +13,8 @@ import {
 } from "@chakra-ui/react";
 import imgDefault from "../../assets/images/imgDefault.jpg";
 import { Link } from "react-router-dom";
-import {Spin} from "../Spin";
-
-export const ItemListContainer = ({ products, loading }) => {
+import { Spin } from "../Spin";
+export const ItemListContainer = ({ products,  loading  }) => {
   return loading ? (
     <Spin />
   ) : (

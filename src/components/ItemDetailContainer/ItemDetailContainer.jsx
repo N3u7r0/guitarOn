@@ -13,7 +13,7 @@ import imgDefault from "../../assets/images/imgDefault.jpg";
 import { Spin } from "../Spin";
 
 
-export const ItemDetailContainer = ({ product}) => {
+export const ItemDetailContainer = ({ product, loading}) => {
  
  
   console.log(product);

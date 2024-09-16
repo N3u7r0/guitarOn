@@ -2,10 +2,12 @@ import { useState, useEffect } from "react";
 import { getAllProducts } from "../services/products.Services";
 import { useParams } from "react-router-dom";
 
+
 export const useProductsById = () => {
   const { id } = useParams();
 
-  let [product, setProduct] = useState();
+
+  let [product, setProduct] = useState([]);
   let [loading, setLoading] = useState(true);
   useEffect(() => {
     getAllProducts(id)
@@ -17,11 +19,8 @@ export const useProductsById = () => {
         let filtroID = data.filter((product) => product.id == parseInt(id));         // ojo!, el product.id no retorna un numero porque es un string
         
         
-        console.log(filtroID);
+       
         setProduct(filtroID);
-        
-
-        console.log(data);
       })
       .catch((err) => {
         console.error("error! " + err);
@@ -31,3 +30,4 @@ export const useProductsById = () => {
 
   return { product, loading };
 };
+
