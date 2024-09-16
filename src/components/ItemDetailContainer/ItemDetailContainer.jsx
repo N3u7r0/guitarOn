@@ -12,18 +12,13 @@ import {
 import imgDefault from "../../assets/images/imgDefault.jpg";
 import { Spin } from "../Spin";
 
-
-export const ItemDetailContainer = ({ product, loading}) => {
- 
- 
-  console.log(product);
-// laprop llega vacia, recive el valor dsepues. falta solucionar eso
+export const ItemDetailContainer = ({ product, loading }) => {
 
 
 
 
 
-
+  // laprop llega vacia, recive el valor dsepues. falta solucionar eso
 
   return loading ? (
     <Spin />
@@ -48,7 +43,7 @@ export const ItemDetailContainer = ({ product, loading}) => {
         <Stack>
           <CardBody>
             <Heading size="md">{product.modelo}</Heading>
-            <Text py="2">{product.descripcion}</Text>
+            <Text py="2">{product.descripcion_completa}</Text>
           </CardBody>
 
           <CardFooter>

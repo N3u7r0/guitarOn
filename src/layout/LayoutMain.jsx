@@ -8,8 +8,8 @@ export const LayoutMain = () => {
       <BrowserRouter>
         <NavBar  />
         <RouterMain />
-        <Footer />
       </BrowserRouter>
+        <Footer />
     </>
   );
 };
