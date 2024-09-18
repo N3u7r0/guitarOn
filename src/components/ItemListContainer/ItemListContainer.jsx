@@ -15,7 +15,7 @@ import imgDefault from "../../assets/images/imgDefault.jpg";
 import { Link } from "react-router-dom";
 import { Spin } from "../Spin";
 
-export const ItemListContainer = ({ products,  loading  }) => {
+export const ItemListContainer = ({ products, loading }) => {
   return loading ? (
     <Spin />
   ) : (
@@ -31,12 +31,15 @@ export const ItemListContainer = ({ products,  loading  }) => {
             key={product.id}
             maxW="sm"
             margin={"2rem 1rem 0rem 1rem"}
-            boxShadow={"1px 3px 5px rgba(0, 0, 0, 0.15) "}
             backgroundColor={"rgba(0, 0, 0, 0.05)"}
+            _hover={{ backgroundColor: "rgba(80, 000, 000, 0.10)" }}
+            boxShadow={"1px 3px 5px rgba(0, 0, 0, 0.15) "}
           >
             <CardBody>
-              <Box marginBottom={"5px"} textAlign={"center"}>
-                <Text color="red.500" h="6">{product.tipo}</Text>
+              <Box marginBottom={"1px"} textAlign={"center"}>
+                <Text color="red.500" h="6">
+                  {product.tipo}
+                </Text>
               </Box>
               <Image
                 src={imgDefault}
@@ -51,7 +54,7 @@ export const ItemListContainer = ({ products,  loading  }) => {
                   {product.modelo}
                 </Heading>
                 <Text>{product.descripcion_card}</Text>
-                <Text color="red.400" fontSize="2xl">
+                <Text color="red.500" fontSize="2xl">
                   ${product.precio}
                 </Text>
               </Stack>

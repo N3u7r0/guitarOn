@@ -8,8 +8,7 @@
     "color": "Blanco",
     "descripcion_card": "Fender American Professional II Stratocaster blanca, ideal para cualquier estilo.",
     "descripcion_completa": "La Fender American Professional II Stratocaster es una guitarra eléctrica con cuerpo de aliso y mástil de arce. Ofrece un sonido claro y brillante, perfecto para rock, blues y otros géneros.",
-    "precio": 1500,
-    "cantidad": 6
+    "precio": 1500
   },
   {
     "id": 2,
@@ -20,8 +19,7 @@
     "color": "Tobacco Burst",
     "descripcion_card": "Gibson Les Paul Standard '50s en Tobacco Burst, con un sonido cálido y robusto.",
     "descripcion_completa": "La Gibson Les Paul Standard '50s cuenta con un cuerpo de caoba y tapa de arce. Es conocida por su tono cálido, sustain prolongado y es ideal para rock, metal y blues.",
-    "precio": 2500,
-    "cantidad": 3
+    "precio": 2500
   },
   {
     "id": 3,
@@ -32,8 +30,7 @@
     "color": "Negro",
     "descripcion_card": "Ibanez RG550 negra, ágil y con gran capacidad de respuesta.",
     "descripcion_completa": "La Ibanez RG550 es una guitarra eléctrica con un cuerpo de aliso y mástil rápido, ideal para técnicas avanzadas y géneros como metal y shred. Equipado con pastillas de alta salida y un trémolo flotante.",
-    "precio": 1400,
-    "cantidad": 4
+    "precio": 1400
   },
   {
     "id": 4,
@@ -44,8 +41,7 @@
     "color": "Azul",
     "descripcion_card": "PRS SE Custom 24 azul, elegante y versátil.",
     "descripcion_completa": "La PRS SE Custom 24 combina un cuerpo de caoba y una tapa de arce con pastillas de alto rendimiento. Ofrece un sonido equilibrado y es adecuada para una amplia gama de estilos musicales.",
-    "precio": 1000,
-    "cantidad": 5
+    "precio": 1000
   },
   {
     "id": 5,
@@ -56,8 +52,7 @@
     "color": "Amarillo",
     "descripcion_card": "Charvel Pro-Mod San Dimas amarilla, diseñada para solos rápidos y riffs pesados.",
     "descripcion_completa": "La Charvel Pro-Mod San Dimas ofrece un diseño de cuerpo sólido y mástil rápido, junto con pastillas de alta salida. Ideal para solos rápidos y riffs pesados.",
-    "precio": 1300,
-    "cantidad": 3
+    "precio": 1300
   },
   {
     "id": 6,
@@ -68,8 +63,7 @@
     "color": "Rojo",
     "descripcion_card": "Fender American Professional II Jazz Bass rojo, para un sonido profundo y definido.",
     "descripcion_completa": "El Fender American Professional II Jazz Bass presenta un cuerpo de aliso y pastillas V-Mod, ofreciendo un sonido profundo y articulado, ideal para jazz, rock y otros géneros.",
-    "precio": 1600,
-    "cantidad": 4
+    "precio": 1600
   },
   {
     "id": 7,
@@ -80,8 +74,7 @@
     "color": "Blanco",
     "descripcion_card": "Music Man StingRay Special blanco, con un tono fuerte y claro.",
     "descripcion_completa": "El Music Man StingRay Special cuenta con un cuerpo de aliso y pastilla humbucker, proporcionando un sonido potente y definido. Ideal para funk, rock y pop.",
-    "precio": 1800,
-    "cantidad": 2
+    "precio": 1800
   },
   {
     "id": 8,
@@ -92,8 +85,7 @@
     "color": "Negro",
     "descripcion_card": "Ibanez SR500E negro, elegante y con gran versatilidad tonal.",
     "descripcion_completa": "El Ibanez SR500E es un bajo de 4 cuerdas con cuerpo de caoba y pastillas Bartolini. Ofrece un sonido cálido y una excelente ergonomía, adecuado para una variedad de estilos musicales.",
-    "precio": 850,
-    "cantidad": 5
+    "precio": 850
   },
   {
     "id": 9,
@@ -104,8 +96,7 @@
     "color": "Sunburst",
     "descripcion_card": "Squier Classic Vibe '60s Precision Bass Sunburst, con un diseño vintage y un sonido robusto.",
     "descripcion_completa": "El Squier Classic Vibe '60s Precision Bass ofrece un tono robusto con su cuerpo de aliso y pastilla split-coil. Ideal para rock, punk y blues.",
-    "precio": 450,
-    "cantidad": 6
+    "precio": 450
   },
   {
     "id": 10,
@@ -116,8 +107,7 @@
     "color": "Cherry",
     "descripcion_card": "Epiphone EB-3 cherry, con un sonido grave y potente.",
     "descripcion_completa": "El Epiphone EB-3 tiene un cuerpo de caoba y una pastilla humbucker para un sonido profundo y resonante. Perfecto para rock y metal.",
-    "precio": 600,
-    "cantidad": 3
+    "precio": 600
   },
   {
     "id": 11,
@@ -128,8 +118,7 @@
     "color": "Negro",
     "descripcion_card": "Yamaha Stage Custom Birch negra, con un sonido claro y resonante.",
     "descripcion_completa": "La Yamaha Stage Custom Birch es una batería de 5 piezas con tambores de abeto. Ofrece un sonido claro y resonante, ideal para una variedad de estilos musicales.",
-    "precio": 800,
-    "cantidad": 4
+    "precio": 800
   },
   {
     "id": 12,
@@ -140,8 +129,7 @@
     "color": "Rojo",
     "descripcion_card": "Pearl Export EX roja, conocida por su durabilidad y buen sonido.",
     "descripcion_completa": "La Pearl Export EX es una batería de 5 piezas con tambores de álamo. Ofrece una excelente durabilidad y un sonido equilibrado, adecuado para cualquier estilo.",
-    "precio": 1000,
-    "cantidad": 3
+    "precio": 1000
   },
   {
     "id": 13,
@@ -152,7 +140,6 @@
     "color": "Azul",
     "descripcion_card": "Mapex Mars Series azul, con un sonido potente y una gran respuesta.",
     "descripcion_completa": "La Mapex Mars Series es una batería de 5 piezas con tambores de álamo. Proporciona un sonido potente y una gran respuesta, ideal para bateristas de todos los niveles.",
-    "precio": 950,
-    "cantidad": 3
+    "precio": 950
   }
 ]
