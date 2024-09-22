@@ -16,19 +16,19 @@ import {
 } from "@chakra-ui/react";
 import { MoonIcon, SunIcon, ChevronDownIcon } from "@chakra-ui/icons";
 import { Link } from "react-router-dom";
-import { CartWidget } from "../../components"
+import { CartWidget } from "../../components";
 import imagen from "../../assets/images/logo.png";
 
 export function NavBar() {
   const { colorMode, toggleColorMode } = useColorMode();
- 
+
   return (
     <>
       <Box
         bg={useColorModeValue("gray.100", "gray.900")}
         px={4}
         justifyContent={"space-between"}
-        position={"fixed"}
+        position={"sticky"}
         top={"0"}
         w={"100%"}
         zIndex={"1"} //esto es para que la navBar siempre este arriba de todo
@@ -52,7 +52,7 @@ export function NavBar() {
           <Menu>
             <Flex>
               <Grid templateColumns={"repeat(3, 1fr)"}>
-                <MenuItem justifyContent={"center"} as={Button}>
+                <MenuItem justifyContent={"center"} as={Button} >
                   <Link to={"./"}> Home</Link>
                 </MenuItem>
                 <MenuItem justifyContent={"center"} as={Button}>
@@ -75,19 +75,13 @@ export function NavBar() {
                     </MenuItem>
                     <MenuDivider />
                     <MenuItem as={Button}>
-                      <Link to={"./category/guitarra"} >
-                        Guitarras
-                      </Link>
+                      <Link to={"./category/guitarra"}>Guitarras</Link>
                     </MenuItem>
                     <MenuItem as={Button}>
-                      <Link to={"./category/bajo"}>
-                        Bajos
-                      </Link>
+                      <Link to={"./category/bajo"}>Bajos</Link>
                     </MenuItem>
                     <MenuItem as={Button}>
-                      <Link to={"./category/bateria"} >
-                        Baterias
-                      </Link>
+                      <Link to={"./category/bateria"}>Baterias</Link>
                     </MenuItem>
                   </MenuList>
                 </MenuGroup>

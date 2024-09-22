@@ -3,5 +3,10 @@ import { useProducts } from "../hooks";
 
 export const TodosLosProductos = () => {
   const { products } = useProducts("");
-  return <ItemListContainer products={products} />;
+
+  return (
+    <>
+      <ItemListContainer products={products} />;
+    </>
+  );
 };

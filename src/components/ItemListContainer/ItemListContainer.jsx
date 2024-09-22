@@ -32,7 +32,7 @@ export const ItemListContainer = ({ products, loading }) => {
             maxW="sm"
             margin={"2rem 1rem 0rem 1rem"}
             backgroundColor={"rgba(0, 0, 0, 0.05)"}
-            _hover={{ backgroundColor: "rgba(80, 000, 000, 0.10)" }}
+            _hover={{ backgroundColor: "rgba(80, 000, 000, 0.12)" }}
             boxShadow={"1px 3px 5px rgba(0, 0, 0, 0.15) "}
           >
             <CardBody>

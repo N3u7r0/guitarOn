@@ -18,19 +18,16 @@ export const useProducts = () => {
             productosFiltrados = data.filter(
               (product) => product.categoria === "guitarra"
             );
-            console.log("guitarraaaa");
             break;
           case "bajo":
             productosFiltrados = data.filter(
               (product) => product.categoria === "bajo"
             );
-            console.log("bajooooo");
             break;
           case "bateria":
             productosFiltrados = data.filter(
               (product) => product.categoria === "bateria"
             );
-            console.log("bateriaaaaaaa");
             break;
           default:
             productosFiltrados = data;

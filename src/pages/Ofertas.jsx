@@ -1,5 +1,9 @@
+import { Heading } from "@chakra-ui/react";
+
 export const Ofertas = () => {
   return (
-    <h2>Ofertas</h2>
-  )
-}
+    <Heading itemType={"h2"} size={"xl"} _hover={{ color: "red.500" }}>
+      Ofertas
+    </Heading>
+  );
+};
