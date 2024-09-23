@@ -11,11 +11,14 @@ import {
 } from "@chakra-ui/react";
 import imgDefault from "../../assets/images/imgDefault.jpg";
 import { Spin } from "../Spin";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { CartContext } from "../../context";
 
 export const ItemDetailContainer = ({ product, loading }) => {
   const [count, setCount] = useState(0);
   const [showButton, setShowButton] = useState(false);
+
+  const { addItem } = useContext(CartContext);
 
   useEffect(() => {
     setShowButton(count > 0);
@@ -92,16 +95,35 @@ export const ItemDetailContainer = ({ product, loading }) => {
             <Text textAlign={"center"}>cantidad : {count}</Text>
           </CardBody>
 
-          <CardFooter display={"flex"} flexDirection={"column"}>
+          <CardFooter
+            display={"flex"}
+            flexDirection={"row"}
+            justifyContent={"center"}
+            gap={"1vh"}
+          >
             {showButton && (
-              <Button
-                variant="solid"
-                color="white"
-                backgroundColor={"rgba(165, 15, 15, 0.87)"}
-                _hover={{ backgroundColor: "rgba(255, 15, 15, 0.87)" }}
-              >
-                Agregar al carrito
-              </Button>
+              <>
+                <Button
+                  variant="solid"
+                  color="white"
+                  backgroundColor={"rgba(165, 15, 15, 0.87)"}
+                  _hover={{ backgroundColor: "rgba(255, 15, 15, 0.87)" }}
+                  onClick={() => {
+                    addItem(), setCount(0);
+                  }}
+                >
+                  Agregar al carrito
+                </Button>
+                <Button
+                  variant="solid"
+                  color="white"
+                  backgroundColor={"rgba(65, 15, 15, 0.87)"}
+                  _hover={{ backgroundColor: "rgba(255, 115, 15, 0.87)" }}
+                  onClick={(count) => setCount(0)}
+                >
+                  Cancelar
+                </Button>
+              </>
             )}
           </CardFooter>
         </Stack>
