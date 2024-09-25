@@ -42,7 +42,7 @@ export const ItemListContainer = ({ products, loading }) => {
                 </Text>
               </Box>
               <Image
-                src={imgDefault}
+                src={product.image || imgDefault}
                 alt={product.marca + " " + product.modelo}
                 borderRadius="lg"
               />

@@ -13,7 +13,6 @@ import imgDefault from "../../assets/images/imgDefault.jpg";
 import { Spin } from "../Spin";
 import { useState, useEffect, useContext } from "react";
 import { CartContext } from "../../context";
-import backgroundGuitar from "../../assets/images/backgroundGuitar.jpg";
 
 export const ItemDetailContainer = ({ product, loading }) => {
   //logica de los botones que conec tan con el carrito.
@@ -49,7 +48,6 @@ export const ItemDetailContainer = ({ product, loading }) => {
         overflow="hidden"
         variant="outline"
         boxShadow={"0px 2px 10px rgba(255, 15, 15, 0.25)"}
-        backgroundImage={backgroundGuitar}
       >
         <Flex
           backgroundColor={"rgba(0, 0, 0, 0.85)"}
