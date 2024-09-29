@@ -1,11 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import {
-  Home,
-  Ofertas,
-  Nosotros,
-  TodosLosProductos,
-  Item,
-} from "../pages";
+import { Home, Ofertas, Nosotros, TodosLosProductos, Item, CheckOut } from "../pages";
 
 export const RouterMain = () => {
   return (
@@ -15,6 +9,7 @@ export const RouterMain = () => {
       <Route path="/nosotros" element={<Nosotros />} />
       <Route path="/category/:categoria" element={<TodosLosProductos />} />
       <Route path="/item/:id" element={<Item />} />
+      <Route path="/checkout" element={<CheckOut />} />
     </Routes>
   );
 };

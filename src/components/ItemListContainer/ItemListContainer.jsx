@@ -37,8 +37,8 @@ export const ItemListContainer = ({ products, loading }) => {
           >
             <CardBody>
               <Box marginBottom={"1px"} textAlign={"center"}>
-                <Text color="red.500" h="6">
-                  {product.tipo}
+                <Text color="red.500" h="6" marginBottom={"0.2rem"}>
+                  <b>{product.categoria}</b>
                 </Text>
               </Box>
               <Image

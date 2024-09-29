@@ -112,7 +112,8 @@ export const ItemDetailContainer = ({ product, loading }) => {
                     backgroundColor={"rgba(165, 15, 15, 0.87)"}
                     _hover={{ backgroundColor: "rgba(255, 15, 15, 0.87)" }}
                     onClick={() => {
-                      addItem(count);
+                      addItem(product,count);
+
                       setCount(0);
                     }}
                   >
