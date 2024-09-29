@@ -51,38 +51,104 @@ export function NavBar() {
 
           <Menu>
             <Flex>
-              <Grid templateColumns={"repeat(3, 1fr)"}>
-                <MenuItem justifyContent={"center"} as={Button} >
-                  <Link to={"./"}> Home</Link>
-                </MenuItem>
-                <MenuItem justifyContent={"center"} as={Button}>
-                  <Link to={"./ofertas"}>Ofertas</Link>
-                </MenuItem>
-                <MenuItem justifyContent={"center"} as={Button}>
-                  <Link to={"./nosotros"}>Nosotros</Link>
-                </MenuItem>
+              <Grid templateColumns={"repeat(3, 1fr)"} margin={"0 1rem"}>
+                <Link to={"./"}>
+                  <MenuItem
+                    justifyContent={"center"}
+                    as={Button}
+                    _hover={{
+                      backgroundColor: "rgba(200, 000, 000, 0.85)",
+                      color: "white",
+                    }}
+                  >
+                    Home
+                  </MenuItem>
+                </Link>
+
+                <Link to={"./ofertas"}>
+                  <MenuItem
+                    justifyContent={"center"}
+                    as={Button}
+                    _hover={{
+                      backgroundColor: "rgba(200, 000, 000, 0.85)",
+                      color: "white",
+                    }}
+                  >
+                    Ofertas
+                  </MenuItem>
+                </Link>
+
+                <Link to={"./nosotros"}>
+                  <MenuItem
+                    justifyContent={"center"}
+                    as={Button}
+                    _hover={{
+                      backgroundColor: "rgba(200, 000, 000, 0.85)",
+                      color: "white",
+                    }}
+                  >
+                    Nosotros
+                  </MenuItem>
+                </Link>
               </Grid>
               <Flex>
                 <MenuGroup>
-                  <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
+                  <MenuButton
+                    as={Button}
+                    _hover={{
+                      backgroundColor: "rgba(200, 000, 000, 0.85)",
+                      color: "white",
+                    }}
+                    rightIcon={<ChevronDownIcon />}
+                  >
                     Productos
                   </MenuButton>
                   <MenuList>
-                    <MenuItem as={Button}>
-                      <Link to={"/category/todosLosProductos"}>
+                    <Link to={"/category/todosLosProductos"}>
+                      <MenuItem
+                        as={Button}
+                        _hover={{
+                          backgroundColor: "rgba(200, 000, 000, 0.85)",
+                          color: "white",
+                        }}
+                      >
                         Todos los productos
-                      </Link>
-                    </MenuItem>
+                      </MenuItem>
+                    </Link>
                     <MenuDivider />
-                    <MenuItem as={Button}>
-                      <Link to={"./category/guitarra"}>Guitarras</Link>
-                    </MenuItem>
-                    <MenuItem as={Button}>
-                      <Link to={"./category/bajo"}>Bajos</Link>
-                    </MenuItem>
-                    <MenuItem as={Button}>
-                      <Link to={"./category/bateria"}>Baterias</Link>
-                    </MenuItem>
+                    <Link to={"./category/guitarra"}>
+                      <MenuItem
+                        as={Button}
+                        _hover={{
+                          backgroundColor: "rgba(200, 000, 000, 0.85)",
+                          color: "white",
+                        }}
+                      >
+                        Guitarras
+                      </MenuItem>
+                    </Link>
+                    <Link to={"./category/bajo"}>
+                      <MenuItem
+                        as={Button}
+                        _hover={{
+                          backgroundColor: "rgba(200, 000, 000, 0.85)",
+                          color: "white",
+                        }}
+                      >
+                        Bajos
+                      </MenuItem>
+                    </Link>
+                    <Link to={"./category/bateria"}>
+                      <MenuItem
+                        as={Button}
+                        _hover={{
+                          backgroundColor: "rgba(200, 000, 000, 0.85)",
+                          color: "white",
+                        }}
+                      >
+                        Baterias
+                      </MenuItem>
+                    </Link>
                   </MenuList>
                 </MenuGroup>
               </Flex>

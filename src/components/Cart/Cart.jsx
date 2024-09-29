@@ -13,6 +13,7 @@ import {
   Alert,
   AlertIcon,
   IconButton,
+  Button,
 } from "@chakra-ui/react";
 import { DeleteIcon, AddIcon, MinusIcon } from "@chakra-ui/icons";
 import { Link } from "react-router-dom";
@@ -21,7 +22,7 @@ export const Cart = () => {
   const { stateCartWidget, addItem, removeItem, deleteItem } =
     useContext(CartContext);
   const total = stateCartWidget.reduce(
-    (acc, item) => acc + item.price * item.count,
+    (acc, item) => acc + item.precio * item.count,
     0
   );
 
@@ -36,7 +37,13 @@ export const Cart = () => {
       </Heading>
 
       {stateCartWidget.length === 0 ? (
-        <Alert status="info" borderRadius="md">
+        <Alert
+          status="info"
+          borderRadius="md"
+          backgroundColor={"rgba(0, 0, 0, 0.05)"}
+          _hover={{ backgroundColor: "rgba(80, 000, 000, 0.12)" }}
+          boxShadow={"1px 3px 5px rgba(0, 0, 0, 0.15) "}
+        >
           <AlertIcon />
           Tu carrito está vacío.
         </Alert>
@@ -50,6 +57,8 @@ export const Cart = () => {
               borderRadius="md"
               alignItems="center"
               boxShadow="sm"
+              backgroundColor={"rgba(0, 0, 0, 0.05)"}
+              _hover={{ backgroundColor: "rgba(80, 000, 000, 0.12)" }}
             >
               <Image
                 src={item.image}
@@ -104,11 +113,20 @@ export const Cart = () => {
           ))}
           <Divider />
           <Flex alignItems="center">
-            <Text fontSize="2xl" fontWeight="bold">
-              Total: ${total.toFixed(2)}
+            <Text fontSize="2xl" fontWeight="bold" display={"flex"}>
+              Total: $ <Text color={"red.500"}>{total.toFixed(2)}</Text>
             </Text>
             <Spacer />
-            <Link to="/pagar">Continuar al pago</Link>
+            <Link to="/pagar">
+              <Button
+                _hover={{
+                  backgroundColor: "rgba(200, 000, 000, 0.85)",
+                  color: "white",
+                }}
+              >
+                Continuar al pago
+              </Button>
+            </Link>
           </Flex>
         </VStack>
       )}

@@ -13,6 +13,7 @@ import imgDefault from "../../assets/images/imgDefault.jpg";
 import { Spin } from "../Spin";
 import { useState, useEffect, useContext } from "react";
 import { CartContext } from "../../context";
+import "./style.css";
 
 export const ItemDetailContainer = ({ product, loading }) => {
   //logica de los botones que conec tan con el carrito.
@@ -62,7 +63,11 @@ export const ItemDetailContainer = ({ product, loading }) => {
           />
 
           <Stack>
-            <CardBody margin={"0.5rem"} padding={"0px"}>
+            <CardBody
+              margin={"0.5rem"}
+              padding={"0px"}
+              className="cartDetailContainer"
+            >
               <Heading size="lg">{product.marca}</Heading>
               <Heading size="xl">{product.modelo}</Heading>
               <Heading size="m">Color: {product.color}</Heading>
@@ -112,7 +117,7 @@ export const ItemDetailContainer = ({ product, loading }) => {
                     backgroundColor={"rgba(165, 15, 15, 0.87)"}
                     _hover={{ backgroundColor: "rgba(255, 15, 15, 0.87)" }}
                     onClick={() => {
-                      addItem(product,count);
+                      addItem(product, count);
 
                       setCount(0);
                     }}
