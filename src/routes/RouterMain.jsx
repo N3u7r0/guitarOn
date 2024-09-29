@@ -1,5 +1,13 @@
 import { Routes, Route } from "react-router-dom";
-import { Home, Ofertas, Nosotros, TodosLosProductos, Item, CheckOut } from "../pages";
+import {
+  Home,
+  Ofertas,
+  Nosotros,
+  TodosLosProductos,
+  Item,
+  CheckOut,
+  Pagar,
+} from "../pages";
 
 export const RouterMain = () => {
   return (
@@ -10,6 +18,7 @@ export const RouterMain = () => {
       <Route path="/category/:categoria" element={<TodosLosProductos />} />
       <Route path="/item/:id" element={<Item />} />
       <Route path="/checkout" element={<CheckOut />} />
+      <Route path="/pagar" element={<Pagar />} />
     </Routes>
   );
 };

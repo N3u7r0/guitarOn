@@ -1,9 +1,5 @@
+import { Cart } from "../components";
 
 export const CheckOut = () => {
-  return (
-    <div>
-      
-    </div>
-  )
-}
-
+  return <Cart />;
+};
