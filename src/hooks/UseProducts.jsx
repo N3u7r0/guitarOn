@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 
 export const useProducts = () => {
   let [loading, setLoading] = useState(true);
-  const { categoria } = useParams(); // llamo al parametro que viene del navBar.
+  const { categoria} = useParams(); // llamo al parametro que viene del navBar.
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -29,6 +29,7 @@ export const useProducts = () => {
               (product) => product.categoria === "bateria"
             );
             break;
+          
           default:
             productosFiltrados = data;
         }

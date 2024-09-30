@@ -55,7 +55,7 @@ export function Nosotros() {
                       _hover={{ border: "2px solid #FF2222" }}
                       leftIcon={<MdPhone color="#FF0000" size="20px" />}
                     >
-                      +54-114254442
+                      +54 11-4254442
                     </Button>
                     <Button
                       size="md"

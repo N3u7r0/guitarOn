@@ -114,7 +114,10 @@ export const Cart = () => {
           <Divider />
           <Flex alignItems="center">
             <Text fontSize="2xl" fontWeight="bold" display={"flex"}>
-              Total: $ <Text color={"red.500"}>{total.toFixed(2)}</Text>
+              Total: $
+            </Text>
+            <Text fontSize="2xl" fontWeight="bold" color={"red.500"}>
+              {total.toFixed(2)}
             </Text>
             <Spacer />
             <Link to="/pagar">

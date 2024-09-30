@@ -65,7 +65,7 @@ export function NavBar() {
                   </MenuItem>
                 </Link>
 
-                <Link to={"./ofertas"}>
+                <Link to={"./oferta"}>
                   <MenuItem
                     justifyContent={"center"}
                     as={Button}
