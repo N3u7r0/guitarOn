@@ -18,21 +18,5 @@ export const useProductsById = () => {
       .finally(() => setLoading(false));
   }, []);
 
-  return { product  , loading  };
+  return { product, loading };
 };
-
-/* 
-useEffect(() => {
-  getAllProducts()
-    .then((response) => {
-      let { data } = response.config.url;
-      let filtroID = data.filter((product) => product.id == parseInt(id));         // ojo!, el product.id no retorna un numero porque es un string
-      
-      setProduct(filtroID);
-    })
-    .catch((err) => {
-      console.error("error! " + err);
-    })
-    .finally(() => setLoading(false));
-}, [id]);
- */

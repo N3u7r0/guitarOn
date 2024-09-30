@@ -1,3 +1,4 @@
-.cartDetailContainer{
-    color: rgb(251, 251, 251);
-}
+ /* esto evita que la fuente de la card cambie de color. es para no tener problemas de contraste en la misma. */
+ .cartDetailContainer {
+     color: rgb(230, 230, 230);
+ }

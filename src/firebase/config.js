@@ -15,3 +15,5 @@ const app = initializeApp(firebaseConfig);
 
 // inicializamos la base de datos
 export const db = getFirestore(app);
+
+//al final no se guardan los datos eb firebase, pero esto queda para un futuro.

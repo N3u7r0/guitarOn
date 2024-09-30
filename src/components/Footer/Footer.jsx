@@ -1,4 +1,4 @@
-import { Box, useColorModeValue,Text } from "@chakra-ui/react";
+import { Box, useColorModeValue, Text } from "@chakra-ui/react";
 
 export const Footer = () => {
   return (
@@ -12,7 +12,9 @@ export const Footer = () => {
       backgroundColor={"rgba(145, 0, 0, 0.87)"}
       boxShadow={"0px 20px 40px"}
     >
-      <Text itemType="h3" color={"white"} fontSize={"large"}>Esta app fue creada por <b>B</b>rian <b>F</b>abian <b>S</b>abatini.</Text> 
+      <Text itemType="h3" color={"white"} fontSize={"large"}>
+        Esta app fue creada por <b>B</b>rian <b>F</b>abian <b>S</b>abatini.
+      </Text>
     </Box>
   );
 };

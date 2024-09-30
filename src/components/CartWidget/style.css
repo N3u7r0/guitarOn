@@ -1,3 +1,4 @@
-.iconoNavBar{
+/* no encontre la manera de cambiar el estilo de un svg con chackra ui, por lo que lo hago de esta manera */
+.iconoNavBar {
     fill: rgba(255, 4, 4, 0.87);
 }

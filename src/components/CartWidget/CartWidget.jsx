@@ -1,14 +1,16 @@
 import { useContext } from "react";
 import { Flex, Icon, Text } from "@chakra-ui/react";
 import { CartContext } from "../../context";
-import "./style.css";
 import { Link } from "react-router-dom";
+import "./style.css";
 
 export const CartWidget = () => {
   const { stateCartWidget } = useContext(CartContext);
-  console.log(stateCartWidget);
- // me esta sumando el total de los items, pero cuando yo cambio la cantidad a agruegar, me modifica el conunt en todos los arr. falsta eso.
-  const cantidadTotalDeItems = stateCartWidget.reduce((total, item) => total + item.count,0);
+
+  const cantidadTotalDeItems = stateCartWidget.reduce(
+    (total, item) => total + item.count,
+    0
+  );
 
   return (
     <Link to={"/checkout"}>
