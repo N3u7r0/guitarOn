@@ -2,12 +2,12 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 
 export const firebaseConfig = {
-  apiKey: "AIzaSyBkHlNYkWOVyKpve1_ayXHNti7M8Q1EwtA",
-  authDomain: "coder-guitaron.firebaseapp.com",
-  projectId: "coder-guitaron",
-  storageBucket: "coder-guitaron.appspot.com",
-  messagingSenderId: "584610762288",
-  appId: "1:584610762288:web:99fbc3c90984bde458e7f5",
+  apiKey: "AIzaSyD_9ZKsH_tCmzw4XosrXvhc_MJKAo0hriM",
+  authDomain: "guitaron-95a31.firebaseapp.com",
+  projectId: "guitaron-95a31",
+  storageBucket: "guitaron-95a31.firebasestorage.app",
+  messagingSenderId: "873754060620",
+  appId: "1:873754060620:web:929321bcec6d2f37f251e9"
 };
 
 // inicializamos los servicios de Firebase

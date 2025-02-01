@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getAllProducts } from "../services/products.Services";
+
 
 export const useProductsOffer = () => {
   let [loading, setLoading] = useState(true);

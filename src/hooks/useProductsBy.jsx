@@ -1,6 +1,7 @@
+import { collection,getDocs } from "firebase/firestore";
 import { useState, useEffect } from "react";
-import { getAllProducts } from "../services/products.Services";
 import { useParams } from "react-router-dom";
+import { db } from "../firebase";
 
 export const useProductsById = () => {
   const { id } = useParams();
@@ -8,9 +9,10 @@ export const useProductsById = () => {
   let [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    getAllProducts()
+     let coleccionDeProductos = collection(db, "instrumentos");
+    getDocs(coleccionDeProductos)
       .then((response) => {
-        setProduct(response.config.url.data[id]);
+        setProduct(coleccionDeProductos.id);
       })
       .catch((err) => {
         console.error("error: " + err);

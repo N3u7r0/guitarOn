@@ -6,7 +6,7 @@ export const TodosLosProductos = () => {
 
   return (
     <>
-      <ItemListContainer products={products} />;
+      <ItemListContainer products={products} />
     </>
   );
 };

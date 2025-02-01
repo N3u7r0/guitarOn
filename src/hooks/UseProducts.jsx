@@ -1,45 +1,54 @@
-import { useState, useEffect } from "react";
-import { getAllProducts } from "../services/products.Services";
+import { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
+import { db } from "../firebase";
+import { getDocs, collection } from "firebase/firestore";
+import { ProductsContext } from "../context/productsContext";
 
 export const useProducts = () => {
-  let [loading, setLoading] = useState(true);
-  const { categoria} = useParams(); // llamo al parametro que viene del navBar.
+  const { stateProductsContext, setStateProductsContext } =
+    useContext(ProductsContext);
+  const { categoria } = useParams(); // llamo al parametro que viene del navBar.
   const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    getAllProducts()
-      .then((response) => {
-        const data = response.config.url.data; //la datita
-        let productosFiltrados;
+    const coleccionDeProductos = collection(db, "instrumentos");
 
+    getDocs(coleccionDeProductos)
+      .then((snapshot) => {
+        const dataFirebase = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+
+        let productosFiltrados;
         switch (categoria) {
           case "guitarra":
-            productosFiltrados = data.filter(
+            productosFiltrados = dataFirebase.filter(
               (product) => product.categoria === "guitarra"
             );
             break;
           case "bajo":
-            productosFiltrados = data.filter(
+            productosFiltrados = dataFirebase.filter(
               (product) => product.categoria === "bajo"
             );
             break;
           case "bateria":
-            productosFiltrados = data.filter(
+            productosFiltrados = dataFirebase.filter(
               (product) => product.categoria === "bateria"
             );
             break;
-          
+
           default:
-            productosFiltrados = data;
+            productosFiltrados = dataFirebase;
         }
+
         setProducts(productosFiltrados);
+        setStateProductsContext(productosFiltrados); // Corregido
       })
-      .catch((err) => {
-        console.error("error: " + err);
-      })
+      .catch((err) => console.error("error: " + err))
       .finally(() => setLoading(false));
-  }, [categoria]);
+  }, [categoria, setStateProductsContext]); // Corregido
 
   return { products, loading };
 };

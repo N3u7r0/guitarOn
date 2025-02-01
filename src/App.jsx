@@ -1,13 +1,16 @@
 import { ChakraProvider } from "@chakra-ui/react";
 import { LayoutMain } from "./layout/LayoutMain";
 import { CartProvider } from "./context";
+import { ProductsProvider } from "./context/productsContext"; // Corregido a PascalCase
 
 function App() {
   return (
     <ChakraProvider>
-      <CartProvider>
-        <LayoutMain />
-      </CartProvider>
+      <ProductsProvider>
+        <CartProvider>
+          <LayoutMain />
+        </CartProvider>
+      </ProductsProvider>
     </ChakraProvider>
   );
 }
