@@ -47,7 +47,6 @@ export const useProducts = () => {
           }
 
           setProducts(productosFiltrados); // Actualiza los productos filtrados
-          setLoading(false);
           console.log("productos filtrados desde firebase");
         })
         .catch((err) => console.error("error: " + err))
