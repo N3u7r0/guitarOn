@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from "react";
-import { collection, getDocs } from "firebase/firestore"; // Asegúrate de importar las funciones de Firestore
-import { ProductsContext } from "../context/productsContext";
+import { collection, getDocs } from "firebase/firestore"; 
+import { ProductsContext } from "../context/ProductsContext";
 import { db } from "../firebase";
 
 export const useProductsOffer = () => {

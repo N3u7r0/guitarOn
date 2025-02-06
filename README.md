@@ -1,6 +1,7 @@
 ## GuitarON
 
-Proyecto de react para coderHouse.
+dependencias:<br>
+npm install react-slick --save
 
 el componente CategoryFillter es un componente de React que se encarga de renderizar una lista de productos filtrados por categoría. Utiliza el hook useProductsByCategory para obtener la lista de productos de una categoría específica.
 

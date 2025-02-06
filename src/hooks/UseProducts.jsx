@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { db } from "../firebase";
 import { getDocs, collection } from "firebase/firestore";
-import { ProductsContext } from "../context/productsContext";
+import { ProductsContext } from "../context/ProductsContext";
 
 export const useProducts = () => {
   const { stateProductsContext, setStateProductsContext } = useContext(ProductsContext);
@@ -77,6 +77,7 @@ export const useProducts = () => {
       setProducts(productosFiltrados);
       setLoading(false);
       console.log("productos filtrados desde el contexto");
+      console.table(products);
       
 
     }
