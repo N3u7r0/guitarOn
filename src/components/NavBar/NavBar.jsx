@@ -51,7 +51,7 @@ export function NavBar() {
 
           <Menu>
             <Flex>
-              <Grid templateColumns={"repeat(3, 1fr)"} margin={"0 1rem"}>
+              <Grid templateColumns={"repeat(2, 1fr)"} margin={"0 1rem"}>
                 <Link to={"./"}>
                   <MenuItem
                     justifyContent={"center"}
@@ -65,18 +65,7 @@ export function NavBar() {
                   </MenuItem>
                 </Link>
 
-                <Link to={"./oferta"}>
-                  <MenuItem
-                    justifyContent={"center"}
-                    as={Button}
-                    _hover={{
-                      backgroundColor: "rgba(200, 000, 000, 0.85)",
-                      color: "white",
-                    }}
-                  >
-                    Ofertas
-                  </MenuItem>
-                </Link>
+              
 
                 <Link to={"./nosotros"}>
                   <MenuItem

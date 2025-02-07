@@ -24,7 +24,7 @@ export const ItemListContainer = ({ products, loading }) => {
         display={"flex"}
         flexWrap={"wrap"}
         justifyContent={"center"}
-        marginTop={"4rem"}
+        margin={"1rem"}
       >
         {products.map((product) => (
           <Card
