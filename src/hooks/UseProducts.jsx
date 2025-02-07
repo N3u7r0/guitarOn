@@ -52,7 +52,7 @@ export const useProducts = () => {
         .catch((err) => console.error("error: " + err))
         .finally(() => setLoading(false));
     } else {
-      // Filtrar productos basados en la categoría directamente del contexto
+      // Filtra los productos basados en la categoria directamente del contexto
       let productosFiltrados;
       switch (categoria) {
         case "guitarra":
@@ -77,7 +77,7 @@ export const useProducts = () => {
       setProducts(productosFiltrados);
       setLoading(false);
       console.log("productos filtrados desde el contexto");
-      console.table(products);
+     
       
 
     }

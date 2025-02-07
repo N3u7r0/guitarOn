@@ -7,10 +7,9 @@ export const Ofertas = () => {
 
   return (
     <Flex>
-    <Heading  itemType={"h2"} size={"xl"} _hover={{ color: "red.500" }}>
-      Ofertas
-    </Heading>
-
+      <Heading itemType={"h2"} size={"xl"} _hover={{ color: "red.500" }}>
+        Home
+      </Heading>
     <ItemListContainer products={productsOffer} />
     </Flex>
   );

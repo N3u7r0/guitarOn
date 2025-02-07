@@ -1,20 +1,3 @@
-const addItem = (product, count) => {
-  const existingProduct = stateCartWidget.find((item) => item.id === product.id);
-
-  if (existingProduct) {
-    // Si el producto ya está en el carrito, actualizamos la cantidad sumando la cantidad pasada
-    setStateCartWidget(
-      stateCartWidget.map((item) =>
-        item.id === product.id
-          ? { ...item, count: item.count + count } // Suma la cantidad especificada
-          : item
-      )
-    );
-  } else {
-    // Si el producto no está en el carrito, lo agregamos con la cantidad especificada
-    setStateCartWidget([...stateCartWidget, { ...product, count }]);
-  }
-};
 import { createContext, useState } from "react";
 
 export const CartContext = createContext();
@@ -23,10 +6,12 @@ export const CartProvider = ({ children }) => {
   const [stateCartWidget, setStateCartWidget] = useState([]);
 
   const addItem = (product, count) => {
-    const existingProduct = stateCartWidget.find((item) => item.id === product.id);
+    const existingProduct = stateCartWidget.find(
+      (item) => item.id === product.id
+    );
 
     if (existingProduct) {
-      // Si el producto ya está en el carrito, actualizamos la cantidad sumando la cantidad pasada
+      // Si el producto ya esta en el carrito, actualizamos la cantidad sumando la cantidad pasada
       setStateCartWidget(
         stateCartWidget.map((item) =>
           item.id === product.id
@@ -41,11 +26,15 @@ export const CartProvider = ({ children }) => {
   };
 
   const removeItem = (product) => {
-    const existingProduct = stateCartWidget.find((item) => item.id === product.id);
+    const existingProduct = stateCartWidget.find(
+      (item) => item.id === product.id
+    );
     if (existingProduct) {
       // Si la cantidad es 1, eliminamos el producto del carrito
       if (existingProduct.count === 1) {
-        setStateCartWidget(stateCartWidget.filter((item) => item.id !== product.id));
+        setStateCartWidget(
+          stateCartWidget.filter((item) => item.id !== product.id)
+        );
       } else {
         // Si la cantidad es mayor a 1, restamos 1 a la cantidad existente
         setStateCartWidget(
@@ -58,7 +47,9 @@ export const CartProvider = ({ children }) => {
   };
 
   const deleteItem = (product) => {
-    setStateCartWidget(stateCartWidget.filter((item) => item.id !== product.id));
+    setStateCartWidget(
+      stateCartWidget.filter((item) => item.id !== product.id)
+    );
   };
 
   return (
