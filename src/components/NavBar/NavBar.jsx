@@ -58,7 +58,7 @@ export function NavBar() {
               >
                 <Link to={"./"}>
                   <MenuItem
-                    fontSize={{ base: "0.8rem", md: "0.8rem", lg: "1rem" }}
+                    fontSize={{ base: "0.82rem", md: "0.8rem", lg: "1rem" }}
                     justifyContent={"center"}
                     as={Button}
                     _hover={{
@@ -72,7 +72,7 @@ export function NavBar() {
 
                 <Link to={"./nosotros"}>
                   <MenuItem
-                    fontSize={{ base: "0.8rem", md: "0.8rem", lg: "1rem" }}
+                    fontSize={{ base: "0.82rem", md: "0.8rem", lg: "1rem" }}
                     justifyContent={"center"}
                     as={Button}
                     _hover={{
@@ -92,7 +92,7 @@ export function NavBar() {
               >
                 <MenuGroup>
                   <MenuButton
-                    fontSize={{ base: "0.8rem", md: "0.8rem", lg: "1rem" }}
+                    fontSize={{ base: "0.82rem", md: "0.8rem", lg: "1rem" }}
                     as={Button}
                     _hover={{
                       backgroundColor: "rgba(200, 000, 000, 0.85)",
@@ -105,7 +105,7 @@ export function NavBar() {
                   <MenuList>
                     <Link to={"/category/todosLosProductos"}>
                       <MenuItem
-                        fontSize={{ base: "0.8rem", md: "0.8rem", lg: "1rem" }}
+                        fontSize={{ base: "0.82rem", md: "0.8rem", lg: "1rem" }}
                         as={Button}
                         _hover={{
                           backgroundColor: "rgba(200, 000, 000, 0.85)",
@@ -118,7 +118,7 @@ export function NavBar() {
                     <MenuDivider />
                     <Link to={"./category/guitarra"}>
                       <MenuItem
-                        fontSize={{ base: "0.8rem", md: "0.8rem", lg: "1rem" }}
+                        fontSize={{ base: "0.82rem", md: "0.8rem", lg: "1rem" }}
                         as={Button}
                         _hover={{
                           backgroundColor: "rgba(200, 000, 000, 0.85)",
@@ -130,7 +130,7 @@ export function NavBar() {
                     </Link>
                     <Link to={"./category/bajo"}>
                       <MenuItem
-                        fontSize={{ base: "0.8rem", md: "0.8rem", lg: "1rem" }}
+                        fontSize={{ base: "0.82rem", md: "0.8rem", lg: "1rem" }}
                         as={Button}
                         _hover={{
                           backgroundColor: "rgba(200, 000, 000, 0.85)",
@@ -142,7 +142,7 @@ export function NavBar() {
                     </Link>
                     <Link to={"./category/bateria"}>
                       <MenuItem
-                        fontSize={{ base: "0.8rem", md: "0.8rem", lg: "1rem" }}
+                        fontSize={{ base: "0.82rem", md: "0.8rem", lg: "1rem" }}
                         as={Button}
                         _hover={{
                           backgroundColor: "rgba(200, 000, 000, 0.85)",

@@ -43,7 +43,7 @@ export const ItemDetailContainer = ({ product, loading }) => {
       <Card
         key={product.id}
         justifyContent={"center"}
-        w={{ base: "100%", md: "80%", lg: "80rem" }}
+        w={{ base: "95%", md: "80%", lg: "80rem" }}
         marginTop={"14rem"}
         direction={{ base: "column", sm: "row" }}
         overflow="hidden"
@@ -58,7 +58,7 @@ export const ItemDetailContainer = ({ product, loading }) => {
             src={product.image || imgDefault}
             alt={`${product.marca} ${product.modelo}`}
             objectFit="cover"
-            maxW={{ base: "100%", sm: "350px" }}
+            maxW={{ base: "100px", sm: "350px" }}
             margin={"0.5rem"}
           />
 
