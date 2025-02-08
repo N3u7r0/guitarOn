@@ -51,9 +51,14 @@ export function NavBar() {
 
           <Menu>
             <Flex>
-              <Grid templateColumns={"repeat(2, 1fr)"} margin={"0 1rem"}>
+              <Grid
+                templateColumns={"repeat(2, 1fr)"}
+                margin={"0.2rem"}
+                alignContent={"center"}
+              >
                 <Link to={"./"}>
                   <MenuItem
+                    fontSize={"1vw"}
                     justifyContent={"center"}
                     as={Button}
                     _hover={{
@@ -65,10 +70,9 @@ export function NavBar() {
                   </MenuItem>
                 </Link>
 
-              
-
                 <Link to={"./nosotros"}>
                   <MenuItem
+                    fontSize={"1vw"}
                     justifyContent={"center"}
                     as={Button}
                     _hover={{
@@ -80,9 +84,15 @@ export function NavBar() {
                   </MenuItem>
                 </Link>
               </Grid>
-              <Flex>
+
+              <Grid
+                templateColumns={"repeat(2, 1fr)"}
+                margin={"0.2rem"}
+                alignContent={"center"}
+              >
                 <MenuGroup>
                   <MenuButton
+                    fontSize={"1vw"}
                     as={Button}
                     _hover={{
                       backgroundColor: "rgba(200, 000, 000, 0.85)",
@@ -95,6 +105,7 @@ export function NavBar() {
                   <MenuList>
                     <Link to={"/category/todosLosProductos"}>
                       <MenuItem
+                        fontSize={"1vw"}
                         as={Button}
                         _hover={{
                           backgroundColor: "rgba(200, 000, 000, 0.85)",
@@ -107,6 +118,7 @@ export function NavBar() {
                     <MenuDivider />
                     <Link to={"./category/guitarra"}>
                       <MenuItem
+                        fontSize={"1vw"}
                         as={Button}
                         _hover={{
                           backgroundColor: "rgba(200, 000, 000, 0.85)",
@@ -118,6 +130,7 @@ export function NavBar() {
                     </Link>
                     <Link to={"./category/bajo"}>
                       <MenuItem
+                        fontSize={"1vw"}
                         as={Button}
                         _hover={{
                           backgroundColor: "rgba(200, 000, 000, 0.85)",
@@ -129,6 +142,7 @@ export function NavBar() {
                     </Link>
                     <Link to={"./category/bateria"}>
                       <MenuItem
+                        fontSize={"1vw"}
                         as={Button}
                         _hover={{
                           backgroundColor: "rgba(200, 000, 000, 0.85)",
@@ -140,7 +154,7 @@ export function NavBar() {
                     </Link>
                   </MenuList>
                 </MenuGroup>
-              </Flex>
+              </Grid>
             </Flex>
           </Menu>
 
