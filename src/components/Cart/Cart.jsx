@@ -19,7 +19,8 @@ import { DeleteIcon, AddIcon, MinusIcon } from "@chakra-ui/icons";
 import { Link } from "react-router-dom";
 
 export const Cart = () => {
-  const { stateCartWidget, addItem, removeItem, deleteItem } = useContext(CartContext);
+  const { stateCartWidget, addItem, removeItem, deleteItem } =
+    useContext(CartContext);
   const total = stateCartWidget.reduce(
     (acc, item) => acc + (item.precio ? item.precio * item.count : 0),
     0
@@ -58,6 +59,8 @@ export const Cart = () => {
               boxShadow="sm"
               backgroundColor={"rgba(0, 0, 0, 0.05)"}
               _hover={{ backgroundColor: "rgba(80, 000, 000, 0.12)" }}
+              flexDirection={{ base: "column", md: "row" }}
+              textAlign={{ base: "center", md: "left" }}
             >
               <Image
                 src={item.image}
@@ -74,8 +77,14 @@ export const Cart = () => {
                 <Text fontSize="l" fontWeight="bold">
                   {item.modelo}
                 </Text>
-                <HStack spacing={4} mt={2}>
-                  <Text>Precio: ${item.precio ? item.precio.toFixed(2) : "N/A"}</Text>
+                <HStack
+                  spacing={4}
+                  mt={2}
+                  flexDirection={{ base: "column", md: "row" }}
+                >
+                  <Text>
+                    Precio: ${item.precio ? item.precio.toFixed(2) : "N/A"}
+                  </Text>
                   <HStack>
                     <IconButton
                       aria-label="Disminuir cantidad"
@@ -98,7 +107,8 @@ export const Cart = () => {
               <Spacer />
               <HStack>
                 <Text fontWeight="bold">
-                  Subtotal: ${(item.precio ? (item.precio * item.count).toFixed(2) : "N/A")}
+                  Subtotal: $
+                  {item.precio ? (item.precio * item.count).toFixed(2) : "N/A"}
                 </Text>
                 <IconButton
                   aria-label="Eliminar producto"

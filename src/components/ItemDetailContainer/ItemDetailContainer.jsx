@@ -48,6 +48,7 @@ export const ItemDetailContainer = ({ product, loading }) => {
         overflow="hidden"
         variant="outline"
         boxShadow={"0px 2px 10px rgba(255, 15, 15, 0.25)"}
+        margin={"1.5rem"}
       >
         <Flex
           direction={{ base: "column", sm: "row" }}

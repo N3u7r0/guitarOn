@@ -11,6 +11,7 @@ export const Footer = () => {
       height={"2.5vh"}
       backgroundColor={"rgba(145, 0, 0, 0.87)"}
       boxShadow={"0px 20px 40px"}
+      display={{ base: "none", md: "block" }}
     >
       <Text itemType="h3" color={"white"} fontSize={"large"}>
         Esta app fue creada por <b>B</b>rian <b>F</b>abian <b>S</b>abatini.
