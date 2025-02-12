@@ -98,7 +98,7 @@ export const Cart = () => {
                       aria-label="Aumentar cantidad"
                       icon={<AddIcon />}
                       size="sm"
-                      onClick={() => addItem(item)}
+                      onClick={() => addItem(item,1)}
                       isDisabled={item.count >= item.stock}
                     />
                   </HStack>

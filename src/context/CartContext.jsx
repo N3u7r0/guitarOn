@@ -4,7 +4,8 @@ export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
   const [stateCartWidget, setStateCartWidget] = useState([]);
-
+  console.log(stateCartWidget);
+  
   const addItem = (product, count) => {
     const existingProduct = stateCartWidget.find(
       (item) => item.id === product.id
@@ -15,7 +16,7 @@ export const CartProvider = ({ children }) => {
       setStateCartWidget(
         stateCartWidget.map((item) =>
           item.id === product.id
-            ? { ...item, count: item.count + count } // Suma la cantidad especificada
+            ? { ...item, count: item.count + count } // Suma la cantidad especificada. aca esta el problema, si se pasa un count, no se suma... si se pasa un 1, si se suma pero si quero sumar al numero guardo mas de 1 unidad, solamente me va a dejar agruegar 1 solo
             : item
         )
       );

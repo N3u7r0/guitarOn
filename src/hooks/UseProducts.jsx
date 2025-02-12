@@ -77,12 +77,9 @@ export const useProducts = () => {
       setProducts(productosFiltrados);
       setLoading(false);
       console.log("productos filtrados desde el contexto");
-     
-      
-
+      console.log("productos filtrados", productosFiltrados);
     }
   }, [categoria, stateProductsContext, setStateProductsContext]);
-
 
   return { products, loading };
 };
