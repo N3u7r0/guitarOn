@@ -16,7 +16,7 @@ import { CartContext } from "../../context";
 import "./style.css";
 
 export const ItemDetailContainer = ({ product, loading }) => {
-  //logica de los botones que conec tan con el carrito.
+  // Lógica de los botones que conectan con el carrito.
   const [count, setCount] = useState(0);
   const [showButton, setShowButton] = useState(false);
 
@@ -39,18 +39,18 @@ export const ItemDetailContainer = ({ product, loading }) => {
   return loading ? (
     <Spin />
   ) : (
-    <Flex justifyContent={"center"} alignContent={"center"}>
+    <Flex justifyContent={"center"} alignItems={"center"} minH={"90vh"}>
       <Card
         key={product.id}
         justifyContent={"center"}
-        w={{ base: "95%", md: "80%", lg: "80rem" }}
-        marginTop={"14rem"}
-        direction={{ base: "column", sm: "row" }}
+        w={{ base: "95%", md: "90%", lg: "75%" }}
+        alignContent={"center"}
         overflow="hidden"
         variant="outline"
         boxShadow={"0px 2px 10px rgba(255, 15, 15, 0.25)"}
       >
         <Flex
+          direction={{ base: "column", sm: "row" }}
           backgroundColor={"rgba(0, 0, 0, 0.85)"}
           _hover={{ backgroundColor: "rgba(80, 0, 0, 0.72)" }}
         >
@@ -58,7 +58,7 @@ export const ItemDetailContainer = ({ product, loading }) => {
             src={product.image || imgDefault}
             alt={`${product.marca} ${product.modelo}`}
             objectFit="cover"
-            maxW={{ base: "100px", sm: "350px" }}
+            maxW={{ base: "100%", sm: "350px" }}
             margin={"0.5rem"}
           />
 
@@ -70,7 +70,9 @@ export const ItemDetailContainer = ({ product, loading }) => {
             >
               <Heading size="lg">{product.marca}</Heading>
               <Heading size="xl">{product.modelo}</Heading>
-              <Heading size="m">Color: {product.color}</Heading>
+              <Heading size="m" color={"gray"}>
+                Color: {product.color}
+              </Heading>
               <Text py="2">{product.descripcion_completa}</Text>
 
               <Flex justifyContent={"center"} margin={"1rem"}>

@@ -19,6 +19,22 @@ import { Link } from "react-router-dom";
 import { CartWidget } from "../../components";
 import imagen from "../../assets/images/logo.png";
 
+const CustomMenuItem = ({ to, children }) => (
+  <Link to={to}>
+    <MenuItem
+      fontSize={{ base: "0.82rem", md: "0.8rem", lg: "1rem" }}
+      justifyContent={"center"}
+      as={Button}
+      _hover={{
+        backgroundColor: "rgba(200, 000, 000, 0.85)",
+        color: "white",
+      }}
+    >
+      {children}
+    </MenuItem>
+  </Link>
+);
+
 export function NavBar() {
   const { colorMode, toggleColorMode } = useColorMode();
 
@@ -31,10 +47,16 @@ export function NavBar() {
         position={"sticky"}
         top={"0"}
         w={"100%"}
-        zIndex={"1"} //esto es para que la navBar siempre este arriba de todo
+        zIndex={"1"} //esto es para que la navBar siempre esté arriba de todo
         boxShadow={"0px -20px 40px"}
+        padding={0}
       >
-        <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
+        <Flex
+          h={16}
+          alignItems={"center"}
+          justifyContent={"space-between"}
+          padding={{ base: "0px", sm: 2, lg: 7 }}
+        >
           <Grid templateColumns={"auto auto"} gap={3} alignItems={"center"}>
             <Link to={"./"}>
               <Img
@@ -44,6 +66,7 @@ export function NavBar() {
                 w={"200px"}
                 h={"80%"}
                 objectFit={"cover"}
+                display={{ base: "none", sm: "block" }}
               ></Img>
             </Link>
             <CartWidget />
@@ -56,33 +79,8 @@ export function NavBar() {
                 margin={"0.2rem"}
                 alignContent={"center"}
               >
-                <Link to={"./"}>
-                  <MenuItem
-                    fontSize={{ base: "0.82rem", md: "0.8rem", lg: "1rem" }}
-                    justifyContent={"center"}
-                    as={Button}
-                    _hover={{
-                      backgroundColor: "rgba(200, 000, 000, 0.85)",
-                      color: "white",
-                    }}
-                  >
-                    Home
-                  </MenuItem>
-                </Link>
-
-                <Link to={"./nosotros"}>
-                  <MenuItem
-                    fontSize={{ base: "0.82rem", md: "0.8rem", lg: "1rem" }}
-                    justifyContent={"center"}
-                    as={Button}
-                    _hover={{
-                      backgroundColor: "rgba(200, 000, 000, 0.85)",
-                      color: "white",
-                    }}
-                  >
-                    Nosotros
-                  </MenuItem>
-                </Link>
+                <CustomMenuItem to={"./"}>Home</CustomMenuItem>
+                <CustomMenuItem to={"./nosotros"}>Nosotros</CustomMenuItem>
               </Grid>
 
               <Grid
@@ -103,55 +101,19 @@ export function NavBar() {
                     Productos
                   </MenuButton>
                   <MenuList>
-                    <Link to={"/category/todosLosProductos"}>
-                      <MenuItem
-                        fontSize={{ base: "0.82rem", md: "0.8rem", lg: "1rem" }}
-                        as={Button}
-                        _hover={{
-                          backgroundColor: "rgba(200, 000, 000, 0.85)",
-                          color: "white",
-                        }}
-                      >
-                        Todos los productos
-                      </MenuItem>
-                    </Link>
+                    <CustomMenuItem to={"/category/todosLosProductos"}>
+                      Todos los productos
+                    </CustomMenuItem>
                     <MenuDivider />
-                    <Link to={"./category/guitarra"}>
-                      <MenuItem
-                        fontSize={{ base: "0.82rem", md: "0.8rem", lg: "1rem" }}
-                        as={Button}
-                        _hover={{
-                          backgroundColor: "rgba(200, 000, 000, 0.85)",
-                          color: "white",
-                        }}
-                      >
-                        Guitarras
-                      </MenuItem>
-                    </Link>
-                    <Link to={"./category/bajo"}>
-                      <MenuItem
-                        fontSize={{ base: "0.82rem", md: "0.8rem", lg: "1rem" }}
-                        as={Button}
-                        _hover={{
-                          backgroundColor: "rgba(200, 000, 000, 0.85)",
-                          color: "white",
-                        }}
-                      >
-                        Bajos
-                      </MenuItem>
-                    </Link>
-                    <Link to={"./category/bateria"}>
-                      <MenuItem
-                        fontSize={{ base: "0.82rem", md: "0.8rem", lg: "1rem" }}
-                        as={Button}
-                        _hover={{
-                          backgroundColor: "rgba(200, 000, 000, 0.85)",
-                          color: "white",
-                        }}
-                      >
-                        Baterias
-                      </MenuItem>
-                    </Link>
+                    <CustomMenuItem to={"./category/guitarra"}>
+                      Guitarras
+                    </CustomMenuItem>
+                    <CustomMenuItem to={"./category/bajo"}>
+                      Bajos
+                    </CustomMenuItem>
+                    <CustomMenuItem to={"./category/bateria"}>
+                      Baterias
+                    </CustomMenuItem>
                   </MenuList>
                 </MenuGroup>
               </Grid>
