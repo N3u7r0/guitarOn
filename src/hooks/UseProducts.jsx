@@ -5,7 +5,8 @@ import { getDocs, collection } from "firebase/firestore";
 import { ProductsContext } from "../context/ProductsContext";
 
 export const useProducts = () => {
-  const { stateProductsContext, setStateProductsContext } = useContext(ProductsContext);
+  const { stateProductsContext, setStateProductsContext } =
+    useContext(ProductsContext);
   const { categoria } = useParams();
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -76,8 +77,6 @@ export const useProducts = () => {
 
       setProducts(productosFiltrados);
       setLoading(false);
-      console.log("productos filtrados desde el contexto");
-      console.log("productos filtrados", productosFiltrados);
     }
   }, [categoria, stateProductsContext, setStateProductsContext]);
 

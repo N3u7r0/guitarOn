@@ -4,7 +4,7 @@ export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
   const [stateCartWidget, setStateCartWidget] = useState([]);
-  console.log(stateCartWidget);
+  
   
   const addItem = (product, count) => {
     const existingProduct = stateCartWidget.find(
