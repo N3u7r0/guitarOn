@@ -9,11 +9,11 @@ import {
   Text,
   Flex,
 } from "@chakra-ui/react";
-import imgDefault from "../../assets/images/imgDefault.jpg";
-import { Spin } from "../Spin";
 import { useState, useEffect, useContext } from "react";
-import { CartContext } from "../../context";
-import "./style.css";
+import { Spin } from "../../../components";
+import { CartContext } from "../../../context";
+import imgDefault from "../../../assets/images/imgDefault.jpg";
+import "./style/style.css";
 
 export const ItemDetailContainer = ({ product, loading }) => {
   // Lógica de los botones que conectan con el carrito.

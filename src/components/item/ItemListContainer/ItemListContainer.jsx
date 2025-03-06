@@ -11,9 +11,9 @@ import {
   Image,
   Text,
 } from "@chakra-ui/react";
-import imgDefault from "../../assets/images/imgDefault.jpg";
 import { Link } from "react-router-dom";
-import { Spin } from "../Spin";
+import { Spin } from "../../../components";
+import imgDefault from "../../../assets/images/imgDefault.jpg";
 
 export const ItemListContainer = ({ products, loading }) => {
   return loading ? (

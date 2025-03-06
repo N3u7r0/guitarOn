@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { CartContext } from "../../context";
+import { CartContext } from "../../../context";
 import {
   Box,
   Flex,
@@ -18,7 +18,7 @@ import {
 import { DeleteIcon, AddIcon, MinusIcon } from "@chakra-ui/icons";
 import { Link } from "react-router-dom";
 
-export const Cart = () => {
+export const CartDetail = () => {
   const { stateCartWidget, addItem, removeItem, deleteItem } =
     useContext(CartContext);
   const total = stateCartWidget.reduce(

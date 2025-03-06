@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { Flex, Icon, Text } from "@chakra-ui/react";
-import { CartContext } from "../../context";
+import { CartContext } from "../../../context";
 import { Link } from "react-router-dom";
 import "./style.css";
 

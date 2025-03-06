@@ -1,5 +1,5 @@
-import { Cart } from "../components";
+import { CartDetail} from "../components";
 
 export const CheckOut = () => {
-  return <Cart />;
+  return <CartDetail />;
 };

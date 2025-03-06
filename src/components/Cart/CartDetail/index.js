@@ -1,2 +1,1 @@
 export * from "./CartDetail";
-export * from "./CartWidget";

@@ -22,9 +22,9 @@ import {
 } from "@chakra-ui/icons";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import { CartWidget } from "../../components";
-import { Login } from "../Login"
-import imagen from "../../assets/images/logo.png";
+import { CartWidget } from "../../../components";
+import { BtnLogin } from "../../../components"
+import imagen from "../../../assets/images/logo.png";
 
 /* este custom es para q le de estilo a todos los btn */
 const CustomMenuItem = ({ to, children }) => (
@@ -70,7 +70,7 @@ export function NavBar() {
           padding={"1rem"}
         >
           {/* Logo y carrito */}
-          <Grid templateColumns={"auto auto"} gap={2} alignItems={"center"}>
+          <Grid templateColumns={"auto auto"} gap={2} alignItems={"center"} mr={3}> 
             <Link to={"./"}>
               <Img
                 src={imagen}
@@ -123,7 +123,7 @@ export function NavBar() {
             </Flex>
 
             {/* Botón de Login */}
-            <Login />
+            <BtnLogin />
 
             {/* Botón de hamburguesa */}
             <IconButton

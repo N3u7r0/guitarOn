@@ -1,6 +1,6 @@
 import { Box, Flex, Image, Heading, Text } from "@chakra-ui/react";
 import { useProductsOffer } from "../hooks/useProductsOffer";
-import { ItemListContainer } from "../components/ItemListContainer";
+import { ItemListContainer } from "../components";
 import banner from "../assets/images/banner.jpg";
 import logo from "../assets/images/logo.png";
 
