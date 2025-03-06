@@ -25,27 +25,42 @@ import {
 } from "react-icons/md";
 import { BsInstagram, BsPerson, BsYoutube } from "react-icons/bs";
 
-export function Nosotros() {
+export function Contacto() {
   return (
-    <Flex justifyContent={"center"}>
+    <Flex
+      justifyContent="center"
+      alignItems="center"
+      flexDirection="column"
+      height="100vh"
+    >
       <Box
         bg="#000000"
         color="white"
         borderRadius="lg"
         m={{ sm: 4, md: 16, lg: 10 }}
         p={{ sm: 5, md: 5, lg: 16 }}
+        width="100%"
       >
-        <Box p={4}>
-          <Wrap spacing={{ base: 20, sm: 3, md: 5, lg: 20 }}>
+        <Box p={4} textAlign="center">
+          <Wrap
+            spacing={{ base: 20, sm: 3, md: 5, lg: 20 }}
+            justify="center"
+            align="stretch"
+          >
             <WrapItem>
-              <Box>
-                <Heading typeof="h2">Contacto</Heading>
-                <Text mt={{ sm: 3, md: 3, lg: 5 }} color="gray.500">
-                  Dejanos tus datos con tun mensaje y <br /> nos pondremos en
+              <Box
+                display="flex"
+                flexDirection="column"
+                justifyContent="space-between"
+                height="100%"
+              >
+                <Heading as="h2">Contacto</Heading>
+                <Text mt={{ sm: 3, md: 3, lg: 5 }} p={5} color="gray.500">
+                  Dejanos tus datos con tu mensaje y <br /> nos pondremos en
                   contacto con vos.
                 </Text>
                 <Box py={{ base: 5, sm: 5, md: 8, lg: 10 }}>
-                  <VStack pl={0} spacing={3} alignItems="flex-start">
+                  <VStack pl={0} spacing={3} alignItems="center">
                     <Button
                       size="md"
                       height="48px"
@@ -82,10 +97,9 @@ export function Nosotros() {
                   </VStack>
                 </Box>
                 <HStack
+                  justifyContent="space-evenly"
                   mt={{ lg: 10, md: 10 }}
-                  spacing={5}
                   px={5}
-                  alignItems="flex-start"
                 >
                   <IconButton
                     aria-label="facebook"
@@ -96,7 +110,7 @@ export function Nosotros() {
                     icon={<MdFacebook size="28px" />}
                   />
                   <IconButton
-                    aria-label="github"
+                    aria-label="instagram"
                     variant="ghost"
                     size="lg"
                     isRound={true}
@@ -104,7 +118,7 @@ export function Nosotros() {
                     icon={<BsInstagram size="28px" />}
                   />
                   <IconButton
-                    aria-label="discord"
+                    aria-label="youtube"
                     variant="ghost"
                     size="lg"
                     isRound={true}
@@ -115,43 +129,55 @@ export function Nosotros() {
               </Box>
             </WrapItem>
             <WrapItem>
-              <Box bg="white" borderRadius="lg">
+              <Box
+                bg="white"
+                borderRadius="lg"
+                boxShadow="lg"
+                height="100%"
+                display="flex"
+                flexDirection="column"
+                justifyContent="space-between"
+              >
                 <Box m={8} color="#0B0E3F">
-                  <VStack spacing={5}>
+                  <VStack spacing={5} as="form" action="https://formsubmit.co/brian_sabatini993@hotmail.com" method="POST">
+                    {/* <input type="hidden" name="_captcha" value="false" /> */}
                     <FormControl id="name">
                       <FormLabel>Tu nombre</FormLabel>
                       <InputGroup borderColor="#E0E1E7">
                         <InputLeftElement pointerEvents="none">
                           <BsPerson color="gray.800" />
                         </InputLeftElement>
-                        <Input type="text" size="md" />
+                        <Input type="text" name="name" size="md" required />
                       </InputGroup>
                     </FormControl>
-                    <FormControl id="name">
+                    <FormControl id="email">
                       <FormLabel>Tu email</FormLabel>
                       <InputGroup borderColor="#E0E1E7">
                         <InputLeftElement pointerEvents="none">
                           <MdOutlineEmail color="gray.800" />
                         </InputLeftElement>
-                        <Input type="text" size="md" />
+                        <Input type="email" name="email" size="md" required />
                       </InputGroup>
                     </FormControl>
-                    <FormControl id="name">
+                    <FormControl id="message">
                       <FormLabel>Mensaje</FormLabel>
                       <Textarea
+                        name="message"
                         borderColor="gray.300"
                         _hover={{
                           borderRadius: "gray.300",
                         }}
-                        placeholder="deja tu me mensaje  d-.-b"
+                        placeholder="Deja tu mensaje d-.-b"
+                        required
                       />
                     </FormControl>
-                    <FormControl id="name" float="right">
+                    <FormControl id="submit" float="right">
                       <Button
+                        type="submit"
                         variant="solid"
                         bg="#FF0000"
                         color="white"
-                        _hover={{}}
+                        _hover={{ bg: "#CC0000" }}
                       >
                         Enviar
                       </Button>

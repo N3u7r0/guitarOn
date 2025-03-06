@@ -36,7 +36,6 @@ export function BtnLogin() {
 
             {/*  formulario crear una cuenta */}
             <FormSingUp />
-            
           </DrawerBody>
         </DrawerContent>
       </Drawer>

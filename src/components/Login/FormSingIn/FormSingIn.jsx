@@ -11,7 +11,7 @@ import {
 } from "@chakra-ui/react";
 
 export const FormSingIn = () => {
-  const {onClose } = useDisclosure();
+  const { onClose } = useDisclosure();
 
   // Referencias para el formulario de login
   const loginEmailRef = useRef();
@@ -32,37 +32,39 @@ export const FormSingIn = () => {
 
     onClose();
   }
-  return <>
-  <Box p={4}>
-              <form onSubmit={handleLogin}>
-                <VStack spacing={4}>
-                  <FormControl id="loginEmail" isRequired>
-                    <FormLabel>Correo Electrónico</FormLabel>
-                    <Input
-                      type="email"
-                      placeholder="Ingresa tu correo"
-                      ref={loginEmailRef}
-                    />
-                  </FormControl>
-                  <FormControl id="loginPassword" isRequired>
-                    <FormLabel>Contraseña</FormLabel>
-                    <Input
-                      type="password"
-                      placeholder="Ingresa tu contraseña"
-                      ref={loginPasswordRef}
-                    />
-                  </FormControl>
-                  <Button
-                    type="submit"
-                    bgColor="red.800"
-                    color="whitesmoke"
-                    width="full"
-                    _hover={{ backgroundColor: "rgba(200, 0, 0, 0.85)" }}
-                  >
-                    Iniciar Sesión
-                  </Button>
-                </VStack>
-              </form>
-            </Box>
-  </>;
+  return (
+    <>
+      <Box p={4}>
+        <form onSubmit={handleLogin}>
+          <VStack spacing={4}>
+            <FormControl id="loginEmail" isRequired>
+              <FormLabel>Correo Electrónico</FormLabel>
+              <Input
+                type="email"
+                placeholder="Ingresa tu correo"
+                ref={loginEmailRef}
+              />
+            </FormControl>
+            <FormControl id="loginPassword" isRequired>
+              <FormLabel>Contraseña</FormLabel>
+              <Input
+                type="password"
+                placeholder="Ingresa tu contraseña"
+                ref={loginPasswordRef}
+              />
+            </FormControl>
+            <Button
+              type="submit"
+              bgColor="red.800"
+              color="whitesmoke"
+              width="full"
+              _hover={{ backgroundColor: "rgba(200, 0, 0, 0.85)" }}
+            >
+              Iniciar Sesión
+            </Button>
+          </VStack>
+        </form>
+      </Box>
+    </>
+  );
 };

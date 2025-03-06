@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import {
   Home,
-  Nosotros,
+  Contacto,
   TodosLosProductos,
   Item,
   CheckOut,
@@ -12,7 +12,7 @@ export const RouterMain = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/nosotros" element={<Nosotros />} />
+      <Route path="/Contacto" element={<Contacto />} />
       <Route path="/category/:categoria" element={<TodosLosProductos />} />
       <Route path="/item/:id" element={<Item />} />
       <Route path="/checkout" element={<CheckOut />} />

@@ -89,7 +89,7 @@ export function NavBar() {
             {/* Navegación para pantallas grandes */}
             <Flex display={{ base: "none", md: "flex" }} gap={4}>
               <CustomMenuItem to={"./"}>Home</CustomMenuItem>
-              <CustomMenuItem to={"./nosotros"}>Nosotros</CustomMenuItem>
+              <CustomMenuItem to={"./Contacto"}>Contactanos</CustomMenuItem>
 
               {/* Menú desplegable Productos */}
               <Menu>

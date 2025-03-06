@@ -1,5 +1,5 @@
 export * from "./Home";
-export * from "./Nosotros";
+export * from "./Contacto";
 export * from "./TodosLosProductos";
 export * from "./Item";
 export * from "./CheckOut";

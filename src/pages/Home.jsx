@@ -31,7 +31,7 @@ export const Home = () => {
           <Heading
             position={"relative"}
             /*   base = pantalla chica, md = p.mediana, lg = p. grande */
-            fontSize={{ base: "1.8vw", md: "1.4vw", lg: "1.3vw" }}
+            fontSize={"medium"}
             whiteSpace="normal"
             bottom={"1.5vw"}
             color={"whitesmoke"}
@@ -41,7 +41,7 @@ export const Home = () => {
           </Heading>
         </Flex>
       </Box>
-      <Text margin={1} fontSize={"3vw"}>
+      <Text mt={"5vh"} fontSize={"xx-large"}>
         Ofertas
       </Text>
       <Flex justifyContent={"center"} w={"100%"} p={0} m={0}>
