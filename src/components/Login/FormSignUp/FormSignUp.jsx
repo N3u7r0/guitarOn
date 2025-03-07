@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../../firebase";
+import { doc, setDoc } from "firebase/firestore";
+import { auth, db } from "../../../firebase"; 
 
 import {
   Button,
@@ -13,13 +14,10 @@ import {
   AccordionButton,
   AccordionPanel,
   AccordionIcon,
-  useDisclosure,
   Box,
 } from "@chakra-ui/react";
 
-export const FormSingUp = () => {
-  const { onClose } = useDisclosure();
-
+export const FormSignUp = ({ onSuccess }) => {
   // Referencias para el formulario de registro
   const registerEmailRef = useRef();
   const registerPasswordRef = useRef();
@@ -29,7 +27,7 @@ export const FormSingUp = () => {
   const direccionRef = useRef();
 
   // Manejo del registro
-  async function handleSignUp(e) {
+  async function SignUp(e) {
     e.preventDefault();
     const nombreUser = nombreRef.current.value;
     const apellidoUser = apellidoRef.current.value;
@@ -39,32 +37,36 @@ export const FormSingUp = () => {
     const passwordUser = registerPasswordRef.current.value;
 
     try {
-      const userCredentials = await createUserWithEmailAndPassword(
+      const userCredential = await createUserWithEmailAndPassword(
         auth,
         emailUser,
         passwordUser
       );
-      console.log("Usuario creado:", userCredentials.user);
 
-      // Manejo de datos adicionales
-      console.log("Datos adicionales:", {
+      const userId = userCredential.user.uid;
+
+      // Guarda estos datos en firestore
+      await setDoc(doc(db, "users", userId), {
         nombre: nombreUser,
         apellido: apellidoUser,
         telefono: telefonoUser,
         direccion: direccionUser,
+        email: emailUser,
       });
 
-      // Aquí puedes guardar los datos adicionales en Firestore u otro backend
-    } catch (error) {
-      console.error("Error al crear la cuenta:", error.message);
-    }
+      console.log("Usuario creado exitosamente");
 
-    onClose();
+      // si todo sale bien, cierra el drawer
+      if (onSuccess) {
+        onSuccess();
+      }
+    } catch (error) {
+      console.error("Error al registrar el usuario:", error.message);
+    }
   }
 
   return (
     <>
-      {/*  formulario para crear cuenta */}
       <Accordion allowToggle>
         <AccordionItem>
           <h4>
@@ -76,8 +78,7 @@ export const FormSingUp = () => {
             </AccordionButton>
           </h4>
           <AccordionPanel pb={4}>
-            {/* Formulario de registro */}
-            <form onSubmit={handleSignUp}>
+            <form onSubmit={SignUp}>
               <VStack spacing={4}>
                 <FormControl id="nombre" isRequired>
                   <FormLabel>Nombre</FormLabel>
@@ -120,7 +121,7 @@ export const FormSingUp = () => {
                   />
                 </FormControl>
                 <FormControl id="registerPassword" isRequired>
-                  <FormLabel>Contraseña</FormLabel>
+                  <FormLabel>Contraseña (minimo 6 caracteres)</FormLabel>
                   <Input
                     type="password"
                     placeholder="Ingresa tu contraseña"
@@ -134,7 +135,7 @@ export const FormSingUp = () => {
                   width="full"
                   _hover={{ backgroundColor: "rgba(200, 0, 0, 0.85)" }}
                 >
-                  Crear cuenta
+                  Registrar
                 </Button>
               </VStack>
             </form>

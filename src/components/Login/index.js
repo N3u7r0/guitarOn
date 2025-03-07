@@ -1,3 +1,3 @@
 export * from "./BtnLogin";
-export * from "./FormSingIn";
-export * from "./FormSingUp";
+export * from "./FormSignIn";
+export * from "./FormSignUp";

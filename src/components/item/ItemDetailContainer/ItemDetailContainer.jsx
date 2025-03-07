@@ -43,7 +43,7 @@ export const ItemDetailContainer = ({ product, loading }) => {
       justifyContent={"center"}
       alignItems={"center"}
       minH={"90vh"}
-      mb={"10vh"}
+      mb={"8vh"}
     >
       <Card
         key={product.id}

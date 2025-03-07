@@ -9,11 +9,16 @@ import {
   useDisclosure,
   Box,
 } from "@chakra-ui/react";
-import { FormSingUp } from "../FormSingUp/FormSingUp";
-import { FormSingIn } from "../FormSingIn/FormSingIn";
+import { FormSignUp } from "../FormSignUp/FormSignUp";
+import { FormSignIn } from "../FormSignIn/FormSignIn";
 
 export function BtnLogin() {
   const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const handleSuccess = () => {
+    // Aquí puedes ejecutar lógica adicional si lo necesitas
+    onClose(); // Cierra el Drawer
+  };
 
   return (
     <>
@@ -27,15 +32,15 @@ export function BtnLogin() {
           <DrawerCloseButton />
           <DrawerHeader textAlign="center">Iniciar Sesión</DrawerHeader>
           <DrawerBody>
-            {/* Form de iniciar sesión */}
-            <FormSingIn />
+            {/* Form de iniciar sesión (le paso la prop para que cierre)*/}
+            <FormSignIn onSuccess={handleSuccess} />
 
             <Box textAlign="center" mt={"5rem"} mb={4}>
               <p>¿No tenés una cuenta? Crea una!</p>
             </Box>
 
             {/*  formulario crear una cuenta */}
-            <FormSingUp />
+            <FormSignUp onSuccess={handleSuccess} />
           </DrawerBody>
         </DrawerContent>
       </Drawer>

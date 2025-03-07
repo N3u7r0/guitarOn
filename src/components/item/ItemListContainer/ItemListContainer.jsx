@@ -24,7 +24,7 @@ export const ItemListContainer = ({ products, loading }) => {
         display={"flex"}
         flexWrap={"wrap"}
         justifyContent={"center"}
-                mb={"10vh"}
+                mb={"8vh"}
       >
         {products.map((product) => (
           <Card

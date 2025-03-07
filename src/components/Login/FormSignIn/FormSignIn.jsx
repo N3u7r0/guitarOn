@@ -1,4 +1,6 @@
 import { useRef } from "react";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../../firebase";
 
 import {
   Button,
@@ -6,36 +8,44 @@ import {
   FormLabel,
   Input,
   VStack,
-  useDisclosure,
   Box,
 } from "@chakra-ui/react";
 
-export const FormSingIn = () => {
-  const { onClose } = useDisclosure();
-
+export const FormSignIn = ({ onSuccess }) => {
   // Referencias para el formulario de login
   const loginEmailRef = useRef();
   const loginPasswordRef = useRef();
 
-  // Manejo del login
-  async function handleLogin(e) {
+  // Manejo del login (escucha el formulario)
+  async function Login(e) {
     e.preventDefault();
     const emailUser = loginEmailRef.current.value;
     const passwordUser = loginPasswordRef.current.value;
 
     try {
-      console.log("Iniciando sesión con:", emailUser, passwordUser);
-      // Aquí podrías manejar tu lógica de autenticación con Firebase para login (si está configurada)
+      // inicia sesion con Firebase
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        emailUser,
+        passwordUser
+      );
+
+      console.log("Inicio de sesión exitoso para:", userCredential.user.email);
+
+      // llama a la funcion onSuccess para cerrar el drawer
+      if (onSuccess) {
+        onSuccess();
+        alert("hola " + emailUser)
+      }
     } catch (error) {
       console.error("Error al iniciar sesión:", error.message);
     }
-
-    onClose();
   }
+
   return (
     <>
       <Box p={4}>
-        <form onSubmit={handleLogin}>
+        <form onSubmit={Login}>
           <VStack spacing={4}>
             <FormControl id="loginEmail" isRequired>
               <FormLabel>Correo Electrónico</FormLabel>
@@ -46,7 +56,7 @@ export const FormSingIn = () => {
               />
             </FormControl>
             <FormControl id="loginPassword" isRequired>
-              <FormLabel>Contraseña</FormLabel>
+              <FormLabel>Contraseña (minimo 6 caracteres)</FormLabel>
               <Input
                 type="password"
                 placeholder="Ingresa tu contraseña"
