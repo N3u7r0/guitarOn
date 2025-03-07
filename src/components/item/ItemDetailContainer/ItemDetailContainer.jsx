@@ -39,7 +39,12 @@ export const ItemDetailContainer = ({ product, loading }) => {
   return loading ? (
     <Spin />
   ) : (
-    <Flex justifyContent={"center"} alignItems={"center"} minH={"90vh"}>
+    <Flex
+      justifyContent={"center"}
+      alignItems={"center"}
+      minH={"90vh"}
+      mb={"10vh"}
+    >
       <Card
         key={product.id}
         justifyContent={"center"}
@@ -51,7 +56,10 @@ export const ItemDetailContainer = ({ product, loading }) => {
         margin={"1.5rem"}
       >
         <Flex
-          direction={{ base: "column", sm: "row" }}
+          direction={{ base: "column", sm: "column", lg: "row" }}
+          textAlign={{ base: "center", sm: "center", lg: "left" }}
+          align={"center"}
+          justify={"center"}
           backgroundColor={"rgba(0, 0, 0, 0.85)"}
           _hover={{ backgroundColor: "rgba(80, 0, 0, 0.72)" }}
         >
@@ -60,13 +68,14 @@ export const ItemDetailContainer = ({ product, loading }) => {
             alt={`${product.marca} ${product.modelo}`}
             objectFit="cover"
             maxW={{ base: "100%", sm: "350px" }}
-            margin={"0.5rem"}
+            margin={"0.8rem"}
+            borderRadius={4}
           />
 
           <Stack>
             <CardBody
               margin={"0.5rem"}
-              padding={"0px"}
+              padding={0}
               className="cartDetailContainer"
             >
               <Heading size="lg">{product.marca}</Heading>
@@ -74,7 +83,9 @@ export const ItemDetailContainer = ({ product, loading }) => {
               <Heading size="m" color={"gray"}>
                 Color: {product.color}
               </Heading>
-              <Text py="2">{product.descripcion_completa}</Text>
+              <Text py="2" w={"90%"} textAlign={"left"} m="auto">
+                {product.descripcion_completa}
+              </Text>
 
               <Flex justifyContent={"center"} margin={"1rem"}>
                 <Button

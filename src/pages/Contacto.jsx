@@ -3,10 +3,8 @@ import {
   Box,
   Heading,
   Text,
-  IconButton,
   Button,
   VStack,
-  HStack,
   Wrap,
   WrapItem,
   FormControl,
@@ -16,36 +14,25 @@ import {
   InputLeftElement,
   Textarea,
 } from "@chakra-ui/react";
-import {
-  MdPhone,
-  MdEmail,
-  MdLocationOn,
-  MdFacebook,
-  MdOutlineEmail,
-} from "react-icons/md";
-import { BsInstagram, BsPerson, BsYoutube } from "react-icons/bs";
+import { MdPhone, MdEmail, MdLocationOn, MdOutlineEmail } from "react-icons/md";
+import { BsPerson } from "react-icons/bs";
 
 export function Contacto() {
   return (
     <Flex
-      justifyContent="center"
       alignItems="center"
+      justifyContent="center"
       flexDirection="column"
-      height="100vh"
+      width="100%"
+      mt={{ base: "1vh", md: "10vh", lg: "20vh" }}
     >
-      <Box
-        bg="#000000"
-        color="white"
-        borderRadius="lg"
-        m={{ sm: 4, md: 16, lg: 10 }}
-        p={{ sm: 5, md: 5, lg: 16 }}
-        width="100%"
-      >
-        <Box p={4} textAlign="center">
+      <Box bg="#000000" color="white" borderRadius="lg" p="2vw" width="90%">
+        <Box p={4} textAlign="center" height="100%">
           <Wrap
-            spacing={{ base: 20, sm: 3, md: 5, lg: 20 }}
-            justify="center"
-            align="stretch"
+            spacing={{ base: 5, md: 5, lg: 100 }}
+            justify={{ base: "center", md: "space-evenly", lg: "center" }}
+            align="center"
+            height="100%"
           >
             <WrapItem>
               <Box
@@ -54,20 +41,19 @@ export function Contacto() {
                 justifyContent="space-between"
                 height="100%"
               >
-                <Heading as="h2">Contacto</Heading>
-                <Text mt={{ sm: 3, md: 3, lg: 5 }} p={5} color="gray.500">
+                <Heading as="h6">Contacto</Heading>
+                <Text mt={{ base: 3, lg: 5 }} p={5} color="gray.500">
                   Dejanos tus datos con tu mensaje y <br /> nos pondremos en
                   contacto con vos.
                 </Text>
-                <Box py={{ base: 5, sm: 5, md: 8, lg: 10 }}>
-                  <VStack pl={0} spacing={3} alignItems="center">
+                <Box py={{ base: 5, lg: 10 }}>
+                  <VStack spacing={3} alignItems="center">
                     <Button
                       size="md"
                       height="48px"
-                      width="200px"
+                      width="cover"
                       variant="ghost"
                       color="#DCE2FF"
-                      _hover={{ border: "2px solid #FF2222" }}
                       leftIcon={<MdPhone color="#FF0000" size="20px" />}
                     >
                       +54 11-4254442
@@ -75,10 +61,9 @@ export function Contacto() {
                     <Button
                       size="md"
                       height="48px"
-                      width="200px"
+                      width="cover"
                       variant="ghost"
                       color="#DCE2FF"
-                      _hover={{ border: "2px solid #FF2222" }}
                       leftIcon={<MdEmail color="#FF0000" size="20px" />}
                     >
                       contact@guitaron.com
@@ -86,46 +71,15 @@ export function Contacto() {
                     <Button
                       size="md"
                       height="48px"
-                      width="200px"
+                      width="cover"
                       variant="ghost"
                       color="#DCE2FF"
-                      _hover={{ border: "2px solid #FF2222" }}
                       leftIcon={<MdLocationOn color="#FF0000" size="20px" />}
                     >
                       Av.falsa 86, Glew
                     </Button>
                   </VStack>
                 </Box>
-                <HStack
-                  justifyContent="space-evenly"
-                  mt={{ lg: 10, md: 10 }}
-                  px={5}
-                >
-                  <IconButton
-                    aria-label="facebook"
-                    variant="ghost"
-                    size="lg"
-                    isRound={true}
-                    _hover={{ bg: "#FF0000" }}
-                    icon={<MdFacebook size="28px" />}
-                  />
-                  <IconButton
-                    aria-label="instagram"
-                    variant="ghost"
-                    size="lg"
-                    isRound={true}
-                    _hover={{ bg: "#FF0000" }}
-                    icon={<BsInstagram size="28px" />}
-                  />
-                  <IconButton
-                    aria-label="youtube"
-                    variant="ghost"
-                    size="lg"
-                    isRound={true}
-                    _hover={{ bg: "#FF0000" }}
-                    icon={<BsYoutube size="28px" />}
-                  />
-                </HStack>
               </Box>
             </WrapItem>
             <WrapItem>
@@ -134,13 +88,20 @@ export function Contacto() {
                 borderRadius="lg"
                 boxShadow="lg"
                 height="100%"
+                width="100%"
                 display="flex"
                 flexDirection="column"
                 justifyContent="space-between"
               >
                 <Box m={8} color="#0B0E3F">
-                  <VStack spacing={5} as="form" action="https://formsubmit.co/brian_sabatini993@hotmail.com" method="POST">
-                    {/* <input type="hidden" name="_captcha" value="false" /> */}
+                  <VStack
+                    spacing={5}
+                    as="form"
+                    action="https://formsubmit.co/8462d34d4e6022215eb44c0667abe20a"
+                    method="POST"
+                  >
+                    {/* esta  linea de nput es para q no se active el captcha*/}
+                    <input type="hidden" name="_captcha" value="false" />
                     <FormControl id="name">
                       <FormLabel>Tu nombre</FormLabel>
                       <InputGroup borderColor="#E0E1E7">
