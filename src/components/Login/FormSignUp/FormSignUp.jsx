@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
-import { auth, db } from "../../../firebase"; 
+import { auth, db } from "../../../firebase";
 
 import {
   Button,
@@ -42,7 +42,7 @@ export const FormSignUp = ({ onSuccess }) => {
         emailUser,
         passwordUser
       );
-
+      //guarda el uid para q coincida el id de el user de firestore
       const userId = userCredential.user.uid;
 
       // Guarda estos datos en firestore
@@ -57,13 +57,13 @@ export const FormSignUp = ({ onSuccess }) => {
       console.info("Usuario creado exitosamente");
 
       // si todo sale bien, cierra el drawer
-      
+
       if (onSuccess) {
         alert("Usuario creado exitosamente");
         onSuccess();
       }
     } catch (error) {
-      alert("Error al registrar el usuario: "+ error.message);
+      alert("Error al registrar el usuario: " + error.message);
     }
   }
 
@@ -87,7 +87,8 @@ export const FormSignUp = ({ onSuccess }) => {
                   <Input
                     type="text"
                     placeholder="Ingresa tu nombre"
-                    required maxlength="30"
+                    required
+                    maxLength="30"
                     ref={nombreRef}
                   />
                 </FormControl>
@@ -95,7 +96,8 @@ export const FormSignUp = ({ onSuccess }) => {
                   <FormLabel>Apellido</FormLabel>
                   <Input
                     type="text"
-                    required maxlength="30"
+                    required
+                    maxLength="30"
                     placeholder="Ingresa tu apellido"
                     ref={apellidoRef}
                   />
@@ -103,7 +105,7 @@ export const FormSignUp = ({ onSuccess }) => {
                 <FormControl id="telefono" type="number" isRequired>
                   <FormLabel>Teléfono</FormLabel>
                   <Input
-                    type="tel"
+                    type="number"
                     placeholder="Ingresa tu número de teléfono"
                     ref={telefonoRef}
                   />
@@ -112,7 +114,8 @@ export const FormSignUp = ({ onSuccess }) => {
                   <FormLabel>Dirección</FormLabel>
                   <Input
                     type="text"
-                     required maxlength="30"
+                    required
+                    maxLength="30"
                     placeholder="Ingresa tu dirección"
                     ref={direccionRef}
                   />

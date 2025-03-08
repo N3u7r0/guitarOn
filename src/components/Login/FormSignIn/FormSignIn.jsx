@@ -1,7 +1,5 @@
 import { useRef } from "react";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../../firebase";
-
+import { useLogin } from "../../../hooks";
 import {
   Button,
   FormControl,
@@ -12,40 +10,21 @@ import {
 } from "@chakra-ui/react";
 
 export const FormSignIn = ({ onSuccess }) => {
-  // Referencias para el formulario de login
   const loginEmailRef = useRef();
   const loginPasswordRef = useRef();
+  const { login, loading, error } = useLogin(onSuccess);
 
-  // Manejo del login (escucha el formulario)
-  async function Login(e) {
+  const handleSubmit = (e) => {
     e.preventDefault();
     const emailUser = loginEmailRef.current.value;
     const passwordUser = loginPasswordRef.current.value;
-
-    try {
-      // inicia sesion con Firebase
-      const userCredential = await signInWithEmailAndPassword(
-        auth,
-        emailUser,
-        passwordUser
-      );
-
-      console.info("Inicio de sesión exitoso para:", userCredential.user.email);
-
-      // llama a la funcion onSuccess para cerrar el drawer
-      if (onSuccess) {
-        
-        onSuccess();
-      }
-    } catch (error) {
-      alert("Error al iniciar sesión:  " + error.message);
-    }
-  }
+    login(emailUser, passwordUser); // llama a la funcion del custom hook
+  };
 
   return (
     <>
       <Box p={4}>
-        <form onSubmit={Login}>
+        <form onSubmit={handleSubmit}>
           <VStack spacing={4}>
             <FormControl id="loginEmail" isRequired>
               <FormLabel>Correo Electrónico</FormLabel>
@@ -56,7 +35,7 @@ export const FormSignIn = ({ onSuccess }) => {
               />
             </FormControl>
             <FormControl id="loginPassword" isRequired>
-              <FormLabel>Contraseña (minimo 6 caracteres)</FormLabel>
+              <FormLabel>Contraseña (mínimo 6 caracteres)</FormLabel>
               <Input
                 type="password"
                 placeholder="Ingresa tu contraseña"
@@ -68,10 +47,12 @@ export const FormSignIn = ({ onSuccess }) => {
               bgColor="red.800"
               color="whitesmoke"
               width="full"
+              isDisabled={loading}
               _hover={{ backgroundColor: "rgba(200, 0, 0, 0.85)" }}
             >
-              Iniciar Sesión
+              {loading ? "Cargando..." : "Iniciar Sesión"}
             </Button>
+            {error && <p style={{ color: "red" }}>{error}</p>}
           </VStack>
         </form>
       </Box>
