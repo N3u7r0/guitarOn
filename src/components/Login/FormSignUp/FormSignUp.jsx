@@ -63,7 +63,7 @@ export const FormSignUp = ({ onSuccess }) => {
         onSuccess();
       }
     } catch (error) {
-      alert("Error al registrar el usuario:", error.message);
+      alert("Error al registrar el usuario: "+ error.message);
     }
   }
 

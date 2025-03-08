@@ -38,7 +38,7 @@ export const FormSignIn = ({ onSuccess }) => {
         onSuccess();
       }
     } catch (error) {
-      console.error("Error al iniciar sesión:", error.message);
+      alert("Error al iniciar sesión:  " + error.message);
     }
   }
 
