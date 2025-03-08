@@ -54,14 +54,16 @@ export const FormSignUp = ({ onSuccess }) => {
         email: emailUser,
       });
 
-      console.log("Usuario creado exitosamente");
+      console.info("Usuario creado exitosamente");
 
       // si todo sale bien, cierra el drawer
+      
       if (onSuccess) {
+        alert("Usuario creado exitosamente");
         onSuccess();
       }
     } catch (error) {
-      console.error("Error al registrar el usuario:", error.message);
+      alert("Error al registrar el usuario:", error.message);
     }
   }
 
@@ -85,6 +87,7 @@ export const FormSignUp = ({ onSuccess }) => {
                   <Input
                     type="text"
                     placeholder="Ingresa tu nombre"
+                    required maxlength="30"
                     ref={nombreRef}
                   />
                 </FormControl>
@@ -92,11 +95,12 @@ export const FormSignUp = ({ onSuccess }) => {
                   <FormLabel>Apellido</FormLabel>
                   <Input
                     type="text"
+                    required maxlength="30"
                     placeholder="Ingresa tu apellido"
                     ref={apellidoRef}
                   />
                 </FormControl>
-                <FormControl id="telefono" isRequired>
+                <FormControl id="telefono" type="number" isRequired>
                   <FormLabel>Teléfono</FormLabel>
                   <Input
                     type="tel"
@@ -108,6 +112,7 @@ export const FormSignUp = ({ onSuccess }) => {
                   <FormLabel>Dirección</FormLabel>
                   <Input
                     type="text"
+                     required maxlength="30"
                     placeholder="Ingresa tu dirección"
                     ref={direccionRef}
                   />

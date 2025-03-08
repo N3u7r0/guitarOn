@@ -30,12 +30,12 @@ export const FormSignIn = ({ onSuccess }) => {
         passwordUser
       );
 
-      console.log("Inicio de sesión exitoso para:", userCredential.user.email);
+      console.info("Inicio de sesión exitoso para:", userCredential.user.email);
 
       // llama a la funcion onSuccess para cerrar el drawer
       if (onSuccess) {
+        
         onSuccess();
-        alert("hola " + emailUser)
       }
     } catch (error) {
       console.error("Error al iniciar sesión:", error.message);
