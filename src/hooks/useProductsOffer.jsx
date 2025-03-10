@@ -5,9 +5,9 @@ import { db } from "../firebase";
 
 export const useProductsOffer = () => {
   let [loading, setLoading] = useState(true);
+  const [productsOffer, setProductsOffer] = useState([]);
   const { stateProductsContext, setStateProductsContext } =
     useContext(ProductsContext);
-  const [productsOffer, setProductsOffer] = useState([]);
 
   useEffect(() => {
     const coleccionDeProductos = collection(db, "instrumentos");

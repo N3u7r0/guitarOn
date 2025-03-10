@@ -22,9 +22,7 @@ export const CartProvider = ({ children }) => {
     if (existingProduct) {
       setStateCartWidget(
         stateCartWidget.map((item) =>
-          item.id === product.id
-            ? { ...item, count: item.count + count }
-            : item
+          item.id === product.id ? { ...item, count: item.count + count } : item
         )
       );
     } else {

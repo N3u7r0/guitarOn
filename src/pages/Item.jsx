@@ -2,6 +2,6 @@ import { ItemDetailContainer } from "../components";
 import { useProductsById } from "../hooks";
 
 export const Item = () => {
-  const { product } = useProductsById();
-  return <ItemDetailContainer product={product} />;
+  const { product,loading } = useProductsById();
+  return <ItemDetailContainer product={product} loading={loading} />;
 };

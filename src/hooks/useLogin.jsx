@@ -2,7 +2,8 @@ import { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 import { auth } from "../firebase";
-import { db } from "../firebase"; 
+import { db } from "../firebase";
+
 export const useLogin = (onSuccess) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -12,14 +13,18 @@ export const useLogin = (onSuccess) => {
     setLoading(true);
     setError(null);
     try {
-      // Inicia sesión con Firebase Authentication
-      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      // inicia sesion con Firebase Authentication
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
       const userId = userCredential.user.uid;
 
       console.info("Inicio de sesión exitoso para:", userCredential.user.email);
 
-      // Consulta los datos del usuario en Firestore
-      const userDocRef = doc(db, "users", userId); // Asumiendo que la colección se llama "users"
+      // consulta los datos del usuario en firestore
+      const userDocRef = doc(db, "users", userId); 
       const userDoc = await getDoc(userDocRef);
 
       if (userDoc.exists()) {

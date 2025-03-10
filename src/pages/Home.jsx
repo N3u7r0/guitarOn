@@ -5,7 +5,7 @@ import banner from "../assets/images/banner.jpg";
 import logo from "../assets/images/logo.png";
 
 export const Home = () => {
-  const { productsOffer } = useProductsOffer();
+  const { productsOffer,loading } = useProductsOffer();
 
   return (
     <Flex
@@ -45,7 +45,7 @@ export const Home = () => {
         Ofertas
       </Text>
       <Flex justifyContent={"center"} w={"100%"} p={0} m={0}>
-        <ItemListContainer products={productsOffer} />
+        <ItemListContainer products={productsOffer} loading={loading} />
       </Flex>
     </Flex>
   );
