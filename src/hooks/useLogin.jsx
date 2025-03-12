@@ -5,15 +5,16 @@ import { auth } from "../firebase";
 import { db } from "../firebase";
 
 export const useLogin = (onSuccess) => {
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
-  const [userData, setUserData] = useState(null); // Estado para los datos del usuario
-
+  const [loading, setLoading] = useState(false); // loading para q el btn diga cargando !
+  const [error, setError] = useState(null); //estado de error para las tostadas
+  const [userData, setUserData] = useState([]);
+  console.log(userData);
+  
   const login = async (email, password) => {
     setLoading(true);
     setError(null);
     try {
-      // inicia sesion con Firebase Authentication
+      // inicia sesion con firebase auth
       const userCredential = await signInWithEmailAndPassword(
         auth,
         email,
@@ -24,7 +25,7 @@ export const useLogin = (onSuccess) => {
       console.info("Inicio de sesión exitoso para:", userCredential.user.email);
 
       // consulta los datos del usuario en firestore
-      const userDocRef = doc(db, "users", userId); 
+      const userDocRef = doc(db, "users", userId);
       const userDoc = await getDoc(userDocRef);
 
       if (userDoc.exists()) {
@@ -42,7 +43,6 @@ export const useLogin = (onSuccess) => {
       }
     } catch (err) {
       setError(err.message);
-      alert("Error al iniciar sesión: " + err.message);
     } finally {
       setLoading(false);
     }

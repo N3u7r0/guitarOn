@@ -4,13 +4,14 @@ import { NavBar } from "../components";
 import { Footer } from "../components";
 
 export const LayoutMain = () => {
+  
   return (
     <>
       <BrowserRouter>
         <NavBar />
         <RouterMain />
       </BrowserRouter>
-      <Footer />
+      <Footer  />
     </>
   );
 };

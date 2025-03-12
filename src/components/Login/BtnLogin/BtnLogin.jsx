@@ -16,8 +16,7 @@ export function BtnLogin() {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const handleSuccess = () => {
-    // Aquí puedes ejecutar lógica adicional si lo necesitas
-    onClose(); // Cierra el Drawer
+    onClose(); // cierra el Drawer
   };
 
   return (
@@ -32,15 +31,15 @@ export function BtnLogin() {
           <DrawerCloseButton />
           <DrawerHeader textAlign="center">Iniciar Sesión</DrawerHeader>
           <DrawerBody>
-            {/* Form de iniciar sesión (le paso la prop para que cierre)*/}
-            <FormSignIn onSuccess={handleSuccess} />
+            {/* form de iniciar sesión (le paso la prop para que cierre)*/}
+            <FormSignIn handleSuccess={handleSuccess} />
 
             <Box textAlign="center" mt={"5rem"} mb={4}>
               <p>¿No tenés una cuenta? Crea una!</p>
             </Box>
 
             {/*  formulario crear una cuenta */}
-            <FormSignUp onSuccess={handleSuccess} />
+            <FormSignUp handleSuccess={handleSuccess} />
           </DrawerBody>
         </DrawerContent>
       </Drawer>

@@ -90,6 +90,7 @@ export const FormSignUp = ({ onSuccess }) => {
                     required
                     maxLength="30"
                     ref={nombreRef}
+                    autoComplete="name"
                   />
                 </FormControl>
                 <FormControl id="apellido" isRequired>
@@ -100,6 +101,7 @@ export const FormSignUp = ({ onSuccess }) => {
                     maxLength="30"
                     placeholder="Ingresa tu apellido"
                     ref={apellidoRef}
+                    autoComplete="family-name"
                   />
                 </FormControl>
                 <FormControl id="telefono" type="number" isRequired>
@@ -108,6 +110,7 @@ export const FormSignUp = ({ onSuccess }) => {
                     type="number"
                     placeholder="Ingresa tu número de teléfono"
                     ref={telefonoRef}
+                    autoComplete="phone"
                   />
                 </FormControl>
                 <FormControl id="direccion" isRequired>
@@ -118,6 +121,8 @@ export const FormSignUp = ({ onSuccess }) => {
                     maxLength="30"
                     placeholder="Ingresa tu dirección"
                     ref={direccionRef}
+                    autoComplete="street-address"
+                    
                   />
                 </FormControl>
                 <FormControl id="registerEmail" isRequired>
@@ -126,6 +131,7 @@ export const FormSignUp = ({ onSuccess }) => {
                     type="email"
                     placeholder="Ingresa tu correo"
                     ref={registerEmailRef}
+                     autoComplete="email"
                   />
                 </FormControl>
                 <FormControl id="registerPassword" isRequired>
@@ -134,6 +140,7 @@ export const FormSignUp = ({ onSuccess }) => {
                     type="password"
                     placeholder="Ingresa tu contraseña"
                     ref={registerPasswordRef}
+                     autoComplete="new-password"
                   />
                 </FormControl>
                 <Button

@@ -1,5 +1,4 @@
 import { useRef } from "react";
-import { useLogin } from "../../../hooks";
 import {
   Button,
   FormControl,
@@ -8,6 +7,8 @@ import {
   VStack,
   Box,
 } from "@chakra-ui/react";
+import { useLogin } from "../../../hooks";
+import { ToastErr } from "../../ui/ToastErr/ToastErr";
 
 export const FormSignIn = ({ onSuccess }) => {
   const loginEmailRef = useRef();
@@ -32,6 +33,7 @@ export const FormSignIn = ({ onSuccess }) => {
                 type="email"
                 placeholder="Ingresa tu correo"
                 ref={loginEmailRef}
+                autoComplete="email"
               />
             </FormControl>
             <FormControl id="loginPassword" isRequired>
@@ -40,6 +42,7 @@ export const FormSignIn = ({ onSuccess }) => {
                 type="password"
                 placeholder="Ingresa tu contraseña"
                 ref={loginPasswordRef}
+                autoComplete="current-password" /* esto es para q autocomplete el navegador */
               />
             </FormControl>
             <Button
@@ -52,10 +55,10 @@ export const FormSignIn = ({ onSuccess }) => {
             >
               {loading ? "Cargando..." : "Iniciar Sesión"}
             </Button>
-            {error && <p style={{ color: "red" }}>{error}</p>}
           </VStack>
         </form>
       </Box>
+      <ToastErr error={error} />
     </>
   );
 };

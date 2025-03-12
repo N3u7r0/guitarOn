@@ -16,12 +16,9 @@ import imgDefault from "../../../assets/images/imgDefault.jpg";
 import "./style/style.css";
 
 export const ItemDetailContainer = ({ product, loading }) => {
-  console.log(product)
-  console.log(loading)
   // Lógica de los botones que conectan con el carrito.
   const [count, setCount] = useState(0);
   const [showButton, setShowButton] = useState(false);
-
   const { addItem } = useContext(CartContext);
 
   useEffect(() => {
