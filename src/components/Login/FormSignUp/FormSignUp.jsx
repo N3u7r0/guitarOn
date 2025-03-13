@@ -1,8 +1,3 @@
-import { useRef } from "react";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { doc, setDoc } from "firebase/firestore";
-import { auth, db } from "../../../firebase";
-
 import {
   Button,
   FormControl,
@@ -16,56 +11,20 @@ import {
   AccordionIcon,
   Box,
 } from "@chakra-ui/react";
+import { ToastErr } from "../../ui";
+import { useCreateUser } from "../../../hooks";
 
 export const FormSignUp = ({ onSuccess }) => {
-  // Referencias para el formulario de registro
-  const registerEmailRef = useRef();
-  const registerPasswordRef = useRef();
-  const nombreRef = useRef();
-  const apellidoRef = useRef();
-  const telefonoRef = useRef();
-  const direccionRef = useRef();
-
-  // Manejo del registro
-  async function SignUp(e) {
-    e.preventDefault();
-    const nombreUser = nombreRef.current.value;
-    const apellidoUser = apellidoRef.current.value;
-    const telefonoUser = telefonoRef.current.value;
-    const direccionUser = direccionRef.current.value;
-    const emailUser = registerEmailRef.current.value;
-    const passwordUser = registerPasswordRef.current.value;
-
-    try {
-      const userCredential = await createUserWithEmailAndPassword(
-        auth,
-        emailUser,
-        passwordUser
-      );
-      //guarda el uid para q coincida el id de el user de firestore
-      const userId = userCredential.user.uid;
-
-      // Guarda estos datos en firestore
-      await setDoc(doc(db, "users", userId), {
-        nombre: nombreUser,
-        apellido: apellidoUser,
-        telefono: telefonoUser,
-        direccion: direccionUser,
-        email: emailUser,
-      });
-
-      console.info("Usuario creado exitosamente");
-
-      // si todo sale bien, cierra el drawer
-
-      if (onSuccess) {
-        alert("Usuario creado exitosamente");
-        onSuccess();
-      }
-    } catch (error) {
-      alert("Error al registrar el usuario: " + error.message);
-    }
-  }
+  const {
+    error,
+    SignUp,
+    registerEmailRef,
+    registerPasswordRef,
+    nombreRef,
+    apellidoRef,
+    telefonoRef,
+    direccionRef,
+  } = useCreateUser(onSuccess);
 
   return (
     <>
@@ -122,7 +81,6 @@ export const FormSignUp = ({ onSuccess }) => {
                     placeholder="Ingresa tu dirección"
                     ref={direccionRef}
                     autoComplete="street-address"
-                    
                   />
                 </FormControl>
                 <FormControl id="registerEmail" isRequired>
@@ -131,16 +89,16 @@ export const FormSignUp = ({ onSuccess }) => {
                     type="email"
                     placeholder="Ingresa tu correo"
                     ref={registerEmailRef}
-                     autoComplete="email"
+                    autoComplete="email"
                   />
                 </FormControl>
                 <FormControl id="registerPassword" isRequired>
-                  <FormLabel>Contraseña (minimo 6 caracteres)</FormLabel>
+                  <FormLabel>Contraseña (mínimo 6 caracteres)</FormLabel>
                   <Input
                     type="password"
                     placeholder="Ingresa tu contraseña"
                     ref={registerPasswordRef}
-                     autoComplete="new-password"
+                    autoComplete="new-password"
                   />
                 </FormControl>
                 <Button
@@ -157,6 +115,7 @@ export const FormSignUp = ({ onSuccess }) => {
           </AccordionPanel>
         </AccordionItem>
       </Accordion>
+      <ToastErr error={error} />
     </>
   );
 };

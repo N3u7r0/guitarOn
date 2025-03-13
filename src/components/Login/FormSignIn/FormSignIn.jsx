@@ -7,13 +7,13 @@ import {
   VStack,
   Box,
 } from "@chakra-ui/react";
-import { useLogin } from "../../../hooks";
+import { useLoginUser } from "../../../hooks";
 import { ToastErr } from "../../ui/ToastErr/ToastErr";
 
 export const FormSignIn = ({ onSuccess }) => {
   const loginEmailRef = useRef();
   const loginPasswordRef = useRef();
-  const { login, loading, error } = useLogin(onSuccess);
+  const { login, loading, error } = useLoginUser(onSuccess);
 
   const handleSubmit = (e) => {
     e.preventDefault();

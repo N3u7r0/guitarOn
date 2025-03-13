@@ -59,6 +59,7 @@ export const CartProvider = ({ children }) => {
     <CartContext.Provider
       value={{
         stateCartWidget,
+        setStateCartWidget,
         addItem,
         removeItem,
         deleteItem,

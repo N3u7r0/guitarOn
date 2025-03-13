@@ -23,7 +23,9 @@ import {
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { CartWidget } from "../../../components";
-import { BtnLogin } from "../../../components"
+import { BtnLogin } from "../../../components";
+import { BtnLogOut } from "../../../components";
+import { useCheckLoginUser } from "../../../hooks";
 import imagen from "../../../assets/images/logo.png";
 
 /* este custom es para q le de estilo a todos los btn */
@@ -47,9 +49,10 @@ const CustomMenuItem = ({ to, children }) => (
 );
 
 export function NavBar() {
-  const { colorMode, toggleColorMode } = useColorMode();
+  const { colorMode, toggleColorMode } = useColorMode();//hook de chakra 
   const [isOpen, setIsOpen] = useState(false);
   const toggleMenu = () => setIsOpen(!isOpen);
+  const {user} = useCheckLoginUser();
 
   return (
     <>
@@ -70,7 +73,12 @@ export function NavBar() {
           padding={"1rem"}
         >
           {/* Logo y carrito */}
-          <Grid templateColumns={"auto auto"} gap={2} alignItems={"center"} mr={3}> 
+          <Grid
+            templateColumns={"auto auto"}
+            gap={2}
+            alignItems={"center"}
+            mr={3}
+          >
             <Link to={"./"}>
               <Img
                 src={imagen}
@@ -122,8 +130,9 @@ export function NavBar() {
               </Menu>
             </Flex>
 
-            {/* Botón de Login */}
-            <BtnLogin />
+          
+            {/* Mostrar botón Login o Logout basado en el estado del usuario */}
+            {user ? <BtnLogOut /> : <BtnLogin />}
 
             {/* Botón de hamburguesa */}
             <IconButton

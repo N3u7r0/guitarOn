@@ -6,11 +6,11 @@ import logo from "../assets/images/logo.png";
 import { useContext } from "react";
 import { UserContext } from "../context";
 
+
+
 export const Home = () => {
   const { productsOffer, loading } = useProductsOffer();
   const { userDataContext } = useContext(UserContext);
-  console.log(userDataContext);
-
   return (
     <Flex
       textAlign={"center"}
