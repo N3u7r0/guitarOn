@@ -2,18 +2,16 @@ import { useContext, useState } from "react";
 import { Button } from "@chakra-ui/react";
 import { signOut } from "firebase/auth";
 import { auth } from "../../../firebase";
-import { CartContext, UserContext } from "../../../context";
+import { CartContext } from "../../../context";
 import { ToastErr } from "../../ui";
 
 export const BtnLogOut = () => {
-  const { setUserDataContext } = useContext(UserContext);
   const { setStateCartWidget } = useContext(CartContext);
   const [error, setError] = useState(null); // Estado para manejar el error
 
   const handleLogOut = async () => {
     try {
       await signOut(auth); // cierra la sesion en Firebase
-      setUserDataContext([]); // limpia los datos del contexto del usuario
       setStateCartWidget([]); // limpia los datos del carrito
       console.log("Usuario deslogueado exitosamente");
       setError(null); // Resetea el error en caso de éxito

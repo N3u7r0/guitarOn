@@ -30,7 +30,7 @@ export const useCreateUser = (onSuccess) => {
         emailUser,
         passwordUser
       );
-      // Guarda el uid para que coincida el id del usuario en firestore
+      // guarda el uid para que coincida el id del usuario en firestore
       const userId = userCredential.user.uid;
 
       // Guarda estos datos en firestore
@@ -44,13 +44,12 @@ export const useCreateUser = (onSuccess) => {
 
       console.info("Usuario creado exitosamente");
 
-      // Si todo sale bien, ejecuta el callback de éxito
+      // si todo sale bien, cierra el drawer
       if (onSuccess) {
-        alert("Usuario creado exitosamente");
         onSuccess();
       }
     } catch (err) {
-      setError(err.message);
+      setError(err.code);
     }
   }
 

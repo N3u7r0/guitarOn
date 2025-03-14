@@ -38,7 +38,7 @@ const CustomMenuItem = ({ to, children, onClick }) => (
       fontSize={"1rem"}
       justifyContent={"center"}
       variant="ghost"
-      
+
       _hover={{
         backgroundColor: "rgba(200, 0, 0, 0.85)",
         color: "white",
@@ -53,8 +53,7 @@ export function NavBar() {
   const { colorMode, toggleColorMode } = useColorMode(); // Hook de Chakra UI
   const [isOpen, setIsOpen] = useState(false);
   const toggleMenu = () => setIsOpen(!isOpen);
-  const { user } = useCheckLoginUser();
-  console.log(user);
+  const { userCheck } = useCheckLoginUser();
 
   return (
     <>
@@ -64,7 +63,7 @@ export function NavBar() {
         position={"sticky"}
         top={"0"}
         w={"100%"}
-        zIndex={"1"} // Esto es para que la navBar siempre esté arriba de todo
+        zIndex={"1"} // esto es para que la navBar siempre este arriba de todo
         boxShadow={"0px -20px 40px"}
         padding={0}
       >
@@ -74,7 +73,7 @@ export function NavBar() {
           justifyContent={"space-between"}
           padding={"1rem"}
         >
-          {/* Logo y carrito */}
+          {/* logo y carrito */}
           <Grid
             templateColumns={"auto auto"}
             gap={2}
@@ -94,14 +93,14 @@ export function NavBar() {
             <CartWidget />
           </Grid>
 
-          {/* Contenedor flex de darkmode, menú */}
+          {/* Contenedor flex de darkmode, menu */}
           <Flex gap={{ base: 2, lg: 7 }}>
-            {/* Navegación para pantallas grandes */}
+            {/* nav para pantallas grandes */}
             <Flex display={{ base: "none", md: "flex" }} gap={4}>
               <CustomMenuItem to={"./"}>Home</CustomMenuItem>
               <CustomMenuItem to={"./Contacto"}>Contactanos</CustomMenuItem>
 
-              {/* Menú desplegable Productos */}
+              {/* Menu desplegable de productos */}
               <Menu>
                 <MenuButton
                   as={Button}
@@ -143,22 +142,21 @@ export function NavBar() {
                   </CustomMenuItem>
                 </MenuList>
               </Menu>
-              {user ? (
+              {userCheck && (
                 <CustomMenuItem
                   to={"MiCuenta"}
                   onClick={() => setIsOpen(false)}
                 >
                   Mi Cuenta
                 </CustomMenuItem>
-              ) : (
-                <Box display={"none"} />
               )}
+
             </Flex>
 
-            {/* Muestra el login o logout dependiendo de si el usuario está o no */}
-            {user ? <BtnLogOut /> : <BtnLogin />}
+            {/* muestra el login o logout dependiendo de si el usuario esta o no */}
+            {userCheck ? <BtnLogOut /> : <BtnLogin />}
 
-            {/* Botón de hamburguesa */}
+            {/* btm de hamburguesa */}
             <IconButton
               size={"md"}
               icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
@@ -167,7 +165,7 @@ export function NavBar() {
               onClick={toggleMenu}
             />
 
-            {/* Botones de colorMode */}
+            {/* botones de colorMode */}
             <Button
               onClick={toggleColorMode}
               _hover={{
@@ -181,11 +179,11 @@ export function NavBar() {
           </Flex>
         </Flex>
 
-        {/* Colapso del menú en pantallas pequeñas */}
+        {/* Colapso del menu en pantallas pequeñas */}
         <Collapse in={isOpen} animateOpacity>
           <Box pb={4} display={{ md: "none" }} justifyContent={"center"}>
             <Grid templateColumns={"1fr"} gap={4}>
-              {user ? (
+              {userCheck ? (
                 <CustomMenuItem
                   to={"MiCuenta"}
                   onClick={() => setIsOpen(false)}

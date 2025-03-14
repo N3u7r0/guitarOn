@@ -4,3 +4,4 @@ export * from "./useProductsOffer";
 export * from "./useLoginUser";
 export * from "./useCreateUser";
 export * from "./useCheckLoginUser";
+export * from "./useDataUser";
