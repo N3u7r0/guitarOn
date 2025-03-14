@@ -25,9 +25,12 @@ export const BtnLogOut = () => {
 
   return (
     <div>
-      <Button onClick={handleLogOut}>LogOut</Button>
+      <Button onClick={handleLogOut} _hover={{
+        backgroundColor: "rgba(200, 0, 0, 0.85)",
+        color: "white",
+      }}>LogOut</Button>
       {/* Pasas el estado "error" como prop a ToastErr */}
-     <ToastErr error={error} />
+      <ToastErr error={error} />
     </div>
   );
 };

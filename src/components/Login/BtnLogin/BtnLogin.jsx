@@ -22,7 +22,11 @@ export function BtnLogin() {
   return (
     <>
       {/* Botón para abrir el Drawer */}
-      <Button onClick={onOpen}>Login</Button>
+      <Button onClick={onOpen}
+        _hover={{
+          backgroundColor: "rgba(200, 0, 0, 0.85)",
+          color: "white",
+        }}>Login</Button>
 
       {/* Drawer principal */}
       <Drawer placement="right" onClose={onClose} isOpen={isOpen}>

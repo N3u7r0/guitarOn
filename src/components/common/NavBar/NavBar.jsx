@@ -28,9 +28,9 @@ import { BtnLogOut } from "../../../components";
 import { useCheckLoginUser } from "../../../hooks";
 import imagen from "../../../assets/images/logo.png";
 
-/* este custom es para q le de estilo a todos los btn */
-const CustomMenuItem = ({ to, children }) => (
-  <Link to={to}>
+/* Este custom es para dar estilo a todos los botones */
+const CustomMenuItem = ({ to, children, onClick }) => (
+  <Link to={to} onClick={onClick}>
     <Button
       display={"flex"}
       w={"100%"}
@@ -38,6 +38,7 @@ const CustomMenuItem = ({ to, children }) => (
       fontSize={"1rem"}
       justifyContent={"center"}
       variant="ghost"
+      
       _hover={{
         backgroundColor: "rgba(200, 0, 0, 0.85)",
         color: "white",
@@ -49,10 +50,11 @@ const CustomMenuItem = ({ to, children }) => (
 );
 
 export function NavBar() {
-  const { colorMode, toggleColorMode } = useColorMode();//hook de chakra 
+  const { colorMode, toggleColorMode } = useColorMode(); // Hook de Chakra UI
   const [isOpen, setIsOpen] = useState(false);
   const toggleMenu = () => setIsOpen(!isOpen);
-  const {user} = useCheckLoginUser();
+  const { user } = useCheckLoginUser();
+  console.log(user);
 
   return (
     <>
@@ -92,7 +94,7 @@ export function NavBar() {
             <CartWidget />
           </Grid>
 
-          {/* contendedor flex de  darkmode, menu */}
+          {/* Contenedor flex de darkmode, menú */}
           <Flex gap={{ base: 2, lg: 7 }}>
             {/* Navegación para pantallas grandes */}
             <Flex display={{ base: "none", md: "flex" }} gap={4}>
@@ -113,25 +115,47 @@ export function NavBar() {
                 >
                   Productos
                 </MenuButton>
-
                 <MenuList>
-                  <CustomMenuItem to={"/category/todosLosProductos"}>
+                  <CustomMenuItem
+                    to={"/category/todosLosProductos"}
+                    onClick={() => setIsOpen(false)}
+                  >
                     Todos los productos
                   </CustomMenuItem>
                   <MenuDivider />
-                  <CustomMenuItem to={"./category/guitarra"}>
+                  <CustomMenuItem
+                    to={"./category/guitarra"}
+                    onClick={() => setIsOpen(false)}
+                  >
                     Guitarras
                   </CustomMenuItem>
-                  <CustomMenuItem to={"./category/bajo"}>Bajos</CustomMenuItem>
-                  <CustomMenuItem to={"./category/bateria"}>
+                  <CustomMenuItem
+                    to={"./category/bajo"}
+                    onClick={() => setIsOpen(false)}
+                  >
+                    Bajos
+                  </CustomMenuItem>
+                  <CustomMenuItem
+                    to={"./category/bateria"}
+                    onClick={() => setIsOpen(false)}
+                  >
                     Baterías
                   </CustomMenuItem>
                 </MenuList>
               </Menu>
+              {user ? (
+                <CustomMenuItem
+                  to={"MiCuenta"}
+                  onClick={() => setIsOpen(false)}
+                >
+                  Mi Cuenta
+                </CustomMenuItem>
+              ) : (
+                <Box display={"none"} />
+              )}
             </Flex>
 
-          
-            {/* Mostrar botón Login o Logout basado en el estado del usuario */}
+            {/* Muestra el login o logout dependiendo de si el usuario está o no */}
             {user ? <BtnLogOut /> : <BtnLogin />}
 
             {/* Botón de hamburguesa */}
@@ -144,7 +168,14 @@ export function NavBar() {
             />
 
             {/* Botones de colorMode */}
-            <Button onClick={toggleColorMode}>
+            <Button
+              onClick={toggleColorMode}
+              _hover={{
+                backgroundColor: "rgba(200, 0, 0, 0.85)",
+                color: "white",
+                boxShadow: "0px 0px 60px 10px rgb(0, 0, 0)",
+              }}
+            >
               {colorMode === "light" ? <MoonIcon /> : <SunIcon />}
             </Button>
           </Flex>
@@ -154,16 +185,48 @@ export function NavBar() {
         <Collapse in={isOpen} animateOpacity>
           <Box pb={4} display={{ md: "none" }} justifyContent={"center"}>
             <Grid templateColumns={"1fr"} gap={4}>
-              <CustomMenuItem to={"./"}>Home</CustomMenuItem>
-              <CustomMenuItem to={"./nosotros"}>Nosotros</CustomMenuItem>
-              <CustomMenuItem to={"/category/todosLosProductos"}>
+              {user ? (
+                <CustomMenuItem
+                  to={"MiCuenta"}
+                  onClick={() => setIsOpen(false)}
+                >
+                  Mi Cuenta
+                </CustomMenuItem>
+              ) : (
+                <Box display={"none"} />
+              )}
+              <br />
+              <CustomMenuItem to={"./"} onClick={() => setIsOpen(false)}>
+                Home
+              </CustomMenuItem>
+              <CustomMenuItem
+                to={"./Contacto"}
+                onClick={() => setIsOpen(false)}
+              >
+                Contacto
+              </CustomMenuItem>
+              <CustomMenuItem
+                to={"/category/todosLosProductos"}
+                onClick={() => setIsOpen(false)}
+              >
                 Todos los productos
               </CustomMenuItem>
-              <CustomMenuItem to={"./category/guitarra"}>
+              <CustomMenuItem
+                to={"./category/guitarra"}
+                onClick={() => setIsOpen(false)}
+              >
                 Guitarras
               </CustomMenuItem>
-              <CustomMenuItem to={"./category/bajo"}>Bajos</CustomMenuItem>
-              <CustomMenuItem to={"./category/bateria"}>
+              <CustomMenuItem
+                to={"./category/bajo"}
+                onClick={() => setIsOpen(false)}
+              >
+                Bajos
+              </CustomMenuItem>
+              <CustomMenuItem
+                to={"./category/bateria"}
+                onClick={() => setIsOpen(false)}
+              >
                 Baterías
               </CustomMenuItem>
             </Grid>

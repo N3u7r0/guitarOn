@@ -7,6 +7,7 @@ import {
   CheckOut,
   Pagar,
 } from "../pages";
+import { MiCuenta } from "../pages/Micuenta";
 
 export const RouterMain = () => {
   return (
@@ -17,6 +18,7 @@ export const RouterMain = () => {
       <Route path="/item/:id" element={<Item />} />
       <Route path="/checkout" element={<CheckOut />} />
       <Route path="/pagar" element={<Pagar />} />
+      <Route path="/MiCuenta" element={<MiCuenta />} />
     </Routes>
   );
 };
