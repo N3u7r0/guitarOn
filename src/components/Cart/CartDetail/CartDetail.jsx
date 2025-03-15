@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { CartContext } from "../../../context";
 import {
   Box,
@@ -19,12 +19,23 @@ import { DeleteIcon, AddIcon, MinusIcon } from "@chakra-ui/icons";
 import { Link } from "react-router-dom";
 
 export const CartDetail = () => {
-  const { stateCartWidget, addItem, removeItem, deleteItem } =
-    useContext(CartContext);
-  const total = stateCartWidget.reduce(
-    (acc, item) => acc + (item.precio ? item.precio * item.count : 0),
-    0
-  );
+  const {
+    stateCartWidget,
+    addItem,
+    removeItem,
+    deleteItem,
+    totalPrice,
+    setTotalPrice,
+  } = useContext(CartContext);
+
+  // actualiza el totalPrice cuando el carrito cambia
+  useEffect(() => {
+    const newTotal = stateCartWidget.reduce(
+      (acc, item) => acc + (item.precio ? item.precio * item.count : 0),
+      0
+    );
+    setTotalPrice(newTotal); // actualiza el estado global del total
+  }, [stateCartWidget, setTotalPrice]);
 
   const handleDeleteItem = (item) => {
     deleteItem(item);
@@ -48,7 +59,7 @@ export const CartDetail = () => {
           Tu carrito está vacío.
         </Alert>
       ) : (
-        <VStack spacing={4} align="stretch">
+        <VStack spacing={4} align="stretch" mb={"5rem"}>
           {stateCartWidget.map((item) => (
             <Flex
               key={item.id}
@@ -98,7 +109,7 @@ export const CartDetail = () => {
                       aria-label="Aumentar cantidad"
                       icon={<AddIcon />}
                       size="sm"
-                      onClick={() => addItem(item,1)}
+                      onClick={() => addItem(item, 1)}
                       isDisabled={item.count >= item.stock}
                     />
                   </HStack>
@@ -126,7 +137,7 @@ export const CartDetail = () => {
               Total: $
             </Text>
             <Text fontSize="2xl" fontWeight="bold" color={"red.500"}>
-              {total.toFixed(2)}
+              {totalPrice.toFixed(2)} 
             </Text>
             <Spacer />
             <Link to="/pagar">
@@ -136,7 +147,7 @@ export const CartDetail = () => {
                   color: "white",
                 }}
               >
-                Continuar al pago
+                Continuar
               </Button>
             </Link>
           </Flex>

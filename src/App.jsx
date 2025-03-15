@@ -1,6 +1,7 @@
 import { ChakraProvider } from "@chakra-ui/react";
 import { LayoutMain } from "./layout";
 import { CartProvider, ProductsProvider } from "./context";
+import "./style.css";
 
 function App() {
   return (

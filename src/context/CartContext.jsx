@@ -3,16 +3,27 @@ import { createContext, useState, useEffect } from "react";
 export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
+  // Inicializa el carrito desde el localStorage
   const [stateCartWidget, setStateCartWidget] = useState(() => {
-    // Inicializa el estado desde localStorage, si tiene algo guardado. (lo saque de copilot)
     const storageCart = localStorage.getItem("carrito detalle");
     return storageCart ? JSON.parse(storageCart) : [];
   });
 
-  //actualiza el localStorage cuando cambie el carrito
+  // Inicializa el totalPrice desde el localStorage
+  const [totalPrice, setTotalPrice] = useState(() => {
+    const storageTotal = localStorage.getItem("total precio");
+    return storageTotal ? parseFloat(storageTotal) : 0;
+  });
+
+  // actualiza el localStorage cuando cambie el carrito
   useEffect(() => {
     localStorage.setItem("carrito detalle", JSON.stringify(stateCartWidget));
   }, [stateCartWidget]);
+
+  // actualiza el localStorage de el totalPrice
+  useEffect(() => {
+    localStorage.setItem("precio total", totalPrice.toString());
+  }, [totalPrice]);
 
   const addItem = (product, count) => {
     const existingProduct = stateCartWidget.find(
@@ -59,10 +70,12 @@ export const CartProvider = ({ children }) => {
     <CartContext.Provider
       value={{
         stateCartWidget,
+        totalPrice,
         setStateCartWidget,
         addItem,
         removeItem,
         deleteItem,
+        setTotalPrice,
       }}
     >
       {children}

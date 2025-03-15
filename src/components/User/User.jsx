@@ -1,5 +1,4 @@
 
-import { useContext } from "react";
 import {
   Box,
   Flex,
@@ -30,7 +29,7 @@ export const User = ({ userData, loading }) => {
           gap={"2rem"}
           flexWrap={"wrap"}
           justifyContent={"center"}
-          
+
 
         >
           {/* Datos de usuario */}
@@ -71,62 +70,8 @@ export const User = ({ userData, loading }) => {
               </Box>
             ))}
           </Stack>
-
-          {/* Tabla de productos con scroll horizontal */}
-          <Stack
-            display={"flex"} align={"center"}>
-            <Box
-              borderWidth="1px"
-              borderRadius="lg"
-              boxShadow="md"
-              p={4}
-              w={{ base: "65%", md: "90%", lg: "100%" }}
-              justifyContent={"center"}
-              alignContent={"center"}
-            >
-              <Text
-                textAlign={"center"}
-
-                fontSize={"x-large"}
-              >
-                Mis productos
-              </Text>
-              <Divider />
-
-              <br />
-              {/* Tabla responsiva con scroll horizontal */}
-              <TableContainer overflowY="auto" maxH={"45vh"}  >
-                <Table
-                  variant="striped"
-                  colorScheme="red"
-                  size={{ base: "sm", md: "md" }} // Tamaño ajustado por media queries
-                >
-                  {/* Encabezados de la tabla */}
-                  <Thead>
-                    <Tr>
-                      <Th>Categoria</Th>
-                      <Th>Marca</Th>
-                      <Th>Modelo</Th>
-                      <Th>Precio unidad</Th>
-                      <Th>Cantidad</Th>
-                    </Tr>
-                  </Thead>
-                  {/* Filas con los datos */}
-                  <Tbody>
-                    {stateCartWidget.map((item) => (
-                      <Tr key={item.id}>
-                        <Td>{item.categoria}</Td>
-                        <Td>{item.marca}</Td>
-                        <Td>{item.modelo}</Td>
-                        <Td>${item.precio}</Td>
-                        <Td>{item.count}</Td>
-                      </Tr>
-                    ))}
-                  </Tbody>
-                </Table>
-              </TableContainer>
-            </Box>
-          </Stack>
+          {/* Tabla de productos*/}
+          
         </Flex>
       )}
     </>
