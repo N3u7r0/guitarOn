@@ -13,12 +13,11 @@ import {
   Th,
   Divider,
 } from "@chakra-ui/react";
-import { CartContext } from "../../context";
+
 import { Spin } from "../ui";
 
 export const User = ({ userData, loading }) => {
-  const { stateCartWidget } = useContext(CartContext);
-
+ 
   return (
     <>
       {loading ? (

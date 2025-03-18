@@ -11,7 +11,7 @@ export const CartProvider = ({ children }) => {
 
   // Inicializa el totalPrice desde el localStorage
   const [totalPrice, setTotalPrice] = useState(() => {
-    const storageTotal = localStorage.getItem("total precio");
+    const storageTotal = localStorage.getItem("precio total");
     return storageTotal ? parseFloat(storageTotal) : 0;
   });
 
