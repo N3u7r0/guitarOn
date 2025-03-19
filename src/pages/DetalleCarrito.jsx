@@ -1,5 +1,5 @@
 import { CartDetail } from "../components";
 
-export const CheckOut = () => {
+export const DetalleCarrito = () => {
   return <CartDetail />;
 };

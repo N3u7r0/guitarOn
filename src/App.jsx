@@ -1,17 +1,19 @@
 import { ChakraProvider } from "@chakra-ui/react";
 import { LayoutMain } from "./layout";
-import { CartProvider, ProductsProvider } from "./context";
+import { CartProvider, ProductsProvider, UserProvider } from "./context";
 import "./style.css";
 
 function App() {
   return (
     <ChakraProvider>
 
+        <UserProvider>
       <ProductsProvider>
-        <CartProvider>
-          <LayoutMain />
-        </CartProvider>
+          <CartProvider>
+            <LayoutMain />
+          </CartProvider>
       </ProductsProvider>
+        </UserProvider>
 
     </ChakraProvider>
   );

@@ -17,6 +17,7 @@ import {
 } from "@chakra-ui/react";
 import { DeleteIcon, AddIcon, MinusIcon } from "@chakra-ui/icons";
 import { Link } from "react-router-dom";
+import { useCheckLoginUser } from "../../../hooks";
 
 export const CartDetail = () => {
   const {
@@ -28,13 +29,15 @@ export const CartDetail = () => {
     setTotalPrice,
   } = useContext(CartContext);
 
-  // actualiza el totalPrice cuando el carrito cambia
+  const { userCheck } = useCheckLoginUser(); // Verifica el estado del usuario
+
+  // Actualiza el totalPrice cuando el carrito cambia
   useEffect(() => {
     const newTotal = stateCartWidget.reduce(
       (acc, item) => acc + (item.precio ? item.precio * item.count : 0),
       0
     );
-    setTotalPrice(newTotal); // actualiza el estado global del total
+    setTotalPrice(newTotal); // Actualiza el estado global del total
   }, [stateCartWidget, setTotalPrice]);
 
   const handleDeleteItem = (item) => {
@@ -52,8 +55,8 @@ export const CartDetail = () => {
           status="info"
           borderRadius="md"
           backgroundColor={"rgba(0, 0, 0, 0.05)"}
-          _hover={{ backgroundColor: "rgba(80, 000, 000, 0.12)" }}
-          boxShadow={"1px 3px 5px rgba(0, 0, 0, 0.15) "}
+          _hover={{ backgroundColor: "rgba(80, 0, 0, 0.12)" }}
+          boxShadow={"1px 3px 5px rgba(0, 0, 0, 0.15)"}
         >
           <AlertIcon />
           Tu carrito está vacío.
@@ -69,7 +72,7 @@ export const CartDetail = () => {
               alignItems="center"
               boxShadow="sm"
               backgroundColor={"rgba(0, 0, 0, 0.05)"}
-              _hover={{ backgroundColor: "rgba(80, 000, 000, 0.12)" }}
+              _hover={{ backgroundColor: "rgba(80, 0, 0, 0.12)" }}
               flexDirection={{ base: "column", md: "row" }}
               textAlign={{ base: "center", md: "left" }}
             >
@@ -132,7 +135,7 @@ export const CartDetail = () => {
             </Flex>
           ))}
           <Divider />
-          <Flex alignItems="center">
+          <Flex alignItems="center" wrap="wrap">
             <Text fontSize="2xl" fontWeight="bold" display={"flex"}>
               Total: $
             </Text>
@@ -140,16 +143,31 @@ export const CartDetail = () => {
               {totalPrice.toFixed(2)} 
             </Text>
             <Spacer />
-            <Link to="/pagar">
+            {userCheck ? (
+              // Botón habilitado si el usuario está autenticado
+              <Link to="/pagar">
+                <Button
+                  _hover={{
+                    backgroundColor: "rgba(200, 0, 0, 0.85)",
+                    color: "white",
+                  }}
+                >
+                  Continuar
+                </Button>
+              </Link>
+            ) : (
+              // Botón deshabilitado si no está autenticado
               <Button
+                isDisabled
+                colorScheme="gray"
                 _hover={{
-                  backgroundColor: "rgba(200, 000, 000, 0.85)",
-                  color: "white",
+                  backgroundColor: "gray.300",
+                  color: "black",
                 }}
               >
-                Continuar
+                Inicia sesión para continuar
               </Button>
-            </Link>
+            )}
           </Flex>
         </VStack>
       )}

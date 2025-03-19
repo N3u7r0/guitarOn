@@ -1,23 +1,26 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../firebase";
 import { auth } from "../firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "../context/UserContext";
 
 export const useDataUser = () => {
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [userData, setUserData] = useState([]);
-  const navigate = useNavigate();
-  
+  const { userDataContext, setUserDataContext } = useContext(UserContext);
+
   useEffect(() => {
     setLoading(true);
 
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (user) {
         try {
-          await fetchUserData(user.uid); // llama y espera a fetchUserData con el id del usuario
+          if (userDataContext.length === 0) { // Solo llama a fetchUserData si el contexto está vacío
+            await fetchUserData(user.uid);
+          }
         } catch (err) {
           console.error("Error al obtener datos del usuario:", err);
         } finally {
@@ -25,25 +28,25 @@ export const useDataUser = () => {
         }
       } else {
         console.warn("No hay usuario autenticado.");
-        setUserData([]); // limpia el estado de userData cuando no hay autenticacion
+        setUserDataContext([]); // Limpia el estado de userDataContext al salir de la sesión
         navigate("/");
       }
     });
 
-    // limpia el listener al desmontar el componente
+    // Limpia el listener al desmontar el componente
     return unsubscribe;
-  }, []);
+  }, [userDataContext]);
 
-  // obtengo los datos del usuario de firestore
+  // Obtengo los datos del usuario de Firestore
   const fetchUserData = async (uid) => {
     try {
       const userDocRef = doc(db, "users", uid);
       const userDoc = await getDoc(userDocRef);
 
-      // obtengo los datos del documento, si no hay datos guardados, regresa al home
+      // Verifica si el documento existe
       if (userDoc.exists()) {
         const data = userDoc.data();
-        setUserData((prevData) => [...prevData, data]);
+        setUserDataContext([data]); // Sobrescribe el estado con los nuevos datos
       } else {
         console.warn("No se encontró información para el usuario con UID:", uid);
         navigate("/");
@@ -54,5 +57,5 @@ export const useDataUser = () => {
     }
   };
 
-  return { userData, loading, error };
+  return { userDataContext, loading, error };
 };

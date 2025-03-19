@@ -16,7 +16,8 @@ import {
 
 import { Spin } from "../ui";
 
-export const User = ({ userData, loading }) => {
+export const User = ({ userDataContext, loading }) => {
+ 
  
   return (
     <>
@@ -28,12 +29,10 @@ export const User = ({ userData, loading }) => {
           gap={"2rem"}
           flexWrap={"wrap"}
           justifyContent={"center"}
-
-
         >
           {/* Datos de usuario */}
           <Stack spacing={4}>
-            {userData.map((user, index) => (
+            {userDataContext.map((user, index) => (
               <Box
                 key={index}
                 borderWidth="1px"

@@ -4,10 +4,11 @@ import {
   Contacto,
   TodosLosProductos,
   Item,
-  CheckOut,
+  DetalleCarrito,
   Pagar,
+  MiCuenta,
 } from "../pages";
-import { MiCuenta } from "../pages/Micuenta";
+
 
 export const RouterMain = () => {
   return (
@@ -16,7 +17,7 @@ export const RouterMain = () => {
       <Route path="/Contacto" element={<Contacto />} />
       <Route path="/category/:categoria" element={<TodosLosProductos />} />
       <Route path="/item/:id" element={<Item />} />
-      <Route path="/checkout" element={<CheckOut />} />
+      <Route path="/DetalleCarrito" element={<DetalleCarrito />} />
       <Route path="/pagar" element={<Pagar />} />
       <Route path="/MiCuenta" element={<MiCuenta />} />
     </Routes>

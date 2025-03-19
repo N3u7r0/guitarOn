@@ -13,7 +13,7 @@ export const CartWidget = () => {
   );
 
   return (
-    <Link to={"/checkout"}>
+    <Link to={"/DetalleCarrito"}>
       <Flex gap={"0.5vh"} alignItems={"center"}>
         <Icon _hover={{ cursor: "pointer" }}>
           <svg
