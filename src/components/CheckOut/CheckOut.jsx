@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import {
   Box,
   Flex,
@@ -30,12 +30,23 @@ export const CheckOut = ({ userDataContext, loading }) => {
     telefono: "",
   });
 
+  // Efecto para inicializar los valores predeterminados desde userDataContext
+  useEffect(() => {
+    if (userDataContext && userDataContext.length > 0) {
+      const userData = userDataContext[0]; // Acceder a los datos del usuario
+      setEnvio({
+        nombre: userData.nombre || "",
+        apellido: userData.apellido || "",
+        direccion: userData.direccion || "",
+        telefono: userData.telefono || "",
+      });
+    }
+  }, [userDataContext]);
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setEnvio((prev) => ({ ...prev, [name]: value }));
   };
-
-  console.log(userDataContext);
 
   return (
     <>
