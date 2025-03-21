@@ -21,32 +21,50 @@ import { CartContext } from "../../context";
 import { Spin } from "../ui";
 
 export const CheckOut = ({ userDataContext, loading }) => {
-  const { stateCartWidget, totalPrice } = useContext(CartContext);
-  const [opcionEnvio, setOpcionEnvio] = useState("retiro");
-  const [envio, setEnvio] = useState({
+  const { stateCartWidget, totalPrice } = useContext(CartContext);// productos y saldo total
+  const [opcionEnvio, setOpcionEnvio] = useState("retiro en tienda");
+  const [datosPedido, setDatosPedido] = useState([]);// aca guarda el pedido
+  console.log(datosPedido);
+
+  const [cliente, setCliente] = useState([{
     nombre: "",
     apellido: "",
     direccion: "",
     telefono: "",
-  });
+  }]); //datos del cliente que llegan desde el formulario.
 
-  // Efecto para inicializar los valores predeterminados desde userDataContext
+  // guardo los datos de datacontext en el formuario
   useEffect(() => {
+    //control de error, tengo q verificar la existencia y verificar su logitud si voy a usar [0] xq si no falla!
     if (userDataContext && userDataContext.length > 0) {
-      const userData = userDataContext[0]; // Acceder a los datos del usuario
-      setEnvio({
-        nombre: userData.nombre || "",
-        apellido: userData.apellido || "",
-        direccion: userData.direccion || "",
-        telefono: userData.telefono || "",
+      const userData = userDataContext[0]; // Acceder a los datos del primer array (xq llega como tal [{...}])
+      setCliente({
+        nombre: userData.nombre || "N/a",
+        apellido: userData.apellido || "N/a",
+        direccion: userData.direccion || "N/a",
+        telefono: userData.telefono || "N/a",
       });
     }
   }, [userDataContext]);
 
+  // escucha el formulario para guardarlo en el estado
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setEnvio((prev) => ({ ...prev, [name]: value }));
+    setCliente((prev) => ({ ...prev, [name]: value }));
   };
+
+
+  const handleGuardarPedido = () => {
+    const fecha = new Date(); //fecha del pedido
+    setDatosPedido({
+      cliente,
+      opcionEnvio,
+      productos: stateCartWidget,
+      total: totalPrice,
+      fecha,
+    });
+  };
+
 
   return (
     <>
@@ -54,7 +72,6 @@ export const CheckOut = ({ userDataContext, loading }) => {
         <Spin />
       ) : (
         <Flex justifyContent={"center"} flexDirection={"column"} margin={"2rem"} p={5}>
-          {/* Mis productos */}
           <Stack display={"flex"} align={"center"}>
             <Box
               borderWidth="1px"
@@ -105,55 +122,61 @@ export const CheckOut = ({ userDataContext, loading }) => {
               </Flex>
               <Divider mt={4} />
 
-              {/* Opción de envío o retiro */}
               <RadioGroup
                 onChange={(value) => setOpcionEnvio(value)}
                 value={opcionEnvio}
                 mt={4}
               >
                 <Stack direction="row" spacing={5}>
-                  <Radio value="retiro">Retiro en tienda</Radio>
+                  <Radio value="retiro en tienda">Retiro en tienda</Radio>
                   <Radio value="envio">Envío</Radio>
                 </Stack>
               </RadioGroup>
 
-              {/* Datos de envío */}
               {opcionEnvio === "envio" && (
                 <Box mt={4} borderWidth="1px" borderRadius="lg" p={4}>
                   <Text fontSize="lg" fontWeight="bold" mb={3}>
                     Datos de Envío
                   </Text>
                   <Stack spacing={3}>
+                    <Text>Nombre</Text>
                     <Input
                       placeholder="Nombre"
                       name="nombre"
-                      value={envio.nombre}
+                      value={cliente.nombre}
                       onChange={handleInputChange}
                     />
+                    <Text>Apellido</Text>
                     <Input
                       placeholder="Apellido"
                       name="apellido"
-                      value={envio.apellido}
+                      value={cliente.apellido}
                       onChange={handleInputChange}
                     />
+                    <Text>Direccion</Text>
                     <Input
                       placeholder="Dirección"
                       name="direccion"
-                      value={envio.direccion}
+                      value={cliente.direccion}
                       onChange={handleInputChange}
                     />
+                    <Text>Telefono</Text>
                     <Input
                       placeholder="Teléfono"
                       name="telefono"
-                      value={envio.telefono}
+                      value={cliente.telefono}
                       onChange={handleInputChange}
                     />
-                    <Button colorScheme="red" onClick={() => console.log(envio)}>
-                      Guardar
-                    </Button>
                   </Stack>
                 </Box>
               )}
+              <Button
+                colorScheme="red"
+                mt={4}
+                onClick={handleGuardarPedido}
+              >
+                Guardar Pedido
+              </Button>
             </Box>
           </Stack>
         </Flex>
