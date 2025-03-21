@@ -17,15 +17,17 @@ import {
   Button,
   Input,
 } from "@chakra-ui/react";
+import { db } from "../../firebase";
+import { collection, addDoc, doc, setDoc } from "firebase/firestore";
 import { CartContext } from "../../context";
 import { Spin } from "../ui";
+import { useCheckLoginUser } from "../../hooks"; // para el uid del usuario
+
 
 export const CheckOut = ({ userDataContext, loading }) => {
   const { stateCartWidget, totalPrice } = useContext(CartContext);// productos y saldo total
+  const { userCheck } = useCheckLoginUser();
   const [opcionEnvio, setOpcionEnvio] = useState("retiro en tienda");
-  const [datosPedido, setDatosPedido] = useState([]);// aca guarda el pedido
-  console.log(datosPedido);
-
   const [cliente, setCliente] = useState([{
     nombre: "",
     apellido: "",
@@ -53,18 +55,29 @@ export const CheckOut = ({ userDataContext, loading }) => {
     setCliente((prev) => ({ ...prev, [name]: value }));
   };
 
-
-  const handleGuardarPedido = () => {
-    const fecha = new Date(); //fecha del pedido
-    setDatosPedido({
+  const handleGuardarPedido = async () => {
+    const fecha = new Date(); // Fecha del pedido
+    const pedido = {
       cliente,
       opcionEnvio,
       productos: stateCartWidget,
       total: totalPrice,
       fecha,
-    });
-  };
+    };
 
+    try {
+      // guarda el pedido en la coleccion de todos los pedidos
+      const docRef = await addDoc(collection(db, "pedidos"), pedido);
+      console.log("Pedido guardado en 'pedidos' con ID:", docRef.id);
+      // guardar el pedido en el usuario
+      const userId = userCheck.uid;
+      const userPedidosRef = doc(db, `users/${userId}/misPedidos`, docRef.id);
+      await setDoc(userPedidosRef, pedido);
+      console.log("Pedido guardado en 'users/misPedidos' para el usuario:", userId);
+    } catch (error) {
+      console.error("Error al guardar el pedido:", error);
+    }
+  };
 
   return (
     <>
