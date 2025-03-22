@@ -22,13 +22,12 @@ import {
 } from "@chakra-ui/icons";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import { CartWidget } from "../../../components";
-import { BtnLogin } from "../../../components";
-import { BtnLogOut } from "../../../components";
-import { useCheckLoginUser } from "../../../hooks";
+import { CartWidget, BtnLogin } from "../../../components";
+
+import { useCheckLoginUser, useLogoutUser } from "../../../hooks";
 import imagen from "../../../assets/images/logo.png";
 
-/* Este custom es para dar estilo a todos los botones */
+/* Componente de estilo para botones */
 const CustomMenuItem = ({ to, children, onClick }) => (
   <Link to={to} onClick={onClick}>
     <Button
@@ -38,7 +37,6 @@ const CustomMenuItem = ({ to, children, onClick }) => (
       fontSize={"1rem"}
       justifyContent={"center"}
       variant="ghost"
-
       _hover={{
         backgroundColor: "rgba(200, 0, 0, 0.85)",
         color: "white",
@@ -50,10 +48,14 @@ const CustomMenuItem = ({ to, children, onClick }) => (
 );
 
 export function NavBar() {
-  const { colorMode, toggleColorMode } = useColorMode(); // Hook de Chakra UI
-  const [isOpen, setIsOpen] = useState(false);
-  const toggleMenu = () => setIsOpen(!isOpen);
+  const { colorMode, toggleColorMode } = useColorMode(); // hook de chakra 
+  const { logOut } = useLogoutUser();
   const { userCheck } = useCheckLoginUser();
+  const [isOpen, setIsOpen] = useState(false); // estado del menu hamburguesa
+  const [isMenuOpen, setIsMenuOpen] = useState(false); // estado del menu de productos
+  const toggleMenu = () => setIsOpen(!isOpen);
+  const toggleProductMenu = () => setIsMenuOpen(!isMenuOpen); // alterna el menú de productos
+  const closeProductMenu = () => setIsMenuOpen(false); // cierra el menú de productos
 
   return (
     <>
@@ -63,7 +65,7 @@ export function NavBar() {
         position={"sticky"}
         top={"0"}
         w={"100%"}
-        zIndex={"1"} // esto es para que la navBar siempre este arriba de todo
+        zIndex={"1"} // para que la navBar siempre este arriba
         boxShadow={"0px -20px 40px"}
         padding={0}
       >
@@ -93,15 +95,15 @@ export function NavBar() {
             <CartWidget />
           </Grid>
 
-          {/* Contenedor flex de darkmode, menu */}
+          {/* dark mode y Menu */}
           <Flex gap={{ base: 2, lg: 7 }}>
-            {/* nav para pantallas grandes */}
+            {/* menu para pantallas grandes */}
             <Flex display={{ base: "none", md: "flex" }} gap={4}>
               <CustomMenuItem to={"./"}>Home</CustomMenuItem>
               <CustomMenuItem to={"./Contacto"}>Contactanos</CustomMenuItem>
 
               {/* Menu desplegable de productos */}
-              <Menu>
+              <Menu isOpen={isMenuOpen} onClose={closeProductMenu}>
                 <MenuButton
                   as={Button}
                   fontSize={"1rem"}
@@ -111,37 +113,39 @@ export function NavBar() {
                     backgroundColor: "rgba(200, 0, 0, 0.85)",
                     color: "white",
                   }}
+                  onClick={toggleProductMenu}
                 >
                   Productos
                 </MenuButton>
                 <MenuList>
                   <CustomMenuItem
                     to={"/category/todosLosProductos"}
-                    onClick={() => setIsOpen(false)}
+                    onClick={closeProductMenu}
                   >
                     Todos los productos
                   </CustomMenuItem>
                   <MenuDivider />
                   <CustomMenuItem
                     to={"./category/guitarra"}
-                    onClick={() => setIsOpen(false)}
+                    onClick={closeProductMenu}
                   >
                     Guitarras
                   </CustomMenuItem>
                   <CustomMenuItem
                     to={"./category/bajo"}
-                    onClick={() => setIsOpen(false)}
+                    onClick={closeProductMenu}
                   >
                     Bajos
                   </CustomMenuItem>
                   <CustomMenuItem
                     to={"./category/bateria"}
-                    onClick={() => setIsOpen(false)}
+                    onClick={closeProductMenu}
                   >
                     Baterías
                   </CustomMenuItem>
                 </MenuList>
               </Menu>
+
               {userCheck && (
                 <CustomMenuItem
                   to={"MiCuenta"}
@@ -150,13 +154,12 @@ export function NavBar() {
                   Mi Cuenta
                 </CustomMenuItem>
               )}
-
             </Flex>
 
-            {/* muestra el login o logout dependiendo de si el usuario esta o no */}
-            {userCheck ? <BtnLogOut /> : <BtnLogin />}
+            {/* botones de Login y Logout */}
+            {userCheck ? <CustomMenuItem onClick={logOut}>LogOut</CustomMenuItem> : <BtnLogin />}
 
-            {/* btm de hamburguesa */}
+            {/* btn hamburguesa */}
             <IconButton
               size={"md"}
               icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
@@ -165,7 +168,7 @@ export function NavBar() {
               onClick={toggleMenu}
             />
 
-            {/* botones de colorMode */}
+            {/* btn dark */}
             <Button
               onClick={toggleColorMode}
               _hover={{
@@ -179,7 +182,7 @@ export function NavBar() {
           </Flex>
         </Flex>
 
-        {/* Colapso del menu en pantallas pequeñas */}
+        {/* Menú desplegable para pantallas pequeñas */}
         <Collapse in={isOpen} animateOpacity>
           <Box pb={4} display={{ md: "none" }} justifyContent={"center"}>
             <Grid templateColumns={"1fr"} gap={4}>

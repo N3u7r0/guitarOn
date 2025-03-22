@@ -5,3 +5,4 @@ export * from "./useLoginUser";
 export * from "./useCreateUser";
 export * from "./useCheckLoginUser";
 export * from "./useDataUser";
+export * from "./useLogoutUser";
