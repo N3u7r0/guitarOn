@@ -11,7 +11,7 @@ import {
   AccordionIcon,
   Box,
 } from "@chakra-ui/react";
-import { ToastErr } from "../../ui";
+import { Toast } from "../../ui";
 import { useCreateUser } from "../../../hooks";
 
 export const FormSignUp = ({ onSuccess }) => {
@@ -115,7 +115,7 @@ export const FormSignUp = ({ onSuccess }) => {
           </AccordionPanel>
         </AccordionItem>
       </Accordion>
-      <ToastErr error={error} />
+      <Toast error={error}  />
     </>
   );
 };

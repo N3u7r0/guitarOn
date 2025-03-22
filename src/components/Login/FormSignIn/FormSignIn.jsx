@@ -8,12 +8,13 @@ import {
   Box,
 } from "@chakra-ui/react";
 import { useLoginUser } from "../../../hooks";
-import { ToastErr } from "../../ui/ToastErr/ToastErr";
+import { Toast } from "../../ui/Toast/Toast";
 
 export const FormSignIn = ({ onSuccess }) => {
   const loginEmailRef = useRef();
   const loginPasswordRef = useRef();
   const { login, loading, error } = useLoginUser(onSuccess);
+ 
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -58,7 +59,7 @@ export const FormSignIn = ({ onSuccess }) => {
           </VStack>
         </form>
       </Box>
-      <ToastErr error={error} />
+      <Toast error={error} />
     </>
   );
 };

@@ -3,23 +3,39 @@ import { Button } from "@chakra-ui/react";
 import { signOut } from "firebase/auth";
 import { auth } from "../../../firebase";
 import { CartContext } from "../../../context";
-import { ToastErr } from "../../ui";
+import { Toast } from "../../ui";
+import { useToast } from "@chakra-ui/react";
 
 export const BtnLogOut = () => {
   const { setStateCartWidget } = useContext(CartContext);
-  const [error, setError] = useState(null); // Estado para manejar el error
+  const [error, setError] = useState(null);
+  const toast = useToast(); // tostada de Chakra U
 
   const handleLogOut = async () => {
+
     try {
       await signOut(auth); // cierra la sesion en Firebase
       setStateCartWidget([]); // limpia los datos del carrito
-      console.log("Usuario deslogueado exitosamente");
-      setError(null); // Resetea el error en caso de éxito
+      setError(null); // resetea el error en caso de éxito
+
+      toast({
+        title: "¡Éxito!",
+        description: "Sesion cerrada correctamente.",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+        position: "top-right",
+      });
+
     } catch (err) {
       console.error("Error al cerrar sesión:", err);
-      setError(err); // Actualiza el estado con el error
+      setError(err);
     }
+
   };
+
+
+
 
   return (
     <div>
@@ -27,8 +43,7 @@ export const BtnLogOut = () => {
         backgroundColor: "rgba(200, 0, 0, 0.85)",
         color: "white",
       }}>LogOut</Button>
-      {/* Pasas el estado "error" como prop a ToastErr */}
-      <ToastErr error={error} />
+      <Toast error={error} />
     </div>
   );
 };

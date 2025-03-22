@@ -22,9 +22,13 @@ import { collection, addDoc, doc, setDoc } from "firebase/firestore";
 import { CartContext } from "../../context";
 import { Spin } from "../ui";
 import { useCheckLoginUser } from "../../hooks"; // para el uid del usuario
-
-
+import { useToast } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
 export const CheckOut = ({ userDataContext, loading }) => {
+  const navigate = useNavigate();
+
+
+  const toast = useToast(); // tostada de Chakra U
   const { stateCartWidget, totalPrice } = useContext(CartContext);// productos y saldo total
   const { userCheck } = useCheckLoginUser();
   const [opcionEnvio, setOpcionEnvio] = useState("retiro en tienda");
@@ -73,7 +77,18 @@ export const CheckOut = ({ userDataContext, loading }) => {
       const userId = userCheck.uid;
       const userPedidosRef = doc(db, `users/${userId}/misPedidos`, docRef.id);
       await setDoc(userPedidosRef, pedido);
-      console.log("Pedido guardado en 'users/misPedidos' para el usuario:", userId);
+      toast({
+        title: `Muchas gracias ${userDataContext[0].nombre.toUpperCase()}`,
+        description: "su pedido se guardo correctamente",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+        position: "top-right",
+      });
+      setTimeout(() => {
+        navigate("/");
+      }, 3200);      
+
     } catch (error) {
       console.error("Error al guardar el pedido:", error);
     }

@@ -6,6 +6,7 @@ import { auth, db } from "../firebase";
 export const useCreateUser = (onSuccess) => {
   const [error, setError] = useState(null);
 
+
   // referencias para el formulario de registro
   const registerEmailRef = useRef();
   const registerPasswordRef = useRef();
@@ -33,7 +34,7 @@ export const useCreateUser = (onSuccess) => {
       // guarda el uid para que coincida el id del usuario en firestore
       const userId = userCredential.user.uid;
 
-      // Guarda estos datos en firestore
+      // guarda estos datos en firestore
       await setDoc(doc(db, "users", userId), {
         nombre: nombreUser,
         apellido: apellidoUser,
@@ -42,7 +43,9 @@ export const useCreateUser = (onSuccess) => {
         email: emailUser,
       });
 
-      console.info("Usuario creado exitosamente");
+
+
+
 
       // si todo sale bien, cierra el drawer
       if (onSuccess) {
@@ -51,6 +54,7 @@ export const useCreateUser = (onSuccess) => {
     } catch (err) {
       setError(err.code);
     }
+
   }
 
   return {
