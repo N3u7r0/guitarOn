@@ -6,35 +6,39 @@ import { useToast } from "@chakra-ui/react";
 export const useLoginUser = (onSuccess) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const toast = useToast(); // tostada de Chakra U
+  const [credentials, setCredentials] = useState({ email: "", password: "" });
+  const toast = useToast();
 
-  //espera el password y la cuenta q se usa dentro de login, la funcio signInWithEmailAndPassword de firebase 
-  const login = async (emailUser, passwordUser) => {
+  // maneja los cambios en los inputs
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setCredentials((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  // funcion de inicio
+  const login = async () => {
     setLoading(true);
     setError(null);
 
     try {
-      await signInWithEmailAndPassword(
-        auth,
-        emailUser,
-        passwordUser
-      );
+      const { email, password } = credentials;
+      await signInWithEmailAndPassword(auth, email, password);
 
-      // cierra el drawer
       if (onSuccess) {
         onSuccess();
       }
 
       toast({
         title: "¡Éxito!",
-        description: "Sesion iniciada correctamente.",
+        description: "Sesión iniciada correctamente.",
         status: "success",
         duration: 3000,
         isClosable: true,
         position: "top-right",
       });
-
-
     } catch (err) {
       setError(err.code);
       console.error(err);
@@ -43,5 +47,5 @@ export const useLoginUser = (onSuccess) => {
     }
   };
 
-  return { login, loading, error };
+  return { login, loading, error, handleInputChange, credentials };
 };

@@ -15,16 +15,7 @@ import { Toast } from "../../ui";
 import { useCreateUser } from "../../../hooks";
 
 export const FormSignUp = ({ onSuccess }) => {
-  const {
-    error,
-    SignUp,
-    registerEmailRef,
-    registerPasswordRef,
-    nombreRef,
-    apellidoRef,
-    telefonoRef,
-    direccionRef,
-  } = useCreateUser(onSuccess);
+  const { error, SignUp, handleInputChange, formValues } = useCreateUser(onSuccess);
 
   return (
     <>
@@ -45,10 +36,12 @@ export const FormSignUp = ({ onSuccess }) => {
                   <FormLabel>Nombre</FormLabel>
                   <Input
                     type="text"
+                    name="nombre"
                     placeholder="Ingresa tu nombre"
                     required
                     maxLength="30"
-                    ref={nombreRef}
+                    value={formValues.nombre}
+                    onChange={handleInputChange}
                     autoComplete="name"
                   />
                 </FormControl>
@@ -56,10 +49,12 @@ export const FormSignUp = ({ onSuccess }) => {
                   <FormLabel>Apellido</FormLabel>
                   <Input
                     type="text"
+                    name="apellido"
                     required
                     maxLength="30"
                     placeholder="Ingresa tu apellido"
-                    ref={apellidoRef}
+                    value={formValues.apellido}
+                    onChange={handleInputChange}
                     autoComplete="family-name"
                   />
                 </FormControl>
@@ -67,8 +62,10 @@ export const FormSignUp = ({ onSuccess }) => {
                   <FormLabel>Teléfono</FormLabel>
                   <Input
                     type="number"
+                    name="telefono"
                     placeholder="Ingresa tu número de teléfono"
-                    ref={telefonoRef}
+                    value={formValues.telefono}
+                    onChange={handleInputChange}
                     autoComplete="phone"
                   />
                 </FormControl>
@@ -76,10 +73,12 @@ export const FormSignUp = ({ onSuccess }) => {
                   <FormLabel>Dirección</FormLabel>
                   <Input
                     type="text"
+                    name="direccion"
                     required
                     maxLength="30"
                     placeholder="Ingresa tu dirección"
-                    ref={direccionRef}
+                    value={formValues.direccion}
+                    onChange={handleInputChange}
                     autoComplete="street-address"
                   />
                 </FormControl>
@@ -87,8 +86,10 @@ export const FormSignUp = ({ onSuccess }) => {
                   <FormLabel>Correo Electrónico</FormLabel>
                   <Input
                     type="email"
+                    name="email"
                     placeholder="Ingresa tu correo"
-                    ref={registerEmailRef}
+                    value={formValues.email}
+                    onChange={handleInputChange}
                     autoComplete="email"
                   />
                 </FormControl>
@@ -96,8 +97,10 @@ export const FormSignUp = ({ onSuccess }) => {
                   <FormLabel>Contraseña (mínimo 6 caracteres)</FormLabel>
                   <Input
                     type="password"
+                    name="password"
                     placeholder="Ingresa tu contraseña"
-                    ref={registerPasswordRef}
+                    value={formValues.password}
+                    onChange={handleInputChange}
                     autoComplete="new-password"
                   />
                 </FormControl>
@@ -115,7 +118,7 @@ export const FormSignUp = ({ onSuccess }) => {
           </AccordionPanel>
         </AccordionItem>
       </Accordion>
-      <Toast error={error}  />
+      <Toast error={error} />
     </>
   );
 };
