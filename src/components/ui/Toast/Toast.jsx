@@ -2,7 +2,7 @@ import { useEffect,useContext } from "react";
 import { useToast } from "@chakra-ui/react";
 import { ToastContext } from "../../../context";
 
-export const ToastError = () => {
+export const Toast = () => {
   const toast = useToast();
   const { errorContext, exitoContext,setErrorContext, setExitoContext} = useContext(ToastContext);
 

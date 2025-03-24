@@ -11,11 +11,10 @@ import {
   AccordionIcon,
   Box,
 } from "@chakra-ui/react";
-import { ToastError } from "../../ui";
 import { useCreateUser } from "../../../hooks";
 
 export const FormSignUp = () => {
-  const { error, exito, SignUp, handleInputChange, formValues } = useCreateUser();
+  const {SignUp, handleInputChange, formValues } = useCreateUser();
 
   return (
     <>
@@ -119,7 +118,7 @@ export const FormSignUp = () => {
           </AccordionPanel>
         </AccordionItem>
       </Accordion>
-      <ToastError error={error} exito={exito} />
+     
     </>
   );
 };

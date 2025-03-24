@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
-import { ToastContext } from "../context/toastContext";
+import { ToastContext } from "../context";
 import { useContext } from "react";
 
 export const useLoginUser = () => {
@@ -28,7 +28,6 @@ export const useLoginUser = () => {
       const { email, password } = credentials;
       await signInWithEmailAndPassword(auth, email, password);
       setExitoContext("Usuario logeado exitosamente.")
-
     } catch (err) {
       setErrorContext(err.code);
       console.error(err);

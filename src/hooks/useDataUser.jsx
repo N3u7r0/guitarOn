@@ -1,16 +1,15 @@
 import { useState, useEffect, useContext } from "react";
 import { doc, getDoc } from "firebase/firestore";
-import { db } from "../firebase";
-import { auth } from "../firebase";
+import { db,auth } from "../firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-import { UserContext } from "../context/UserContext";
+import { UserContext,ToastContext } from "../context";
 
 export const useDataUser = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
   const { userDataContext, setUserDataContext } = useContext(UserContext);
+   const { setErrorContext } = useContext(ToastContext);
 
   useEffect(() => {
     setLoading(true);
@@ -22,13 +21,14 @@ export const useDataUser = () => {
             await fetchUserData(user.uid);
           }
         } catch (err) {
-          console.error("Error al obtener datos del usuario:", err);
+          console.error("Error al obtener datos del usuario: ", err);
+          setErrorContext("Error al obtener datos del usuario.")
         } finally {
           setLoading(false);
         }
       } else {
         console.warn("No hay usuario autenticado.");
-        setUserDataContext([]); // Limpia el estado de userDataContext al salir de la sesión
+        setUserDataContext([]); // Limpia el estado de userDataContext al salir de la sesion para q al regresar no me de 2 cards del mismo
         navigate("/");
       }
     });
@@ -52,10 +52,10 @@ export const useDataUser = () => {
         navigate("/");
       }
     } catch (err) {
-      setError(err.code);
-      console.error("Error al obtener los datos del usuario:", err);
+      setErrorContext("Error al obtener datos del usuario.")
+      console.error("Error al obtener los datos del usuario:", err.code);
     }
   };
 
-  return { userDataContext, loading, error };
+  return { userDataContext, loading };
 };

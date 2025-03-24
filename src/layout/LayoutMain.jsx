@@ -1,7 +1,6 @@
 import { BrowserRouter } from "react-router-dom";
 import { RouterMain } from "../routes/RouterMain";
-import { NavBar,Footer } from "../components";
-
+import { NavBar,Footer, Toast } from "../components";
 
 export const LayoutMain = () => {
  
@@ -12,6 +11,8 @@ export const LayoutMain = () => {
         <RouterMain />
       </BrowserRouter>
       <Footer  />
+      {/* tostada que da las alertas */}
+      <Toast/>
     </>
   );
 };

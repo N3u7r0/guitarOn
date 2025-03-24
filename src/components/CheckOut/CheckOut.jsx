@@ -19,17 +19,15 @@ import {
 } from "@chakra-ui/react";
 import { db } from "../../firebase";
 import { collection, addDoc, doc, setDoc } from "firebase/firestore";
-import { CartContext } from "../../context";
+import { CartContext, ToastContext } from "../../context";
 import { Spin } from "../ui";
 import { useCheckLoginUser } from "../../hooks"; // para el uid del usuario
-import { useToast } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
+
 export const CheckOut = ({ userDataContext, loading }) => {
   const navigate = useNavigate();
-
-
-  const toast = useToast(); // tostada de Chakra U
-  const { stateCartWidget, totalPrice } = useContext(CartContext);// productos y saldo total
+  const { setErrorContext, setExitoContext } = useContext(ToastContext);
+  const { stateCartWidget, setStateCartWidget, totalPrice } = useContext(CartContext);// productos y saldo total
   const { userCheck } = useCheckLoginUser();
   const [opcionEnvio, setOpcionEnvio] = useState("retiro en tienda");
   const [cliente, setCliente] = useState([{
@@ -72,25 +70,17 @@ export const CheckOut = ({ userDataContext, loading }) => {
     try {
       // guarda el pedido en la coleccion de todos los pedidos
       const docRef = await addDoc(collection(db, "pedidos"), pedido);
-      console.log("Pedido guardado en 'pedidos' con ID:", docRef.id);
       // guardar el pedido en el usuario
       const userId = userCheck.uid;
       const userPedidosRef = doc(db, `users/${userId}/misPedidos`, docRef.id);
       await setDoc(userPedidosRef, pedido);
-      toast({
-        title: `Muchas gracias ${userDataContext[0].nombre.toUpperCase()}`,
-        description: "su pedido se guardo correctamente",
-        status: "success",
-        duration: 3000,
-        isClosable: true,
-        position: "top-right",
-      });
-      setTimeout(() => {
-        navigate("/");
-      }, 3200);      
+      setExitoContext(`Pedido guardado exitosamente, muchas gracias ${cliente.nombre || ""}!`);
+      setStateCartWidget([]);//limpio el carrito
+      navigate("/");
 
     } catch (error) {
-      console.error("Error al guardar el pedido:", error);
+      console.error("Error al guardar el pedido: ", error);
+      setErrorContext("Error al guardar el pedido");
     }
   };
 
