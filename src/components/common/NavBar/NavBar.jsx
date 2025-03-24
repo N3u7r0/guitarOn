@@ -22,9 +22,9 @@ import {
 } from "@chakra-ui/icons";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import { CartWidget, BtnLogin } from "../../../components";
+import { CartWidget, BtnLogin, ToastError } from "../../../components";
+import { useCheckLoginUser, useLogoutUser,useLoginUser } from "../../../hooks";
 
-import { useCheckLoginUser, useLogoutUser } from "../../../hooks";
 import imagen from "../../../assets/images/logo.png";
 
 /* Componente de estilo para botones */
@@ -56,9 +56,11 @@ export function NavBar() {
   const toggleMenu = () => setIsOpen(!isOpen);
   const toggleProductMenu = () => setIsMenuOpen(!isMenuOpen); // alterna el menú de productos
   const closeProductMenu = () => setIsMenuOpen(false); // cierra el menú de productos
+ 
 
   return (
     <>
+    <ToastError />
       <Box
         bg={useColorModeValue("gray.100", "gray.900")}
         justifyContent={"space-between"}

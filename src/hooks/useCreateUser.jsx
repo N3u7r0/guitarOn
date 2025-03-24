@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 import { auth, db } from "../firebase";
+import { ToastContext } from "../context";
 
-export const useCreateUser = (onSuccess) => {
-  const [error, setError] = useState(null);
+export const useCreateUser = () => {
+  const { setErrorContext, setExitoContext } = useContext(ToastContext);
   const [formValues, setFormValues] = useState({
     nombre: "",
     apellido: "",
@@ -24,14 +25,14 @@ export const useCreateUser = (onSuccess) => {
   };
 
   // funcion de registro
-  async function SignUp(e) {
-    e.preventDefault();
+  async function SignUp() {
+
     const { nombre, apellido, telefono, direccion, email, password } = formValues;
 
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const userId = userCredential.user.uid;
-
+      setExitoContext(`Usuario creado exitosamente. Bienvenido ${nombre + " " + apellido}`)
       await setDoc(doc(db, "users", userId), {
         nombre,
         apellido,
@@ -40,16 +41,13 @@ export const useCreateUser = (onSuccess) => {
         email,
       });
 
-      if (onSuccess) {
-        onSuccess();
-      }
+
     } catch (err) {
-      setError(err.code);
+      setErrorContext(err.code);
     }
   }
 
   return {
-    error,
     SignUp,
     handleInputChange,
     formValues,

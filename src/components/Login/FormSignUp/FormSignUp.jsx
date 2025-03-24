@@ -11,11 +11,11 @@ import {
   AccordionIcon,
   Box,
 } from "@chakra-ui/react";
-import { Toast } from "../../ui";
+import { ToastError } from "../../ui";
 import { useCreateUser } from "../../../hooks";
 
-export const FormSignUp = ({ onSuccess }) => {
-  const { error, SignUp, handleInputChange, formValues } = useCreateUser(onSuccess);
+export const FormSignUp = () => {
+  const { error, exito, SignUp, handleInputChange, formValues } = useCreateUser();
 
   return (
     <>
@@ -30,7 +30,8 @@ export const FormSignUp = ({ onSuccess }) => {
             </AccordionButton>
           </h4>
           <AccordionPanel pb={4}>
-            <form onSubmit={SignUp}>
+            <form onSubmit={(e) => { e.preventDefault(); SignUp(); }}>
+
               <VStack spacing={4}>
                 <FormControl id="nombre" isRequired>
                   <FormLabel>Nombre</FormLabel>
@@ -118,7 +119,7 @@ export const FormSignUp = ({ onSuccess }) => {
           </AccordionPanel>
         </AccordionItem>
       </Accordion>
-      <Toast error={error} />
+      <ToastError error={error} exito={exito} />
     </>
   );
 };

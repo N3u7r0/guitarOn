@@ -1,2 +1,2 @@
 export * from "./Spin";
-export * from "./Toast";
+export * from "./ToastError";

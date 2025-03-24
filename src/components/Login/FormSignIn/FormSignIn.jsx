@@ -7,20 +7,17 @@ import {
   Box,
 } from "@chakra-ui/react";
 import { useLoginUser } from "../../../hooks";
-import { Toast } from "../../ui/Toast/Toast";
+import { ToastError } from "../../ui/ToastError/ToastError";
 
 export const FormSignIn = ({ onSuccess }) => {
-  const { login, loading, error, handleInputChange, credentials } = useLoginUser(onSuccess);
+  const { login, loading, error, handleInputChange, credentials, exito } = useLoginUser(onSuccess);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    login(); // llama a la funcion de inicio de sesion
-  };
 
   return (
     <>
       <Box p={4}>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={(e) => { e.preventDefault(); login(); }}>
+
           <VStack spacing={4}>
             <FormControl id="loginEmail" isRequired>
               <FormLabel>Correo Electrónico</FormLabel>
@@ -57,7 +54,7 @@ export const FormSignIn = ({ onSuccess }) => {
           </VStack>
         </form>
       </Box>
-      <Toast error={error} />
+      {/* <ToastError error={error} exito={exito} /> */}
     </>
   );
 };

@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
-import { useToast } from "@chakra-ui/react";
+import { ToastContext } from "../context/toastContext";
+import { useContext } from "react";
 
-export const useLoginUser = (onSuccess) => {
+export const useLoginUser = () => {
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
   const [credentials, setCredentials] = useState({ email: "", password: "" });
-  const toast = useToast();
+  const { setErrorContext, setExitoContext } = useContext(ToastContext);
+
 
   // maneja los cambios en los inputs
   const handleInputChange = (e) => {
@@ -21,31 +22,20 @@ export const useLoginUser = (onSuccess) => {
   // funcion de inicio
   const login = async () => {
     setLoading(true);
-    setError(null);
+    setErrorContext(null);
 
     try {
       const { email, password } = credentials;
       await signInWithEmailAndPassword(auth, email, password);
+      setExitoContext("Usuario logeado exitosamente.")
 
-      if (onSuccess) {
-        onSuccess();
-      }
-
-      toast({
-        title: "¡Éxito!",
-        description: "Sesión iniciada correctamente.",
-        status: "success",
-        duration: 3000,
-        isClosable: true,
-        position: "top-right",
-      });
     } catch (err) {
-      setError(err.code);
+      setErrorContext(err.code);
       console.error(err);
     } finally {
       setLoading(false);
     }
   };
 
-  return { login, loading, error, handleInputChange, credentials };
+  return { login, loading, handleInputChange, credentials, };
 };
