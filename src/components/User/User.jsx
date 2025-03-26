@@ -3,22 +3,15 @@ import {
   Box,
   Flex,
   Text,
-  Stack,
-  TableContainer,
-  Table,
-  Thead,
-  Tbody,
-  Tr,
-  Td,
-  Th,
+
   Divider,
 } from "@chakra-ui/react";
 
 import { Spin } from "../ui";
 
 export const User = ({ userDataContext, loading }) => {
- 
- 
+
+
   return (
     <>
       {loading ? (
@@ -31,45 +24,42 @@ export const User = ({ userDataContext, loading }) => {
           justifyContent={"center"}
         >
           {/* Datos de usuario */}
-          <Stack spacing={4}>
-            {userDataContext.map((user, index) => (
-              <Box
-                key={index}
-                borderWidth="1px"
-                borderRadius="lg"
-                boxShadow="md"
-                p={4}
-                bg="white"
+
+          {userDataContext.map((user, index) => (
+            <Box
+              key={index}
+              borderWidth="1px"
+              borderRadius="lg"
+              boxShadow="md"
+              p={4}
+              bg="white"
+            >
+              <Text
+                color={"black"}
+                textAlign={"center"}
+                fontSize={"x-large"}
               >
-                <Text
-                  color={"black"}
-                  textAlign={"center"}
-                  fontSize={"x-large"}
-                >
-                  Mis datos
+                Mis datos
+              </Text>
+              <Divider />
+              <br />
+              <Flex direction="column">
+                <Text fontWeight="bold" fontSize="lg" color={"black"}>
+                  {user.nombre || "Nombre no disponible"}{" "}
+                  {user.apellido || "Apellido no disponible"}
                 </Text>
-                <Divider />
-                <br />
-                <Flex direction="column">
-                  <Text fontWeight="bold" fontSize="lg" color={"black"}>
-                    {user.nombre || "Nombre no disponible"}{" "}
-                    {user.apellido || "Apellido no disponible"}
-                  </Text>
-                  <Text fontSize="md" color="gray.600">
-                    Email: {user.email || "Email no disponible"}
-                  </Text>
-                  <Text fontSize="md" color="gray.600">
-                    Teléfono: {user.telefono || "Teléfono no disponible"}
-                  </Text>
-                  <Text fontSize="md" color="gray.600">
-                    Dirección: {user.direccion || "Dirección no disponible"}
-                  </Text>
-                </Flex>
-              </Box>
-            ))}
-          </Stack>
-          {/* Tabla de productos*/}
-          
+                <Text fontSize="md" color="gray.600">
+                  Email: {user.email || "Email no disponible"}
+                </Text>
+                <Text fontSize="md" color="gray.600">
+                  Teléfono: {user.telefono || "Teléfono no disponible"}
+                </Text>
+                <Text fontSize="md" color="gray.600">
+                  Dirección: {user.direccion || "Dirección no disponible"}
+                </Text>
+              </Flex>
+            </Box>
+          ))}
         </Flex>
       )}
     </>

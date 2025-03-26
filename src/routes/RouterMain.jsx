@@ -5,7 +5,7 @@ import {
   TodosLosProductos,
   Item,
   DetalleCarrito,
-  Pagar,
+  CheckOut,
   MiCuenta,
 } from "../pages";
 
@@ -15,10 +15,10 @@ export const RouterMain = () => {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/Contacto" element={<Contacto />} />
-      <Route path="/category/:categoria" element={<TodosLosProductos />} />
-      <Route path="/item/:id" element={<Item />} />
+      <Route path="/Categoria/:categoria" element={<TodosLosProductos />} />
+      <Route path="/Item/:id" element={<Item />} />
       <Route path="/DetalleCarrito" element={<DetalleCarrito />} />
-      <Route path="/pagar" element={<Pagar />} />
+      <Route path="/CheckOut" element={<CheckOut />} />
       <Route path="/MiCuenta" element={<MiCuenta />} />
     </Routes>
   );

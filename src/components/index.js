@@ -4,4 +4,4 @@ export * from "./item";
 export * from "./login";
 export * from "./ui";
 export * from "./User";
-export * from "./CheckOut";
+export * from "./TableProducts";

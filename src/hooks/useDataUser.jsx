@@ -1,15 +1,15 @@
 import { useState, useEffect, useContext } from "react";
 import { doc, getDoc } from "firebase/firestore";
-import { db,auth } from "../firebase";
+import { db, auth } from "../firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-import { UserContext,ToastContext } from "../context";
+import { UserContext, ToastContext } from "../context";
 
 export const useDataUser = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const { userDataContext, setUserDataContext } = useContext(UserContext);
-   const { setErrorContext } = useContext(ToastContext);
+  const { setErrorContext } = useContext(ToastContext);
 
   useEffect(() => {
     setLoading(true);

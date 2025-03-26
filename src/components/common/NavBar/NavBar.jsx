@@ -120,26 +120,26 @@ export function NavBar() {
                 </MenuButton>
                 <MenuList>
                   <CustomMenuItem
-                    to={"/category/todosLosProductos"}
+                    to={"/Categoria/todosLosProductos"}
                     onClick={closeProductMenu}
                   >
                     Todos los productos
                   </CustomMenuItem>
                   <MenuDivider />
                   <CustomMenuItem
-                    to={"./category/guitarra"}
+                    to={"./Categoria/guitarra"}
                     onClick={closeProductMenu}
                   >
                     Guitarras
                   </CustomMenuItem>
                   <CustomMenuItem
-                    to={"./category/bajo"}
+                    to={"./Categoria/bajo"}
                     onClick={closeProductMenu}
                   >
                     Bajos
                   </CustomMenuItem>
                   <CustomMenuItem
-                    to={"./category/bateria"}
+                    to={"./Categoria/bateria"}
                     onClick={closeProductMenu}
                   >
                     Baterías
@@ -208,25 +208,25 @@ export function NavBar() {
                 Contacto
               </CustomMenuItem>
               <CustomMenuItem
-                to={"/category/todosLosProductos"}
+                to={"/Categoria/todosLosProductos"}
                 onClick={() => setIsOpen(false)}
               >
                 Todos los productos
               </CustomMenuItem>
               <CustomMenuItem
-                to={"./category/guitarra"}
+                to={"./Categoria/guitarra"}
                 onClick={() => setIsOpen(false)}
               >
                 Guitarras
               </CustomMenuItem>
               <CustomMenuItem
-                to={"./category/bajo"}
+                to={"./Categoria/bajo"}
                 onClick={() => setIsOpen(false)}
               >
                 Bajos
               </CustomMenuItem>
               <CustomMenuItem
-                to={"./category/bateria"}
+                to={"./Categoria/bateria"}
                 onClick={() => setIsOpen(false)}
               >
                 Baterías

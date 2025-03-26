@@ -145,7 +145,7 @@ export const CartDetail = () => {
             <Spacer />
             {userCheck ? (
               // Botón habilitado si el usuario está autenticado
-              <Link to="/pagar">
+              <Link to="/CheckOut">
                 <Button
                   _hover={{
                     backgroundColor: "rgba(200, 0, 0, 0.85)",
