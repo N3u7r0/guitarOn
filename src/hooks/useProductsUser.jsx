@@ -1,32 +1,38 @@
-import { useState, useEffect } from "react";
-import { collection, query, getDocs } from "firebase/firestore";
-import { onAuthStateChanged } from "firebase/auth";
+import { useState, useEffect, useContext } from "react";
+import { collection, query, getDocs, orderBy } from "firebase/firestore";
 import { db, auth } from "../firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { UserContext } from "../context";
 
 export const useProductsUser = () => {
     const [loading, setLoading] = useState(true);
-    const [products, setProducts] = useState([]);
+    /*    const [productsUser, setProductsUser] = useState([]); */
     const [error, setError] = useState(null);
+    const [user] = useAuthState(auth)
+    const { userProductsContext, SetUserProductsContext } = useContext(UserContext);
 
     useEffect(() => {
-        const fetchUserProducts = () => {
-            const unsubscribe = onAuthStateChanged(auth, (user) => {
-                if (user) {
-                    const userId = user.uid;
+        if (userProductsContext.length === 0) {
+            const fech = async () => {
+                try {
 
-                    // Crear la consulta para los pedidos del usuario
-                    const q = query(collection(db, `users/${userId}/misPedidos`));
+
+                    console.log("entro al try");
+                    
+                    // consulta para los pedidos del usuario, los ordena descendentemente x fecha
+                    const consulta = query(collection(db, `users/${user.uid}/misPedidos`), orderBy("fecha", "desc"));
 
                     // Obtener los datos de Firestore
-                    getDocs(q)
+                    getDocs(consulta)
                         .then((querySnapshot) => {
-                            const productsData = querySnapshot.docs.map((doc) => ({
+                            const pedidoUser = querySnapshot.docs.map((doc) => ({
                                 id: doc.id,
                                 ...doc.data(),
                             }));
-                            console.log(productsData[0].productos);
-                            
-                            setProducts(productsData[0].productos);
+                            console.log(pedidoUser[0].productos);
+
+                            SetUserProductsContext(pedidoUser[0].productos);
+                            /*   setProductsUser(pedidoUser[0].productos) */
                         })
                         .catch((err) => {
                             setError("Error al obtener los productos: " + err.message);
@@ -35,17 +41,19 @@ export const useProductsUser = () => {
                         .finally(() => {
                             setLoading(false);
                         });
-                } else {
-                    setError("El usuario no está autenticado.");
-                    setLoading(false);
+                } catch (error) {
+                    console.error("Error al procesar el usuario:", error);
+                    setError("Error al procesar el usuario");
                 }
-            });
+            };
 
-            return () => unsubscribe(); // Limpiar el listener
-        };
+            // se ejecuta cuando encuentra al usuario para evitar el error cuando el componente se monta la primera vez
+            if (user) {
+                fech();
+            }
 
-        fetchUserProducts();
-    }, []);
+        }
+    }, [user]);
 
-    return { products, loading, error };
+    return { userProductsContext, loading, error };
 };

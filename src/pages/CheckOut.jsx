@@ -72,7 +72,9 @@ export const CheckOut = () => {
       setExitoContext(`Pedido guardado exitosamente, muchas gracias ${cliente.nombre || ""}!`);
       setStateCartWidget([]);//limpio el carrito
       navigate("/");
-
+      setTimeout(() => {
+        location.reload();
+    }, 3000);
     } catch (error) {
       console.error("Error al guardar el pedido: ", error);
       setErrorContext("Error al guardar el pedido");

@@ -1,17 +1,13 @@
 import {
     Flex,
 } from "@chakra-ui/react";
-
 import { useDataUser } from "../hooks";
 import { Spin, User, TableProducts } from "../components";
 import { useProductsUser } from "../hooks/useProductsUser";
 
 export const MiCuenta = () => {
     const { userDataContext, loading } = useDataUser(); // datos de usuario
-    const { products } = useProductsUser();
-
-    console.log(products);
-
+    const { userProductsContext } = useProductsUser();
 
     return (
         <>
@@ -25,8 +21,7 @@ export const MiCuenta = () => {
             >
                 <User userDataContext={userDataContext} loading={loading} />
 
-
-                <TableProducts productos={[]} precioTotal={0} />
+                <TableProducts productos={userProductsContext} precioTotal={0} />
             </Flex>
             )}
         </>
