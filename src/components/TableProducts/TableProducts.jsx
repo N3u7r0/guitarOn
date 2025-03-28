@@ -63,7 +63,7 @@ export const TableProducts = ({ productos, precioTotal }) => {
           Total:
         </Text>
         <Text fontSize="lg" fontWeight="bold" color="red.500">
-          ${precioTotal.toFixed(2)}
+          ${precioTotal.toFixed(2)||""}
         </Text>
       </Flex>
     </Box>

@@ -6,13 +6,13 @@ import { UserContext } from "../context";
 
 export const useProductsUser = () => {
     const [loading, setLoading] = useState(true);
-    /*    const [productsUser, setProductsUser] = useState([]); */
+   
     const [error, setError] = useState(null);
     const [user] = useAuthState(auth)
-    const { userProductsContext, SetUserProductsContext } = useContext(UserContext);
+    const { userRequestContext, SetUserRequestContext } = useContext(UserContext);
 
     useEffect(() => {
-        if (userProductsContext.length === 0) {
+        if (userRequestContext.length === 0) {
             const fech = async () => {
                 try {
 
@@ -29,10 +29,10 @@ export const useProductsUser = () => {
                                 id: doc.id,
                                 ...doc.data(),
                             }));
-                            console.log(pedidoUser[0].productos);
+                        
 
-                            SetUserProductsContext(pedidoUser[0].productos);
-                            /*   setProductsUser(pedidoUser[0].productos) */
+                            SetUserRequestContext(pedidoUser);
+                          
                         })
                         .catch((err) => {
                             setError("Error al obtener los productos: " + err.message);
@@ -55,5 +55,5 @@ export const useProductsUser = () => {
         }
     }, [user]);
 
-    return { userProductsContext, loading, error };
+    return { userRequestContext, loading, error };
 };
