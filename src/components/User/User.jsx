@@ -18,10 +18,10 @@ export const User = ({ userDataContext, loading }) => {
         <Spin />
       ) : (
         <Flex
-          m={"2rem"}
-          gap={"2rem"}
-          flexWrap={"wrap"}
-          justifyContent={"center"}
+       
+          gap="2rem"
+          flexWrap="wrap"
+          justifyContent="center"
         >
           {/* Datos de usuario */}
 
@@ -33,18 +33,19 @@ export const User = ({ userDataContext, loading }) => {
               boxShadow="md"
               p={4}
               bg="white"
+              justifyContent="center"
             >
               <Text
-                color={"black"}
-                textAlign={"center"}
-                fontSize={"x-large"}
+                color="black"
+                textAlign="center"
+                fontSize="x-large"
               >
                 Mis datos
               </Text>
               <Divider />
               <br />
               <Flex direction="column">
-                <Text fontWeight="bold" fontSize="lg" color={"black"}>
+                <Text fontWeight="bold" fontSize="lg" color="black">
                   {user.nombre || "Nombre no disponible"}{" "}
                   {user.apellido || "Apellido no disponible"}
                 </Text>

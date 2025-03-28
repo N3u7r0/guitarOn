@@ -8,12 +8,12 @@ import {
   Heading,
   Text,
   Flex,
+  Divider,
 } from "@chakra-ui/react";
 import { useState, useEffect, useContext } from "react";
 import { Spin } from "../../../components";
 import { CartContext } from "../../../context";
 import imgDefault from "../../../assets/images/imgDefault.jpg";
-import "./style/style.css";
 
 export const ItemDetailContainer = ({ product, loading }) => {
   // Lógica de los botones que conectan con el carrito.
@@ -75,9 +75,12 @@ export const ItemDetailContainer = ({ product, loading }) => {
             <CardBody
               margin={"0.5rem"}
               padding={0}
-              className="cartDetailContainer"
+              color="whitesmoke"
             >
-              <Heading size="lg">{product.marca}</Heading>
+              <Heading size="lg" m="0.5rem" textAlign="center">{product.marca}</Heading>
+              <Divider/>
+              
+              
               <Heading size="xl">{product.modelo}</Heading>
               <Heading size="m" color={"gray"}>
                 Color: {product.color}
