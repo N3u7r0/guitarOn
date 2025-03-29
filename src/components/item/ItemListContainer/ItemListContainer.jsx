@@ -10,6 +10,8 @@ import {
   Button,
   Image,
   Text,
+  Grid,
+
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { Spin } from "../../../components";
@@ -20,32 +22,40 @@ export const ItemListContainer = ({ products, loading }) => {
     <Spin />
   ) : (
     <>
-      <Box
-        display={"flex"}
-        flexWrap={"wrap"}
-        justifyContent={"center"}
-                mb={"8vh"}
+      <Grid
+        templateColumns="repeat(auto-fit, minmax(350px, 1fr))"
+        gap={{ base: "4vw", lg: "3vw", xl: "2vw" }}
+        m="2vh 2vw 10vh 2vw"
+        placeItems="center"
       >
         {products.map((product) => (
           <Card
+            display="flex"
+            justify="center"
             key={product.id}
-            maxW="sm"
+            h="100%"
             margin={"2rem 1rem 0rem 1rem"}
             backgroundColor={"rgba(0, 0, 0, 0.05)"}
-            _hover={{ backgroundColor: "rgba(80, 000, 000, 0.12)" }}
-            boxShadow={"1px 3px 5px rgba(0, 0, 0, 0.15) "}
+            transition="0.5s"
+            _hover={{
+              backgroundColor: "rgba(180, 0, 0, 0.2)",
+              boxShadow: "-5px 2px 20px 1px rgba(80, 0, 0, 0.5)",
+              transition: "0.2s"
+            }}
+
+            boxShadow={"1px 3px 5px rgba(0, 0, 0, 0.3) "}
           >
+            <Image
+              src={product.image || imgDefault}
+              alt={product.marca + " " + product.modelo}
+              borderRadius="lg"
+            />
             <CardBody>
-              <Box marginBottom={"1px"} textAlign={"center"}>
-                <Text color="red.500" h="6" marginBottom={"0.2rem"}>
-                  <b>{product.categoria}</b>
-                </Text>
-              </Box>
-              <Image
-                src={product.image || imgDefault}
-                alt={product.marca + " " + product.modelo}
-                borderRadius="lg"
-              />
+
+              <Text color="red.500" h="6" marginBottom="0.2rem" textAlign="center">
+                <b>{product.categoria}</b>
+              </Text>
+
               <Stack mt="6" spacing="3">
                 <Heading itemType="h5" size="md">
                   {product.marca}
@@ -78,7 +88,7 @@ export const ItemListContainer = ({ products, loading }) => {
             </CardFooter>
           </Card>
         ))}
-      </Box>
+      </Grid>
     </>
   );
 };

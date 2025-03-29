@@ -39,75 +39,75 @@ export const ItemDetailContainer = ({ product, loading }) => {
     <Spin />
   ) : (
     <Flex
-      justifyContent={"center"}
-      alignItems={"center"}
-      minH={"90vh"}
-      mb={"8vh"}
+      justifyContent="center"
+      alignItems="center"
+      minH="91vh"
     >
       <Card
         key={product.id}
-        justifyContent={"center"}
+        justifyContent="center"
         w={{ base: "95%", md: "90%", lg: "75%" }}
-        alignContent={"center"}
         overflow="hidden"
-        variant="outline"
+        margin="1rem"
         boxShadow={"0px 2px 10px rgba(255, 15, 15, 0.25)"}
-        margin={"1.5rem"}
+        transition="0.5s"
+        _hover={{
+          boxShadow: "0px 0px 50px 1px rgba(180, 0, 0, 0.5)",
+          transition: "0.2s"
+        }}
       >
         <Flex
           direction={{ base: "column", sm: "column", lg: "row" }}
           textAlign={{ base: "center", sm: "center", lg: "left" }}
-          align={"center"}
-          justify={"center"}
+          align="center"
+          justify="center"
           backgroundColor={"rgba(0, 0, 0, 0.85)"}
-          _hover={{ backgroundColor: "rgba(80, 0, 0, 0.72)" }}
+          transition="0.5s"
+          _hover={{
+            backgroundColor: "rgba(20, 0, 0, 0.95)",
+            transition: "0.2s"
+          }}
         >
           <Image
             src={product.image || imgDefault}
             alt={`${product.marca} ${product.modelo}`}
             objectFit="cover"
-            maxW={{ base: "100%", sm: "350px" }}
-            margin={"0.8rem"}
+            maxW={{ base: "95%", sm: "25rem", lg: "27rem" }}
+            margin="1rem"
             borderRadius={4}
           />
 
           <Stack>
             <CardBody
-              margin={"0.5rem"}
-              padding={0}
-              color="whitesmoke"
+              color="whitesmoke"// color de la fuente
             >
-              <Heading size="lg" m="0.5rem" textAlign="center">{product.marca}</Heading>
-              <Divider/>
-              
-              
+              <Heading size="lg" m="0.2rem" textAlign="center">{product.marca}</Heading>
+              <Divider />
               <Heading size="xl">{product.modelo}</Heading>
-              <Heading size="m" color={"gray"}>
+              <Heading size="m" color="gray">
                 Color: {product.color}
               </Heading>
-              <Text py="2" w={"90%"} textAlign={"left"} m="auto">
+              <Text py="1rem" w="80%" textAlign="left" m="auto">
                 {product.descripcion_completa}
               </Text>
 
-              <Flex justifyContent={"center"} margin={"1rem"}>
+              <Flex justifyContent="center" margin="1rem">
                 <Button
-                  variant="solid"
                   color="white"
-                  backgroundColor={"rgba(165, 15, 15, 0.87)"}
+                  backgroundColor="rgba(165, 15, 15, 0.87)"
                   _hover={{ backgroundColor: "rgba(255, 15, 15, 0.87)" }}
                   onClick={handleDecrement}
                 >
                   -
                 </Button>
                 <Text
-                  alignContent={"center"}
-                  fontSize={"x-large"}
-                  margin={"0rem 0.5rem"}
+                  alignContent="center"
+                  fontSize="x-large"
+                  margin="0rem 0.6rem"
                 >
                   {count}
                 </Text>
                 <Button
-                  variant="solid"
                   color="white"
                   backgroundColor={"rgba(165, 15, 15, 0.87)"}
                   _hover={{ backgroundColor: "rgba(255, 15, 15, 0.87)" }}
@@ -116,34 +116,30 @@ export const ItemDetailContainer = ({ product, loading }) => {
                   +
                 </Button>
               </Flex>
-              <Text textAlign={"center"}>Cantidad: {count}</Text>
+              {count === 0 ? (<Text display="none"></Text>) : (<Text textAlign="center">Cantidad: {count}</Text>)}
             </CardBody>
-
             <CardFooter
-              display={"flex"}
-              flexDirection={"row"}
-              justifyContent={"center"}
-              gap={"1vh"}
+              display="flex"
+              flexDirection="row"
+              justifyContent="center"
+              gap="1rem"
             >
               {showButton && (
                 <>
                   <Button
-                    variant="solid"
                     color="white"
-                    backgroundColor={"rgba(165, 15, 15, 0.87)"}
+                    backgroundColor="rgba(165, 15, 15, 0.87)"
                     _hover={{ backgroundColor: "rgba(255, 15, 15, 0.87)" }}
                     onClick={() => {
                       addItem(product, count);
-
                       setCount(0);
                     }}
                   >
                     Agregar al carrito
                   </Button>
                   <Button
-                    variant="solid"
                     color="white"
-                    backgroundColor={"rgba(65, 15, 15, 0.87)"}
+                    backgroundColor="rgba(65, 15, 15, 0.87)"
                     _hover={{ backgroundColor: "rgba(255, 115, 15, 0.87)" }}
                     onClick={() => setCount(0)}
                   >

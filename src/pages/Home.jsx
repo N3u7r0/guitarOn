@@ -30,7 +30,6 @@ export const Home = () => {
           <Image src={logo} w={"25vw"} minW={"15rem"} />
           <Heading
             position={"relative"}
-            /*   base = pantalla chica, md = p.mediana, lg = p. grande */
             fontSize={"medium"}
             whiteSpace="normal"
             bottom={"1.5vw"}
@@ -45,9 +44,9 @@ export const Home = () => {
         Ofertas
       </Text>
 
-      <Flex justifyContent={"center"} w={"100%"} p={0} m={0}>
+     
         <ItemListContainer products={productsOffer} loading={loading} />
-      </Flex>
+   
     </Flex>
   );
 };
