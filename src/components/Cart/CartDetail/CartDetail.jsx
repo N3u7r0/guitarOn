@@ -29,15 +29,15 @@ export const CartDetail = () => {
     setTotalPrice,
   } = useContext(CartContext);
 
-  const { userCheck } = useCheckLoginUser(); // Verifica el estado del usuario
+  const { userCheck } = useCheckLoginUser(); // verifica el estado del usuario
 
-  // Actualiza el totalPrice cuando el carrito cambia
+  // actualiza el totalPrice cuando el carrito cambia
   useEffect(() => {
     const newTotal = stateCartWidget.reduce(
       (acc, item) => acc + (item.precio ? item.precio * item.count : 0),
       0
     );
-    setTotalPrice(newTotal); // Actualiza el estado global del total
+    setTotalPrice(newTotal); // actualiza el estado global del total
   }, [stateCartWidget, setTotalPrice]);
 
   const handleDeleteItem = (item) => {
@@ -144,7 +144,7 @@ export const CartDetail = () => {
             </Text>
             <Spacer />
             {userCheck ? (
-              // Botón habilitado si el usuario está autenticado
+              // boton habilitado si el usuario esta autenticado
               <Link to="/CheckOut">
                 <Button
                   _hover={{
@@ -156,7 +156,7 @@ export const CartDetail = () => {
                 </Button>
               </Link>
             ) : (
-              // Botón deshabilitado si no está autenticado
+              // boton deshabilitado si no está autenticado
               <Button
                 isDisabled
                 colorScheme="gray"

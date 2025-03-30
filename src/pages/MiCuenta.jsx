@@ -29,8 +29,9 @@ export const MiCuenta = () => {
             ) : (
                 <Flex
                     flexDir="column"
-                    margin="5rem"
+                    margin={{ base:"1rem" ,lg:"5rem"}}
                     gap="2rem"
+                    pb={"5rem"}
                 >
                     <User userDataContext={userDataContext} loading={loading} />
 
