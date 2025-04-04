@@ -6,7 +6,7 @@ import { UserContext } from "../context";
 
 export const useProductsUser = () => {
     const [loading, setLoading] = useState(true);
-   
+
     const [error, setError] = useState(null);
     const [user] = useAuthState(auth)
     const { userRequestContext, SetUserRequestContext } = useContext(UserContext);
@@ -15,10 +15,6 @@ export const useProductsUser = () => {
         if (userRequestContext.length === 0) {
             const fech = async () => {
                 try {
-
-
-                    console.log("entro al try");
-                    
                     // consulta para los pedidos del usuario, los ordena descendentemente x fecha
                     const consulta = query(collection(db, `users/${user.uid}/misPedidos`), orderBy("fecha", "desc"));
 
@@ -29,10 +25,10 @@ export const useProductsUser = () => {
                                 id: doc.id,
                                 ...doc.data(),
                             }));
-                        
+
 
                             SetUserRequestContext(pedidoUser);
-                          
+
                         })
                         .catch((err) => {
                             setError("Error al obtener los productos: " + err.message);

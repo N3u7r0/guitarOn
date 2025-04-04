@@ -17,7 +17,7 @@ export const useDataUser = () => {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (user) {
         try {
-          if (userDataContext.length === 0) { // Solo llama a fetchUserData si el contexto está vacío
+          if (userDataContext.length === 0) { // solo llama a fetchUserData si el contexto esta vacio
             await fetchUserData(user.uid);
           }
         } catch (err) {
@@ -28,12 +28,12 @@ export const useDataUser = () => {
         }
       } else {
         console.warn("No hay usuario autenticado.");
-        setUserDataContext([]); // Limpia el estado de userDataContext al salir de la sesion para q al regresar no me de 2 cards del mismo
+        setUserDataContext([]); // limpia el estado de userDataContext al salir de la sesion para q al regresar no me de 2 cards del mismo
         navigate("/");
       }
     });
 
-    // Limpia el listener al desmontar el componente
+    // Llimpia el listener al desmontar el componente
     return unsubscribe;
   }, [userDataContext]);
 
@@ -43,10 +43,10 @@ export const useDataUser = () => {
       const userDocRef = doc(db, "users", uid);
       const userDoc = await getDoc(userDocRef);
 
-      // Verifica si el documento existe
+      
       if (userDoc.exists()) {
         const data = userDoc.data();
-        setUserDataContext([data]); // Sobrescribe el estado con los nuevos datos
+        setUserDataContext([data]); 
       } else {
         console.warn("No se encontró información para el usuario con UID:", uid);
         navigate("/");
