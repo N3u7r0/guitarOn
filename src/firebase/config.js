@@ -3,12 +3,12 @@ import { getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 
 export const firebaseConfig = {
+  apiKey: import.meta.env.VITE_APP_APPIKEY,
   authDomain: "guitaron-95a31.firebaseapp.com",
   projectId: "guitaron-95a31",
   storageBucket: "guitaron-95a31.firebasestorage.app",
   messagingSenderId: "873754060620",
-  apiKey: import.meta.env.VITE_APP_APPIKEY,  
-  appId: import.meta.env.VITE_APP_ID
+  appId: import.meta.env.VITE_APP_ID,
 };
 
 // inicializamos los servicios de Firebase

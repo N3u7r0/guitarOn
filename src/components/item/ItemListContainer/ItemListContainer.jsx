@@ -23,7 +23,7 @@ export const ItemListContainer = ({ products, loading }) => {
   ) : (
     <>
       <Grid
-        templateColumns="repeat(auto-fit, minmax(350px, 1fr))"
+        templateColumns="repeat(auto-fit, minmax(320px, 1fr))"
         gap={{ base: "4vw", lg: "3vw", xl: "2vw" }}
         m="2vh 2vw 10vh 2vw"
         placeItems="center"
@@ -33,13 +33,13 @@ export const ItemListContainer = ({ products, loading }) => {
             display="flex"
             justify="center"
             key={product.id}
-            h="100%"
+            h="95%"
             margin={"2rem 1rem 0rem 1rem"}
             backgroundColor={"rgba(0, 0, 0, 0.05)"}
             transition="0.5s"
             _hover={{
-              backgroundColor: "rgba(180, 0, 0, 0.2)",
-              boxShadow: "-5px 2px 20px 1px rgba(80, 0, 0, 0.5)",
+              backgroundColor: "rgba(80, 0, 0, 0.2)",
+              boxShadow: "-5px 2px 50px -15px rgb(110, 0, 0)",
               transition: "0.2s"
             }}
 
@@ -49,6 +49,7 @@ export const ItemListContainer = ({ products, loading }) => {
               src={product.image || imgDefault}
               alt={product.marca + " " + product.modelo}
               borderRadius="lg"
+            
             />
             <CardBody>
 
@@ -56,7 +57,7 @@ export const ItemListContainer = ({ products, loading }) => {
                 <b>{product.categoria}</b>
               </Text>
 
-              <Stack mt="6" spacing="3">
+              <Stack  h={"100%"}   display={"flex"} justifyContent={"center"}         >
                 <Heading itemType="h5" size="md">
                   {product.marca}
                 </Heading>
@@ -64,7 +65,8 @@ export const ItemListContainer = ({ products, loading }) => {
                   {product.modelo}
                 </Heading>
                 <Text>{product.descripcion_card}</Text>
-                <Text color="red.500" fontSize="2xl">
+                {/* ultimo hijo del contenedor con margin auto para q quede en el pie */}
+                <Text color="red.500" fontSize="2xl"  mt="auto" p="0.5rem" >
                   ${product.precio}
                 </Text>
               </Stack>

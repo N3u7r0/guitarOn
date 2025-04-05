@@ -1,7 +1,6 @@
 import {
   Card,
   CardBody,
-  CardFooter,
   Button,
   Image,
   Stack,
@@ -42,6 +41,7 @@ export const ItemDetailContainer = ({ product, loading }) => {
       justifyContent="center"
       alignItems="center"
       minH="91vh"
+      minW="100%" // para q no se rompa en la transicion de row a column
     >
       <Card
         key={product.id}
@@ -49,22 +49,22 @@ export const ItemDetailContainer = ({ product, loading }) => {
         w={{ base: "95%", md: "90%", lg: "75%" }}
         overflow="hidden"
         margin="1rem"
-        boxShadow={"0px 2px 10px rgba(255, 15, 15, 0.25)"}
+        boxShadow={"0px 0px 40px -15px rgb(180, 15, 15, 1)"}
         transition="0.5s"
         _hover={{
-          boxShadow: "0px 0px 50px 1px rgba(180, 0, 0, 0.5)",
+          boxShadow: "0px 0px 50px -13px rgb(200, 0, 0, 1)",
           transition: "0.2s"
         }}
       >
         <Flex
           direction={{ base: "column", sm: "column", lg: "row" }}
-          textAlign={{ base: "center", sm: "center", lg: "left" }}
-          align="center"
-          justify="center"
+          alignContent="center"
+          alignItems={"center"}
+
           backgroundColor={"rgba(0, 0, 0, 0.85)"}
           transition="0.5s"
           _hover={{
-            backgroundColor: "rgba(20, 0, 0, 0.95)",
+            backgroundColor: "rgba(10, 0, 0, 0.95)",
             transition: "0.2s"
           }}
         >
@@ -79,7 +79,12 @@ export const ItemDetailContainer = ({ product, loading }) => {
 
           <Stack>
             <CardBody
+              display={"flex"}
+              flexDir={"column"}
               color="whitesmoke"// color de la fuente
+
+              
+              margin="1rem"
             >
               <Heading size="lg" m="0.2rem" textAlign="center">{product.marca}</Heading>
               <Divider />
@@ -87,11 +92,11 @@ export const ItemDetailContainer = ({ product, loading }) => {
               <Heading size="m" color="gray">
                 Color: {product.color}
               </Heading>
-              <Text py="1rem" w="80%" textAlign="left" m="auto">
+              <Text py="1rem" w="90%" textAlign="left" m="auto">
                 {product.descripcion_completa}
               </Text>
 
-              <Flex justifyContent="center" margin="1rem">
+              <Flex justifyContent="center" margin="1rem" >
                 <Button
                   color="white"
                   backgroundColor="rgba(165, 15, 15, 0.87)"
@@ -104,6 +109,7 @@ export const ItemDetailContainer = ({ product, loading }) => {
                   alignContent="center"
                   fontSize="x-large"
                   margin="0rem 0.6rem"
+
                 >
                   {count}
                 </Text>
@@ -116,17 +122,17 @@ export const ItemDetailContainer = ({ product, loading }) => {
                   +
                 </Button>
               </Flex>
-              {count === 0 ? (<Text display="none"></Text>) : (<Text textAlign="center">Cantidad: {count}</Text>)}
-            </CardBody>
-            <CardFooter
-              display="flex"
-              flexDirection="row"
-              justifyContent="center"
-              gap="1rem"
-            >
+              {count === 0 ? (<Text display="none"></Text>) : (<Text textAlign="center" m="0.5rem">Cantidad: {count}</Text>)}
+              {/* botonera agregar carrito */}
               {showButton && (
-                <>
+                <Flex
+                  display="flex"
+                  flexDirection="row"
+                  justifyContent="center"
+                  gap="1rem"
+                >
                   <Button
+
                     color="white"
                     backgroundColor="rgba(165, 15, 15, 0.87)"
                     _hover={{ backgroundColor: "rgba(255, 15, 15, 0.87)" }}
@@ -145,9 +151,10 @@ export const ItemDetailContainer = ({ product, loading }) => {
                   >
                     Cancelar
                   </Button>
-                </>
+                </Flex>
               )}
-            </CardFooter>
+            </CardBody>
+
           </Stack>
         </Flex>
       </Card>
